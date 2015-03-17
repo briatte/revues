@@ -19,7 +19,7 @@ library(scales)
 #
 
 library(cluster)   # cluster objects
-library(ggdendrogram) # dendrograms
+library(ggdendro)  # dendrograms
 library(ggfortify) # cluster objects
 library(tidyr)     # data reshaping
 
