@@ -63,7 +63,7 @@ if(!file.exists(data)) {
           sprintf("%3.0f", which(n == j)), j)
 
       u = paste0(r, j)
-      f = paste0("html/num/", j)
+      f = paste0("html/num/", gsub("^\\./", "", j))
 
       # some issues are missing
       if(!file.exists(f))
@@ -94,8 +94,8 @@ if(!file.exists(data)) {
 
         # add to dataset
         if(length(a))
-          d = rbind(d, data.frame(numero = f,
-                                  revue = gsub("html/num/revue-|-\\d{4}-(.*)\\.htm", "", f),
+          d = rbind(d, data.frame(numero = gsub("html/num/(\\./)?revue-|\\.htm", "", f),
+                                  revue = gsub("html/num/(\\./)?revue-|-\\d{4}-(.*)\\.htm", "", f),
                                   annee = str_extract(f, "[0-9]{4}"),
                                   auteur = a,
                                   articles = l,
