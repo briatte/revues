@@ -44,7 +44,8 @@ if(!file.exists(data)) {
   }
 
   d = data.frame()
-  for(i in paste0("html/rev/", y)) {
+  y = paste0("html/rev/", y)
+  for(i in rev(y)) {
 
     h = html(i)
 
@@ -58,7 +59,8 @@ if(!file.exists(data)) {
 
     for(j in rev(gsub("\\s", "%20", n))) {
 
-      cat(sprintf("%3.0f", which(n == j)), j)
+      cat(sprintf("%3.0f", which(y == i)),
+          sprintf("%3.0f", which(n == j)), j)
 
       u = paste0(r, j)
       f = paste0("html/num/", j)
