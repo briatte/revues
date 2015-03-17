@@ -131,9 +131,9 @@ for(x in c("societes", "sociologie")) {
                .91, .92, .93, .94, .95, .96, .97, .98, .99)) {
 
       t = quantile(e$w, q)
-      nn = network(e[ e$w > t, 1:2 ], directed = FALSE)
-      print(nn)
-      set.edge.attribute(nn, "weight", e[ e$w > t, 3 ])
+      n = network(e[ e$w > t, 1:2 ], directed = FALSE)
+      print(n)
+      set.edge.attribute(n, "weight", e[ e$w > t, 3 ])
 
       n %v% "size" = 1 + as.numeric(cut(degree(n), unique(quantile(degree(n))), include.lowest = TRUE))
       n %v% "id" = ifelse(network.vertex.names(n) == x, "S", "A")
@@ -154,7 +154,7 @@ for(x in c("societes", "sociologie")) {
       print(g)
 
     }
-  }, movie.name = paste0("plots/network_", x, ".gif"))
+  }, movie.name = paste0("network_", x, ".gif"))
 
 }
 
