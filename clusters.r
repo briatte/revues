@@ -1,5 +1,3 @@
-# setwd("revues-indexes")
-
 r = html("html/revues-2015.html")
 r = html_nodes(r, ".revue a") %>%
   html_attr("href") %>%
@@ -30,7 +28,28 @@ r$combined = apply(r[, -c(1, 16:17) ], 1, function(x) which(x == 1))
 r$combined = sapply(r$combined, names)
 r$combined = sapply(r$combined, paste0, collapse = ",")
 
+# most frequent cross-disciplinary ties
 table(r$combined[ r$n > 1 ])[ table(r$combined[ r$n > 1 ]) > 5 ]
+
+# most active disciplines in cross-disciplinary ties
+t1 = table(unlist(str_split(names(table(r$combined[ r$n > 1 ])), ",")))
+t1 = as.data.frame(t1) %>% arrange(-Freq)
+head(t1)
+
+# percentage of cross-disciplinary journals
+t2 = round(100 * table(unlist(str_split(names(table(r$combined[ r$n > 1 ])), ","))) /
+             colSums(r[, -c(1, 16:18) ]))
+t2 = as.data.frame(t2) %>% arrange(-Freq)
+head(t2)
+
+qplot(data = full_join(t1, t2, "Var1"), x = Freq.x, y = Freq.y,
+      label = Var1, geom = "text") +
+  geom_vline(x = mean(t1$Freq), lty = "dashed") +
+  geom_hline(y = mean(t2$Freq), lty = "dashed") +
+  labs(y = "% de revues trans-disciplinaires\n",
+       x = "\nNombre de revues trans-disciplinaires") +
+  theme_bw() +
+  theme(panel.grid = element_blank())
 
 R = r[, -c(1, 16:18) ]
 
@@ -66,11 +85,13 @@ autoplot(clara(R, 4), frame = TRUE, frame.type = "norm") +
 ggsave("plots/clusters_clara.pdf", width = 9, height = 9)
 
 #
-# dendogram
+# dendrogram
 #
 
-p = hclust(dist(r[, -1]))
+rownames(R) = r[, 1]
+p = hclust(dist(R), method = "average")
 p = as.dendrogram(p)
+ggdendrogram(p, rotate = TRUE)
 
 r$n = apply(r[, -c(1, 16:18), ], 1, sum)
 
