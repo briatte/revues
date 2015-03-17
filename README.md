@@ -16,6 +16,8 @@ data = "revues-scpo.csv"
 html = "html/revues-scpo-2014.html"
 ```
 
+You will also need to select different example journals at lines 41-45 and 62-64 of `plots.r`.
+
 # TODO
 
 - discipline-specific cluster analysis

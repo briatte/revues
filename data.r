@@ -6,8 +6,8 @@ if(!file.exists(data)) {
   r = "http://www.cairn.info/"
 
   if(!file.exists(html))
-     download.file(paste0(r, "discipline.php?POS=11&TITRE=ALL"),
-                   html, mode = "wb", quiet = TRUE)
+    download.file(paste0(r, "discipline.php?POS=11&TITRE=ALL"),
+                  html, mode = "wb", quiet = TRUE)
 
   y = html(html)
   y = html_nodes(y, ".revue a") %>% html_attr("href") %>% unique
@@ -95,7 +95,7 @@ if(!file.exists(data)) {
         # add to dataset
         if(length(a))
           d = rbind(d, data.frame(numero = gsub("html/num/(\\./)?revue-|\\.htm", "", f),
-                                  revue = gsub("html/num/(\\./)?revue-|-\\d{4}-(.*)\\.htm", "", f),
+                                  revue = gsub("html/num/(\\./)?revue-|(\\d)?-\\d{4}-(.*)\\.htm", "", f),
                                   annee = str_extract(f, "[0-9]{4}"),
                                   auteur = a,
                                   articles = l,

@@ -36,7 +36,7 @@ dd = d %>%
   arrange(-mu) %>%
   mutate(rank = row_number(), rankp = percent_rank(mu))
 
-# some example journals
+# some example journals (sociology)
 dd$tagged = NA
 dd$tagged[ dd$revue == "societes" ] = "Sociétés"
 dd$tagged[ dd$revue == "sociologie" ] = "Sociologie"
