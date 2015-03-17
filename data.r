@@ -44,7 +44,7 @@ if(!file.exists(data)) {
   }
 
   d = data.frame()
-  for(i in dir("html/rev", pattern = "^revue", full.names = TRUE)) {
+  for(i in paste0("html/rev/", y)) {
 
     h = html(i)
 
