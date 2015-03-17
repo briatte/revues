@@ -1,0 +1,2453 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+
+
+<script type="text/javascript" src="/static/js/analytics.js"></script>
+<script type="text/javascript">archive_analytics.values.server_name="wwwb-app7.us.archive.org";archive_analytics.values.server_ms=325;</script>
+<link type="text/css" rel="stylesheet" href="/static/css/banner-styles.css"/>
+
+
+        <meta charset="utf-8">
+        <title>Accueil - Cairn.info</title>
+
+    <meta name="WT.cg_n" content="Navigation">
+
+            
+
+        <meta name="WT.cg_s" content="Navigation Accueil">
+
+            
+
+
+            
+
+    <meta name="DCSext.pg_type" content="Catalogue">
+    <meta name="DCSext.pn_type" content="Revues">
+
+
+            
+
+
+
+            <link type="text/css" rel="stylesheet" href="/web/20140701233534cs_/http://www.cairn.info/static/css/cairn.css">
+            <link type="text/css" rel="stylesheet" href="/web/20140701233534cs_/http://www.cairn.info/static/css/icons.css">
+
+
+            <script type="text/javascript" src="/web/20140701233534js_/http://www.cairn.info/static/js/jquery.min.js"></script>
+            <script type="text/javascript" src="/web/20140701233534js_/http://www.cairn.info/static/js/cairn.js"></script>
+
+    </head>
+
+    <body onload="load_img();">
+
+
+<!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script type="text/javascript" src="/static/js/disclaim-element.js" ></script>
+<script type="text/javascript" src="/static/js/graph-calc.js" ></script>
+<script type="text/javascript" src="/static/jflot/jquery.min.js" ></script>
+<script type="text/javascript">//<![CDATA[
+var __wm = (function(){
+var wbPrefix = "/web/";
+var wbCurrentUrl = "http://www.cairn.info/discipline.php?POS=1&amp;TITRE=ALL";
+
+var firstYear = 1996;
+var imgWidth = 500,imgHeight = 27;
+var yearImgWidth = 25,monthImgWidth = 2;
+var displayDay = "1";
+var displayMonth = "Jul";
+var displayYear = "2014";
+var prettyMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var $D=document,$=function(n){return document.getElementById(n)};
+var trackerVal,curYear = -1,curMonth = -1;
+var yearTracker,monthTracker;
+function showTrackers(val) {
+  if (val===trackerVal) return;
+  var $ipp=$("wm-ipp");
+  var $y=$("displayYearEl"),$m=$("displayMonthEl"),$d=$("displayDayEl");
+  if (val) {
+    $ipp.className="hi";
+  } else {
+    $ipp.className="";
+    $y.innerHTML=displayYear;$m.innerHTML=displayMonth;$d.innerHTML=displayDay;
+  }
+  yearTracker.style.display=val?"inline":"none";
+  monthTracker.style.display=val?"inline":"none";
+  trackerVal = val;
+}
+function getElementX2(obj) {
+  var $e=jQuery(obj);
+  return (typeof $e=="undefined"||typeof $e.offset=="undefined")?
+    getElementX(obj):Math.round($e.offset().left);
+}
+function trackMouseMove(event,element) {
+  var eventX = getEventX(event);
+  var elementX = getElementX2(element);
+  var xOff = Math.min(Math.max(0, eventX - elementX),imgWidth);
+  var monthOff = xOff % yearImgWidth;
+
+  var year = Math.floor(xOff / yearImgWidth);
+  var monthOfYear = Math.min(11,Math.floor(monthOff / monthImgWidth));
+  // 1 extra border pixel at the left edge of the year:
+  var month = (year * 12) + monthOfYear;
+  var day = monthOff % 2==1?15:1;
+  var dateString = zeroPad(year + firstYear) + zeroPad(monthOfYear+1,2) +
+    zeroPad(day,2) + "000000";
+
+  $("displayYearEl").innerHTML=year+firstYear;
+  $("displayMonthEl").innerHTML=prettyMonths[monthOfYear];
+  // looks too jarring when it changes..
+  //$("displayDayEl").innerHTML=zeroPad(day,2);
+  var url = wbPrefix + dateString + '/' +  wbCurrentUrl;
+  $("wm-graph-anchor").href=url;
+
+  if(curYear != year) {
+    var yrOff = year * yearImgWidth;
+    yearTracker.style.left = yrOff + "px";
+    curYear = year;
+  }
+  if(curMonth != month) {
+    var mtOff = year + (month * monthImgWidth) + 1;
+    monthTracker.style.left = mtOff + "px";
+    curMonth = month;
+  }
+}
+function hideToolbar() {
+  $("wm-ipp").style.display="none";
+}
+function bootstrap() {
+  var $spk=$("wm-ipp-sparkline");
+  yearTracker=$D.createElement('div');
+  yearTracker.className='yt';
+  with(yearTracker.style){
+    display='none';width=yearImgWidth+"px";height=imgHeight+"px";
+  }
+  monthTracker=$D.createElement('div');
+  monthTracker.className='mt';
+  with(monthTracker.style){
+    display='none';width=monthImgWidth+"px";height=imgHeight+"px";
+  }
+  $spk.appendChild(yearTracker);
+  $spk.appendChild(monthTracker);
+
+  var $ipp=$("wm-ipp");
+  $ipp&&disclaimElement($ipp);
+}
+return{st:showTrackers,mv:trackMouseMove,h:hideToolbar,bt:bootstrap};
+})();//]]>
+</script>
+<style type="text/css">
+body {
+  margin-top:0 !important;
+  padding-top:0 !important;
+  min-width:800px !important;
+}
+</style>
+<div id="wm-ipp" lang="en" style="display:none;">
+
+<div style="position:fixed;left:0;top:0;width:100%!important">
+<div id="wm-ipp-inside">
+   <table style="width:100%;"><tbody><tr>
+   <td id="wm-logo">
+       <a href="/web/" title="Wayback Machine home page"><img src="/static/images/toolbar/wayback-toolbar-logo.png" alt="Wayback Machine" width="110" height="39" border="0" /></a>
+   </td>
+   <td class="c">
+       <table style="margin:0 auto;"><tbody><tr>
+       <td class="u" colspan="2">
+       <form target="_top" method="get" action="/web/form-submit.jsp" name="wmtb" id="wmtb"><input type="text" name="url" id="wmtbURL" value="http://www.cairn.info/discipline.php?POS=1&amp;TITRE=ALL" style="width:400px;" onfocus="this.focus();this.select();" /><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20140701233534" /><input type="submit" value="Go" /><span id="wm_tb_options" style="display:block;"></span></form>
+       </td>
+       <td class="n" rowspan="2">
+           <table><tbody>
+           <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
+           <tr class="m">
+           	<td class="b" nowrap="nowrap">
+		
+		    <a href="/web/20130814091531/http://cairn.info/discipline.php?POS=1&amp;TITRE=ALL" title="14 Aug 2013">AUG</a>
+		
+		</td>
+		<td class="c" id="displayMonthEl" title="You are here: 23:35:34 Jul 1, 2014">JUL</td>
+		<td class="f" nowrap="nowrap">
+		
+		    Aug
+		
+                </td>
+	    </tr>
+           <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
+           <tr class="d">
+               <td class="b" nowrap="nowrap">
+               
+                   <a href="/web/20130814091531/http://cairn.info/discipline.php?POS=1&amp;TITRE=ALL" title="9:15:31 Aug 14, 2013"><img src="/static/images/toolbar/wm_tb_prv_on.png" alt="Previous capture" width="14" height="16" border="0" /></a>
+               
+               </td>
+               <td class="c" id="displayDayEl" style="width:34px;font-size:24px;" title="You are here: 23:35:34 Jul 1, 2014">1</td>
+	       <td class="f" nowrap="nowrap">
+               
+                   <img src="/static/images/toolbar/wm_tb_nxt_off.png" alt="Next capture" width="14" height="16" border="0"/>
+               
+	       </td>
+           </tr>
+           <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
+           <tr class="y">
+	       <td class="b" nowrap="nowrap">
+               
+                   <a href="/web/20130128080241/http://www.cairn.info/discipline.php?POS=1&amp;TITRE=ALL" title="28 Jan 2013"><strong>2013</strong></a>
+               
+               </td>
+               <td class="c" id="displayYearEl" title="You are here: 23:35:34 Jul 1, 2014">2014</td>
+	       <td class="f" nowrap="nowrap">
+               
+                   2015
+               
+	       </td>
+           </tr>
+           </tbody></table>
+       </td>
+       </tr>
+       <tr>
+       <td class="s">
+           <a class="t" href="/web/20140701233534*/http://www.cairn.info/discipline.php?POS=1&amp;TITRE=ALL" title="See a list of every capture for this URL">7 captures</a>
+           <div class="r" title="Timespan for captures of this URL">23 May 11 - 1 Jul 14</div>
+       </td>
+       <td class="k">
+       <a href="" id="wm-graph-anchor">
+       <div id="wm-ipp-sparkline" title="Explore captures for this URL">
+	 <img id="sparklineImgId" alt="sparklines"
+		 onmouseover="__wm.st(1)" onmouseout="__wm.st(0)"
+		 onmousemove="__wm.mv(event,this)"
+		 width="500"
+		 height="27"
+		 border="0"
+		 src="/web/jsp/graph.jsp?graphdata=500_27_1996:-1:000000000000_1997:-1:000000000000_1998:-1:000000000000_1999:-1:000000000000_2000:-1:000000000000_2001:-1:000000000000_2002:-1:000000000000_2003:-1:000000000000_2004:-1:000000000000_2005:-1:000000000000_2006:-1:000000000000_2007:-1:000000000000_2008:-1:000000000000_2009:-1:000000000000_2010:-1:000000000000_2011:-1:000010000010_2012:-1:000000010010_2013:-1:100000010000_2014:6:000000100000_2015:-1:000000000000" />
+       </div>
+       </a>
+       </td>
+       </tr></tbody></table>
+   </td>
+   <td class="r">
+       <a href="#close" onclick="__wm.h();return false;" style="background-image:url(/static/images/toolbar/wm_tb_close.png);top:5px;" title="Close the toolbar">Close</a>
+       <a href="http://faq.web.archive.org/" style="background-image:url(/static/images/toolbar/wm_tb_help.png);bottom:5px;" title="Get some help using the Wayback Machine">Help</a>
+   </td>
+   </tr></tbody></table>
+</div>
+</div>
+</div>
+<script type="text/javascript">__wm.bt();</script>
+<!-- END WAYBACK TOOLBAR INSERT -->
+
+
+
+        <div id="header">
+						 
+    <ul id="nav1">
+        <li>
+
+            
+
+
+            
+
+                <a href="#" onclick="cairn.show_menu(this, '#menu_login');" id="user_islogout">
+                    <span class="icon icon-login"></span>Connexion
+                </a>
+
+            
+
+
+            
+
+        </li>
+        <li><a href="#" onclick="cairn.show_menu(this, '#menu_mycairn');" id="user_mycairn_menu">Mon Cairn.info</a></li>
+	<li><a href="/web/20140701233534/http://www.cairn.info/acces_hors.php"><span class="icon-remote-access icon" id="icon_remote-acess"></span>Hors campus</a></li>
+
+        <li><a href="/web/20140701233534/http://www.cairn.info/a-propos.php" class="grey">&#192; propos</a></li>
+        <!-- <li><a href="./contact.php" class="grey">Contacts</a></li> -->
+        <li><a href="/web/20140701233534/http://aide.cairn.info/" class="grey" target="blank">Aide</a></li>
+        <li><a href="/web/20140701233534/http://www.cairn-int.info/" class="grey">English</a></li>
+    </ul>
+
+
+            
+
+        <div id="menu_login" class="menu" style="display:none;">
+            <form action="#" method="POST">
+                <input type="hidden" value="CONNECT" name="OPERATE">
+                <div id="login_links" class="inbl right">
+                    <b>Pas encore enregistr&#233; ?</b>
+                    <a href="/web/20140701233534/http://www.cairn.info/creer_compte.php">Inscrivez-vous !</a><br>
+                    <a href="/web/20140701233534/http://www.cairn.info/mdp_oublie.php">Mot de passe oubli&#233; ?</a>
+                </div>
+                <div id="login_inputs" class="inbl right">
+                    <label for="email_input">Email</label>
+                    <input id="email_input" type="text" name="LOG" required="required">
+                    <label for="password_input">Mot de passe</label>
+                    <input type="password" id="password_input" name="PWD" required="required">
+                    <input type="submit" value="" class="inbl icon-submit-arrow">
+                </div>
+            </form>
+        </div>
+
+            
+
+    <style>
+        #wrapper_menu_mycairn { position : relative; }
+        #wrapper_menu_mycairn .close_menu {
+            height : 26px;
+            width : 26px;
+            position :absolute;
+            right : -52px;
+            cursor : pointer;
+        }
+    </style>
+    <div id="menu_mycairn" class="menu" style="display : none;">
+        <div id="wrapper_menu_mycairn" class="grid-g">
+            <span class="close_menu" onclick="cairn.close_menu();"></span>
+            <div id="recently_searched" class="grid-u-1-3">
+                <div class="mycairn_title_wrapper">
+                    <h2>Recherches r&#233;centes</h2>
+                    <a href="/web/20140701233534/http://www.cairn.info/mes_recherches.php">Mes recherches</a>
+                </div>
+                <ul>
+                    
+                    
+                    
+                </ul>
+            </div>
+
+            <div id="recently_viewed" class="grid-u-1-2">
+                <div class="mycairn_title_wrapper">
+                    <h2>R&#233;cemment consult&#233;s</h2>
+                    <a href="/web/20140701233534/http://www.cairn.info/mon_historique.php">Mon historique</a>
+                </div>
+                <ul>
+                    
+                        <li><a href="revue-journal-francais-de-psychiatrie-2002-3-page-37.htm">Le judaïsme face aux problèmes posés par la génétique</a></li>
+                    
+                    
+                        <li><a href="revue-archives-juives-2011-2-page-77.htm">La prostitution féminine juive dans l'Algérie coloniale</a></li>
+                    
+                    
+                        <li><a href="revue-etudes-2011-3-page-307.htm">Quand le marché fait place à la gratuité</a></li>
+                    
+                </ul>
+            </div>
+
+            <div id="mycairn_pannel" class="grid-u-1-6">
+                <div class="mycairn_title_wrapper">
+
+            
+
+                        <h2><i>Cr&#233;er un compte :</i></h2>
+
+            
+
+
+            
+
+                </div>
+                <ul>
+                
+            
+
+
+            
+
+                            <li><a href="/web/20140701233534/http://www.cairn.info/mon_panier.php">Mon panier</a></li>
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+                    <li><a href="/web/20140701233534/http://www.cairn.info/biblio.php">Ma bibliographie</a></li>
+                    <li><a href="/web/20140701233534/http://www.cairn.info/mes_alertes.php">Mes alertes</a></li>
+                    <li><a href="/web/20140701233534/http://www.cairn.info/credit.php">Mon cr&#233;dit d'articles</a></li>
+                </ul>
+
+            
+
+                    <a href="/web/20140701233534/http://www.cairn.info/creer_compte.php" id="button_SignIn">M&rsquo;inscrire</a>
+
+            
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="wrapper_search">
+        <a href="/web/20140701233534/http://www.cairn.info/" class="inbl" style="margin-right:136px;">
+            <img src="/web/20140701233534im_/http://www.cairn.info/static/images/logo-cairn.png" alt="CAIRN.INFO : Chercher, rep&#233;rer, avancer.">
+        </a>
+        <div class="inbl" style="width:464px;">
+            <form class="border_grey w100" id="main_search_form" action="/web/20140701233534/http://www.cairn.info/resultats_recherche.php" method="GET">
+                <button type="submit" class="right black_button" id="send_search_field" style="padding-bottom:0.1em;">
+                    <span class="icon-magnifing-glass left mr6"></span>Chercher
+                </button>
+                <div id="wrapper_search_input">
+                    <input type="text" id="compute_search_field" placeholder="Vos mots cl&#233;s" class="w98 no_border" name="searchTerm" style="width:325px">
+                </div>
+            </form>
+            <span id="link_search_advanced">
+                <a href="/web/20140701233534/http://www.cairn.info/recherche_avancee.php"><span class="icon">&#10140;</span>Recherche avancée</a>
+            </span>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .ui-autocomplete.ui-menu.ui-widget.ui-widget-content.ui-corner-all {
+        font-size:11px;
+    }
+    .ui-autocomplete-category {
+        background-color:#4BB2AC;
+        font-weight:bold;
+        color:white;
+
+font: bold 20px/100% "Alegreya SC";
+
+        padding:3px 0 3px 2px ;
+    }
+    .ui-menu-item a {
+        padding: 0px;
+        min-height: 0;
+        font-weight: normal;
+	font: 16px "Alegreya";
+       line-height: 1;
+
+
+    }
+</style>
+<script src="/web/20140701233534js_/http://www.cairn.info/js/jquery-ui.js" charset="utf-8"></script>
+<link rel="stylesheet" href="/web/20140701233534cs_/http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+ <script src="/web/20140701233534js_/http://www.cairn.info/static/js/autocomplete_research.js"></script>
+
+
+<script>
+    
+</script>
+
+
+
+
+        <div id="wrapper_category_tabs">
+<div class="mainTabs" id="main_tabs">
+    <ul id="category_tabs">
+        
+            
+                <li class="selected">
+                    <a href="/web/20140701233534/http://www.cairn.info/Accueil_Revues.php" class="black_button">Revues</a>
+                </li>
+            
+            
+            
+        
+        
+            
+            
+                <li>
+                    <a href="/web/20140701233534/http://www.cairn.info/ouvrages.php" class="blue_button">Ouvrages</a>
+                </li>
+            
+            
+        
+        
+            
+            
+                <li>
+                    <a href="/web/20140701233534/http://www.cairn.info/encyclopedies-de-poche.php" class="blue_button">Encyclopédies de poche</a>
+                </li>
+            
+            
+        
+        
+            
+            
+                <li>
+                    <a href="/web/20140701233534/http://www.cairn.info/magazines.php" class="blue_button">Magazines</a>
+                </li>
+            
+            
+        
+        
+            
+            
+                <li>
+                    <a href="/web/20140701233534/http://www.cairn.info/l-etat-du-monde.php" class="blue_button">L'état du monde</a>
+                </li>
+            
+            
+        
+    </ul>
+</div>
+<script>
+    var userAgent = navigator.userAgent;
+    if (userAgent.indexOf('MSIE') >= 1 || userAgent.indexOf('Trident') >= 1) {
+        // Seulement pour IE, réduit l'affichage d'un onglet précis.
+        $('#category_tabs li').find('a, span').filter(function() { return $(this).text().indexOf("cyclopédies de poche") > 1; }).text('Encyclo. de poche');
+    }
+</script>
+</div>
+
+
+
+
+
+
+
+
+
+
+        <div id="body-content">
+
+
+
+
+
+    <h1 class="main-title">Acc&#232;s par discipline &#8212; Économie, Gestion (82 revues)</h1>
+    <div class="table-button-grey">
+        <div class="grid-g grid-4 row">
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="/web/20140701233534/http://www.cairn.info/disc-arts.htm" class="">
+                            Arts
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="/web/20140701233534/http://www.cairn.info/disc-histoire.htm" class="">
+                            Histoire
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="/web/20140701233534/http://www.cairn.info/disc-philosophie.htm" class="">
+                            Philosophie
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="/web/20140701233534/http://www.cairn.info/disc-sociologie-et-societe.htm" class="">
+                            Sociologie et société
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+                    </div><div class="grid-g grid-4 row">
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+					
+					  <a
+						href="/web/20140701233534/http://www.cairn.info/disc-economie-gestion.htm"
+						class="active">Économie, Gestion</a>
+					
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="/web/20140701233534/http://www.cairn.info/disc-sciences-de-l-information.htm" class="">
+                            Info. - Com.
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="/web/20140701233534/http://www.cairn.info/disc-psychologie.htm" class="">
+                            Psychologie
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="/web/20140701233534/http://www.cairn.info/disc-sport-et-societe.htm" class="">
+                            Sport&nbsp;et&nbsp;société
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+                    </div><div class="grid-g grid-4 row">
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="/web/20140701233534/http://www.cairn.info/disc-droit.htm" class="">
+                            Droit
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="/web/20140701233534/http://www.cairn.info/disc-interet-general.htm" class="">
+                            Intérêt général
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="/web/20140701233534/http://www.cairn.info/disc-sciences-de-l-education.htm" class="">
+                            Sciences&nbsp;de&nbsp;l&rsquo;éducation
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+
+                    
+                        <span class="empty">&#160;</span>
+                    
+                </div>
+                
+                    </div><div class="grid-g grid-4 row">
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="/web/20140701233534/http://www.cairn.info/disc-geographie.htm" class="">
+                            Géographie
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="/web/20140701233534/http://www.cairn.info/disc-lettres-linguistique.htm" class="">
+                            Lettres et linguistique
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="/web/20140701233534/http://www.cairn.info/disc-sciences-politiques.htm" class="">
+                            Sciences&nbsp;politiques
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+
+                    
+                        <span class="empty">&#160;</span>
+                    
+                </div>
+                
+                    </div><div class="grid-g grid-4 row">
+                
+            
+            <div class="cell grid-u-1-4"></div>
+            <div class="cell grid-u-1-4"></div>
+            <div class="cell grid-u-1-4"></div>
+            <div class="cell grid-u-1-4">
+                <a href="/web/20140701233534/http://www.cairn.info/listerev.php" class="blue" id="__all_collection">Toutes disciplines</a>
+            </div>
+        </div>
+        <script>
+            $(function() {
+                // Permet de remonter l'accès à toutes les revues dans la grille, sur le dernier item vide.
+                var $empty = $("#body-content .empty:last");
+                var $all_collec = $("#__all_collection");
+                if (!$empty.length || !$all_collec.length)
+                    return false;
+                $empty[0].outerHTML = $all_collec[0].outerHTML;
+                $all_collec.parent().parent().hide();
+            });
+        </script>
+    </div>
+
+
+
+
+
+
+
+
+    <hr class="grey">
+
+    <h1 class="main-title">Acc&#232;s par titre</h1>
+    <ul class="pagination letters">
+        
+            
+                <li>
+                    <a href="discipline.php?POS=1&amp;TITRE=A">A</a>
+                </li>
+            
+            
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">B</span>
+                </li>
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=1&amp;TITRE=C">C</a>
+                </li>
+            
+            
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">D</span>
+                </li>
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=1&amp;TITRE=E">E</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=1&amp;TITRE=F">F</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=1&amp;TITRE=G">G</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=1&amp;TITRE=H">H</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=1&amp;TITRE=I">I</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=1&amp;TITRE=J">J</a>
+                </li>
+            
+            
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">K</span>
+                </li>
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">L</span>
+                </li>
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=1&amp;TITRE=M">M</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=1&amp;TITRE=N">N</a>
+                </li>
+            
+            
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">O</span>
+                </li>
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=1&amp;TITRE=P">P</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=1&amp;TITRE=Q">Q</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=1&amp;TITRE=R">R</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=1&amp;TITRE=S">S</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=1&amp;TITRE=T">T</a>
+                </li>
+            
+            
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">U</span>
+                </li>
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=1&amp;TITRE=V">V</a>
+                </li>
+            
+            
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">W</span>
+                </li>
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">X</span>
+                </li>
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">Y</span>
+                </li>
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">Z</span>
+                </li>
+            
+        
+        <li>
+            <a href="discipline.php?POS=1&amp;TITRE=ALL" class="all">tous</a>
+        </li>
+    </ul>
+
+
+
+
+            
+
+
+
+
+
+
+        <h1 class="main-title">    </h1>
+
+    <div id="list_revue_suscriber">&nbsp;<br />        <div class="grid-g grid-2-list">
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-actuel-marx.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/AMX/AMX_055_L61.jpg" alt="couverture de Frantz Fanon" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-actuel-marx.htm">Actuel Marx</a></h2>
+                        <div class="editeur">P.U.F.</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-@grh.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/GRH/GRH_134_L61.jpg" alt="couverture de GRH Publique" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-@grh.htm">@GRH</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-cahiers-d-economie-politique.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/CEP/CEP_066_L61.jpg" alt="couverture de Histoire de la pensée et théories" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-cahiers-d-economie-politique.htm">Cahiers d'économie Politique / Papers in Political Economy</a></h2>
+                        <div class="editeur">L'Harmattan</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-communication-et-organisation.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/COMOR/COMOR_043_L61.jpg" alt="couverture de Réseaux sociaux" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-communication-et-organisation.htm">Communication & Organisation</a></h2>
+                        <div class="editeur">Presses univ. de Bordeaux</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-communication-et-management.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/COMMA/COMMA_102_L61.jpg" alt="couverture de La marque" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-communication-et-management.htm">Communication & management</a></h2>
+                        <div class="editeur">ESKA</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-comptabilite-controle-audit.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/CCA/CCA_201_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-comptabilite-controle-audit.htm">Comptabilité - Contrôle - Audit</a></h2>
+                        <div class="editeur">Association Francophone de Comptabilité</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-culture-chiffres.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/CULC/CULC_143_L61.jpg" alt="couverture de Les dépenses culturelles des collectivités territoriales en 2010" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-culture-chiffres.htm">Culture chiffres</a></h2>
+                        <div class="editeur">DEPS</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-culture-etudes.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/CULE/CULE_141_L61.jpg" alt="couverture de Pratiques culturelles en France et aux États-Unis Éléments" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-culture-etudes.htm">Culture études</a></h2>
+                        <div class="editeur">DEPS</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-culture-methodes.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/CULM/CULM_131_L61.jpg" alt="couverture de Évaluation des politiques" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-culture-methodes.htm">Culture méthodes</a></h2>
+                        <div class="editeur">DEPS</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-culture-prospective.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/CULP/CULP_111_L61.jpg" alt="couverture de Prospective du commerce physique " class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-culture-prospective.htm">Culture prospective</a></h2>
+                        <div class="editeur">DEPS</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-economie-et-prevision.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/ECOP/ECOP_199_L61.jpg" alt="couverture de Méthodes de prévision conjoncturelle" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-economie-et-prevision.htm">Economie & prévision</a></h2>
+                        <div class="editeur">La Doc. française</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-economie-internationale.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/ECOI/ECOI_132_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-economie-internationale.htm">Economie internationale</a></h2>
+                        <div class="editeur">La Doc. française</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-l-economie-politique.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/LECO/LECO_062_L61.jpg" alt="couverture de Entreprises-Etat : quel donnant-donnant ?" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-l-economie-politique.htm">L'Économie politique</a></h2>
+                        <div class="editeur">Altern. économiques</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-economie-rurale.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/ECRU/ECRU_341_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-economie-rurale.htm">Économie rurale</a></h2>
+                        <div class="editeur">Société Française d’Économie Rurale</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-entreprendre-et-innover.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/ENTIN/ENTIN_020_L61.jpg" alt="couverture de Entreprendre dans la diversité" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-entreprendre-et-innover.htm">Entreprendre & Innover</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-entreprises-et-histoire.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/EH/EH_073_L61.jpg" alt="couverture de L'industrie aéronautique mondiale" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-entreprises-et-histoire.htm">Entreprises et histoire</a></h2>
+                        <div class="editeur">ESKA</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-etudes-economiques-de-l-ocde.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/EE/EE_1310_L61.jpg" alt="couverture de Belgique" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-etudes-economiques-de-l-ocde.htm">Etudes économiques de l’OCDE</a></h2>
+                        <div class="editeur">Ed. de l’OCDE</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-l-expansion-management-review.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/EMR/EMR_153_L61.jpg" alt="couverture de Le phénomène générationnel" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-l-expansion-management-review.htm">L'Expansion Management Review</a></h2>
+                        <div class="editeur">L'Express - Roularta</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-finance.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/FINA/FINA_341_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-finance.htm">Finance</a></h2>
+                        <div class="editeur">Presses univ. de Grenoble</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-finance-et-bien-commun.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/FBC/FBC_039_L61.jpg" alt="couverture de Nominated Essays - Edition 2010-2011" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-finance-et-bien-commun.htm">Finance & Bien Commun</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-formation-emploi.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/FORM/FORM_125_L61.jpg" alt="couverture de Pêle-Mêle" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-formation-emploi.htm">Formation emploi</a></h2>
+                        <div class="editeur">Céreq</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-geoeconomie.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/GEOEC/GEOEC_068_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-geoeconomie.htm">Géoéconomie</a></h2>
+                        <div class="editeur">Editions Choiseul</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-geographie-economie-societe.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/GES/GES_161_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-geographie-economie-societe.htm">Géographie, économie, société</a></h2>
+                        <div class="editeur">Lavoisier</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-gerer-et-comprendre.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/GECO/GECO_116_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-gerer-et-comprendre.htm">Annales des Mines - Gérer et comprendre</a></h2>
+                        <div class="editeur">ESKA</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-gestion.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RIGES/RIGES_391_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-gestion.htm">Gestion</a></h2>
+                        <div class="editeur">HEC Montréal</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-gestion-2000.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/G2000/G2000_304_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-gestion-2000.htm">Gestion 2000</a></h2>
+                        <div class="editeur">Association de Recherches et Publications en Management</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-gestion-et-management-public.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/GMP/GMP_022_L61.jpg" alt="couverture de Nouvelle gouvernance, et politiques publiques territoriales" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-gestion-et-management-public.htm">Gestion et management public</a></h2>
+                        <div class="editeur">AIRMAP </div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-humanisme-et-entreprise.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/HUME/HUME_314_L61.jpg" alt="couverture de Corruption et finance dans l’économie mondialisée" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-humanisme-et-entreprise.htm">Humanisme et Entreprise</a></h2>
+                        <div class="editeur">A.A.E.L.S.H.U.P</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-idees-economiques-et-sociales.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/IDEE/IDEE_176_L61.jpg" alt="couverture de Les journées de l'économie" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-idees-economiques-et-sociales.htm">Idées économiques et sociales</a></h2>
+                        <div class="editeur">CNDP</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-innovations.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/INNO/INNO_044_L61.jpg" alt="couverture de Territoires de l’entrepreneuriat innovant" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-innovations.htm">Innovations</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-journal-de-gestion-et-d-economie-medicales.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/JGEM/JGEM_137_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-journal-de-gestion-et-d-economie-medicales.htm">Journal de gestion et d'économie médicales</a></h2>
+                        <div class="editeur">ESKA</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-le-journal-de-l-ecole-de-paris-du-management.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/JEPAM/JEPAM_107_L61.jpg" alt="couverture de " class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-le-journal-de-l-ecole-de-paris-du-management.htm">Le journal de l'école de Paris du management</a></h2>
+                        <div class="editeur">L'association des amis de l'école de Paris</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-journal-of-innovation-economics.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/JIE/JIE_014_L61.jpg" alt="couverture de Innovative Entrepreneurship" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-journal-of-innovation-economics.htm">Journal of Innovation Economics & Management</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-management.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/MANA/MANA_171_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-management.htm">M@n@gement</a></h2>
+                        <div class="editeur">AIMS</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-management-et-avenir.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/MAV/MAV_068_L61.jpg" alt="couverture de Hommes de Management et Management des hommes" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-management-et-avenir.htm">Management & Avenir</a></h2>
+                        <div class="editeur">Management Prospective Ed.</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-management-et-avenir-sante.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/MAVS/MAVS_001_L61.jpg" alt="couverture de L'inovation ou l'apocalypse" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-management-et-avenir-sante.htm">Management & Avenir Santé</a></h2>
+                        <div class="editeur">Management Prospective Ed.</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-marche-et-organisations.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/MAORG/MAORG_020_L61.jpg" alt="couverture de La crise du « développement »" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-marche-et-organisations.htm">Marché et organisations</a></h2>
+                        <div class="editeur">L'Harmattan</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-mondes-en-developpement.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/MED/MED_166_L61.jpg" alt="couverture de L’économie informelle dans les pays en développement : déterminants, genre et dynamiques de l’emploi" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-mondes-en-developpement.htm">Mondes en développement</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-negociations.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/NEG/NEG_020_L61.jpg" alt="couverture de Penser le compromis" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-negociations.htm">Négociations</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-notes-du-conseil-d-analyse-economique.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/NCAE/NCAE_011_L61.jpg" alt="couverture de L’euro dans la « guerre des monnaies »" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-notes-du-conseil-d-analyse-economique.htm">Notes du conseil d’analyse économique</a></h2>
+                        <div class="editeur">Conseil d’analyse économique</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-perspectives-economiques-de-l-ocde.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/PERS/PERS_092_L61.jpg" alt="couverture de Numéro 92" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-perspectives-economiques-de-l-ocde.htm">Perspectives économiques de l'OCDE</a></h2>
+                        <div class="editeur">Ed. de l’OCDE</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-politiques-et-gestion-de-l-enseignement-superieur.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/POL/POL_203_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-politiques-et-gestion-de-l-enseignement-superieur.htm">Politiques et gestion de l'enseignement supérieur</a></h2>
+                        <div class="editeur">Ed. de l’OCDE</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-pratiques-et-organisation-des-soins.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/POS/POS_434_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-pratiques-et-organisation-des-soins.htm">Pratiques et Organisation des Soins</a></h2>
+                        <div class="editeur">CNAMTS</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-projectique.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/PROJ/PROJ_011_L61.jpg" alt="couverture de Projectics / Proyéctica / Projectique n° 11" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-projectique.htm">Projectics / Proyéctica / Projectique</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-questions-de-management.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/QDM/QDM_141_L61.jpg" alt="couverture de Question(s) de transmission" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-questions-de-management.htm">Question(s) de management</a></h2>
+                        <div class="editeur">I.M.C.F</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-realites-industrielles.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RINDU/RINDU_142_L61.jpg" alt="couverture de Quelle industrie automobile pour la France dans 20 ans ?" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-realites-industrielles.htm">Annales des Mines - Réalités industrielles</a></h2>
+                        <div class="editeur">ESKA</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-recherches-economiques-de-louvain.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/REL/REL_802_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-recherches-economiques-de-louvain.htm">Recherches économiques de Louvain</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-recherches-en-sciences-de-gestion.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RESG/RESG_098_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-recherches-en-sciences-de-gestion.htm">Recherches en Sciences de Gestion</a></h2>
+                        <div class="editeur">ISEOR</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-reflets-et-perspectives-de-la-vie-economique.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RPVE/RPVE_524_L61.jpg" alt="couverture de Malheur aux immobiles" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-reflets-et-perspectives-de-la-vie-economique.htm">Reflets et perspectives de la vie économique</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-reformes-economiques.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/REF/REF_008_L61.jpg" alt="couverture de Objectif croissance" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-reformes-economiques.htm">Réformes économiques</a></h2>
+                        <div class="editeur">Ed. de l’OCDE</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-regards-croises-sur-l-economie.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RCE/RCE_014_L61.jpg" alt="couverture de Lumière sur les économies souterraines" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-regards-croises-sur-l-economie.htm">Regards croisés sur l'économie</a></h2>
+                        <div class="editeur">La Découverte</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-regards-sur-l-economie-allemande.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/REA/REA_112_L61.jpg" alt="couverture de 112 | janvier 2014" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-regards-sur-l-economie-allemande.htm">Regards sur l'économie allemande</a></h2>
+                        <div class="editeur">CIRAC</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-responsabilite-et-environnement.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RE/RE_074_L61.jpg" alt="couverture de À qui appartiennent les territoires ?" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-responsabilite-et-environnement.htm">Annales des Mines - Responsabilité et environnement</a></h2>
+                        <div class="editeur">ESKA</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-revue-congolaise-de-gestion.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RCG/RCG_018_L61.jpg" alt="couverture de Juillet - Décembre 2013" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-revue-congolaise-de-gestion.htm">Revue Congolaise de Gestion</a></h2>
+                        <div class="editeur">Editions ICES</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-d-economie-du-developpement.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/EDD/EDD_285_L61.jpg" alt="couverture de Development Economics 20 Years One" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-d-economie-du-developpement.htm">Revue d'économie du développement</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-d-economie-financiere.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/ECOFI/ECOFI_113_L61.jpg" alt="couverture de Les banques centrales" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-d-economie-financiere.htm">Revue d'économie financière</a></h2>
+                        <div class="editeur">Association d'économie financière</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-d-economie-industrielle.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/REI/REI_144_L61.jpg" alt="couverture de Manufacturing Renaissance (1/2)" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-d-economie-industrielle.htm">Revue d'économie industrielle</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-d-economie-politique.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/REDP/REDP_242_L61.jpg" alt="couverture de Les comportements pro-environnementaux" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-d-economie-politique.htm">Revue d'économie politique</a></h2>
+                        <div class="editeur">Dalloz</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-d-economie-regionale-et-urbaine.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RERU/RERU_135_L61.jpg" alt="couverture de Migrations et territoires" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-d-economie-regionale-et-urbaine.htm">Revue d’Économie Régionale & Urbaine</a></h2>
+                        <div class="editeur">Armand Colin</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-de-gestion-des-ressources-humaines.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/GRHU/GRHU_091_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-de-gestion-des-ressources-humaines.htm">Revue de gestion des ressources humaines</a></h2>
+                        <div class="editeur">ESKA</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-de-l-ires.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RDLI/RDLI_078_L61.jpg" alt="couverture de Conditions d’emploi, syndicalisme..." class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-de-l-ires.htm">La Revue de l'Ires</a></h2>
+                        <div class="editeur">I.R.E.S.</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-de-l-ocde-sur-le-developpement.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/CAD/CAD_104_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-de-l-ocde-sur-le-developpement.htm">Revue de l'OCDE sur le développement</a></h2>
+                        <div class="editeur">Ed. de l’OCDE</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-de-l-ofce.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/REOF/REOF_131_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-de-l-ofce.htm">Revue de l'OFCE</a></h2>
+                        <div class="editeur">OFCE</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-de-l-organisation-responsable.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/ROR/ROR_091_L61.jpg" alt="couverture de Volume 9 - n° 1" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-de-l-organisation-responsable.htm">Revue de l’organisation responsable</a></h2>
+                        <div class="editeur">ESKA</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue--de-l-entrepreneuriat.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/ENTRE/ENTRE_121_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue--de-l-entrepreneuriat.htm">Revue de l’Entrepreneuriat</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-de-philosophie-economique.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RPEC/RPEC_142_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-de-philosophie-economique.htm">Revue de philosophie économique</a></h2>
+                        <div class="editeur">Vrin</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-des-sciences-de-gestion.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RSG/RSG_263_L61.jpg" alt="couverture de La comptabilité dans tous ses états" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-des-sciences-de-gestion.htm">La Revue des Sciences de Gestion</a></h2>
+                        <div class="editeur">Direction et Gestion (La RSG)</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-economique.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RECO/RECO_PR2_L61.jpg" alt="couverture de Articles en prépublication" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-economique.htm">Revue économique</a></h2>
+                        <div class="editeur">Presses de Sciences Po</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-economique-de-l-ocde.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/REVO/REVO_044_L61.jpg" alt="couverture de Numéro 44" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-economique-de-l-ocde.htm">Revue économique de l'OCDE</a></h2>
+                        <div class="editeur">Ed. de l’OCDE</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-francaise-d-economie.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RFE/RFE_134_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-francaise-d-economie.htm">Revue française d'économie</a></h2>
+                        <div class="editeur">Revue française d’économie</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-francaise-de-gestion.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RFG/RFG_240_L61.jpg" alt="couverture de Manager les tensions, manager sous tension" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-francaise-de-gestion.htm">Revue française de gestion</a></h2>
+                        <div class="editeur">Lavoisier</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-francaise-de-socio-economie.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RFSE/RFSE_013_L61.jpg" alt="couverture de Faire de la sociologie économique avec Pierre Bourdieu" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-francaise-de-socio-economie.htm">Revue Française de Socio-Économie</a></h2>
+                        <div class="editeur">La Découverte</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-internationale-d-intelligence-economique.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RIIE/RIIE_052_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-internationale-d-intelligence-economique.htm">Revue internationale d'intelligence économique</a></h2>
+                        <div class="editeur">Lavoisier</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-internationale-de-droit-economique.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RIDE/RIDE_281_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-internationale-de-droit-economique.htm">Revue internationale de droit économique</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-internationale-de-psychosociologie.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RIPS/RIPS_HS01_L61.jpg" alt="couverture de Le shadowing et autres pratiques..." class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-internationale-de-psychosociologie.htm">Revue internationale de psychosociologie et de gestion des comportements organisationnels</a></h2>
+                        <div class="editeur">ESKA</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-internationale-des-sciences-administratives.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RISA/RISA_802_L61.jpg" alt="couverture de Nouvelles perspectives en matière d’autonomie bureaucratique" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-internationale-des-sciences-administratives.htm">Revue Internationale des Sciences Administratives</a></h2>
+                        <div class="editeur">I.I.S.A.</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-tiers-monde.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RTM/RTM_217_L61.jpg" alt="couverture de Travail, femmes et migrations dans les suds" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-tiers-monde.htm">Revue Tiers Monde</a></h2>
+                        <div class="editeur">Armand Colin</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-rimhe.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RIMHE/RIMHE_012_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-rimhe.htm">RIMHE</a></h2>
+                        <div class="editeur">ARIMHE</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-systemes-d-information-et-management.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/SIM/SIM_134_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-systemes-d-information-et-management.htm">Systèmes d'information & management</a></h2>
+                        <div class="editeur">ESKA</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-travail-et-emploi.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/TE/TE_136_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-travail-et-emploi.htm">Travail et emploi</a></h2>
+                        <div class="editeur">DARES</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-vie-et-sciences-de-l-entreprise.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/VSE/VSE_195_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-vie-et-sciences-de-l-entreprise.htm">Vie & sciences de l'entreprise</a></h2>
+                        <div class="editeur">ANDESE</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-vraiment-durable.htm">
+                        <img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/VDUR/VDUR_004_L61.jpg" alt="couverture de Quelles valeurs pour le développement durable ?" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-vraiment-durable.htm">Vraiment durable</a></h2>
+                        <div class="editeur">Victoires éditions</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+        </div>
+    </div>
+
+
+           
+
+    <hr class="grey">
+<div id="articles_more_view" class="list_articles">
+    <h1 class="main-title">
+       Articles les plus consult&eacute;s</h1>
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-francaise-de-socio-economie-2014-1-page-9.htm" style="display: inline-block; vertical-align: top;"><img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RFSE/RFSE_013_L61.jpg" alt="RFSE_013_0009" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-francaise-de-socio-economie-2014-1-page-9.htm">
+        Faire de la sociologie économique avec Pierre Bourdieu
+    </a></div>
+
+            
+
+                    <div class="authors">
+
+        Bernard Convert, Hélène Ducourant, Fabien Éloire
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-management-et-avenir-2014-2-page-164.htm" style="display: inline-block; vertical-align: top;"><img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/MAV/MAV_068_L61.jpg" alt="MAV_068_0164" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-management-et-avenir-2014-2-page-164.htm">
+        Bonheur et travail, oxymore ou piste de management stratégique de l'entreprise ?
+    </a></div>
+
+            
+
+                    <div class="authors">
+
+        Marie-Pierre Feuvrier
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-geographie-economie-societe-2014-1-page-65.htm" style="display: inline-block; vertical-align: top;"><img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/GES/GES_161_L61.jpg" alt="GES_161_0065" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-geographie-economie-societe-2014-1-page-65.htm">
+        Comment analyser la gouvernance territoriale ? Mise à l'épreuve d'une grille de lecture
+    </a></div>
+
+            
+
+                    <div class="authors">
+
+        Hélène Rey-Valette, Eduardo Chia, Syndhia Mathé, Laura Michel, Brigitte Nougarèdes, Christophe-T
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-communication-et-organisation-2013-1-page-5.htm" style="display: inline-block; vertical-align: top;"><img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/COMOR/COMOR_043_L61.jpg" alt="COMOR_043_0005" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-communication-et-organisation-2013-1-page-5.htm">
+        Réseaux sociaux, entre médias et médiations, des espaces à méditer plutôt qu'à médire
+    </a></div>
+
+            
+
+                    <div class="authors">
+
+        Olivier Le Deuff
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-francaise-de-socio-economie-2014-1-page-107.htm" style="display: inline-block; vertical-align: top;"><img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RFSE/RFSE_013_L61.jpg" alt="RFSE_013_0107" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-francaise-de-socio-economie-2014-1-page-107.htm">
+        Marché, rationalité et faits sociaux totaux : Pierre Bourdieu et l'économie
+    </a></div>
+
+            
+
+                    <div class="authors">
+
+        Marie-France Garcia-Parpet
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-francaise-de-gestion-2014-2-page-67.htm" style="display: inline-block; vertical-align: top;"><img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RFG/RFG_239_L61.jpg" alt="RFG_239_0067" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-francaise-de-gestion-2014-2-page-67.htm">
+        La collaboration entre client et fournisseur
+    </a></div>
+
+            
+
+                        <h3 class="subtitle">
+        Comment créer de la valeur au-delà des frontières de l'entreprise ?
+    </h3>
+
+            
+
+                    <div class="authors">
+
+        Richard Calvi, Karine Evrard-Samuel, Nathalie Merminod, Hugues Poissonnier
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-francaise-de-socio-economie-2014-1-page-23.htm" style="display: inline-block; vertical-align: top;"><img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RFSE/RFSE_013_L61.jpg" alt="RFSE_013_0023" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-francaise-de-socio-economie-2014-1-page-23.htm">
+        Retour sur le champ du pouvoir économique en France
+    </a></div>
+
+            
+
+                        <h3 class="subtitle">
+        L'espace social des dirigeants du CAC 40
+    </h3>
+
+            
+
+                    <div class="authors">
+
+        François-Xavier Dudouet, Éric Grémont, Hervé Joly, Antoine Vion
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-francaise-de-socio-economie-2014-1-page-283.htm" style="display: inline-block; vertical-align: top;"><img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RFSE/RFSE_013_L61.jpg" alt="RFSE_013_0283" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-francaise-de-socio-economie-2014-1-page-283.htm">
+        Quelle intelligence du capital pour demain ? Une lecture du <span style="font-style: italic;">Capital au <span style="font-variant: small-caps;">xxi</span><sup>e</sup> siècle</span> de Th. Piketty
+    </a></div>
+
+            
+
+                    <div class="authors">
+
+        Gaël Giraud
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-francaise-de-socio-economie-2014-1-page-203.htm" style="display: inline-block; vertical-align: top;"><img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RFSE/RFSE_013_L61.jpg" alt="RFSE_013_0203" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-francaise-de-socio-economie-2014-1-page-203.htm">
+        Économie et (autres) sciences sociales : disciplines et indisciplines
+    </a></div>
+
+            
+
+                    <div class="authors">
+
+        Florence Jany-Catrice, Richard Sobel
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-francaise-de-gestion-2014-2-page-75.htm" style="display: inline-block; vertical-align: top;"><img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RFG/RFG_239_L61.jpg" alt="RFG_239_0075" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-francaise-de-gestion-2014-2-page-75.htm">
+        La performance des pratiques interorganisationnelles innovantes
+    </a></div>
+
+            
+
+                        <h3 class="subtitle">
+        Proposition d'un modèle conceptuel
+    </h3>
+
+            
+
+                    <div class="authors">
+
+        Olivier Lavastre, Blandine Ageron, Ludivine Chaze-Magnan
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-francaise-de-gestion-2014-3-page-13.htm" style="display: inline-block; vertical-align: top;"><img src="/web/20140701233534im_/http://www.cairn.info/vign_rev/RFG/RFG_240_L61.jpg" alt="RFG_240_0013" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-francaise-de-gestion-2014-3-page-13.htm">
+        Contradictions, paradoxes et tensions en contexte(s)
+    </a></div>
+
+            
+
+                    <div class="authors">
+
+        Zied Guedri, Caroline Hussler, Élodie Loubaresse
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+
+    </div>
+
+
+
+        </div>
+
+
+
+<script type="text/javascript">
+function load_img() {
+	/*var imgs = document.getElementsByClassName('small_cover');
+
+	var i = imgs.length;
+
+	while( i >= 0)
+	{
+		i--;
+		var flag = imgs.item(i).alt;
+		elements = flag.split('_');
+		var element1 = elements[1];
+		var element2 = elements[2];
+		var element0 = elements[0];
+
+
+		var final_path = "./vign_rev/" + element0 + "/" + element0 + "_" + element1  + "_H138.jpg";
+		imgs.item(i).src = final_path;*/
+	}
+}
+
+</script>
+
+
+        <div id="wrapper_footer">
+    <div id="footer">
+        <div id="footer_shortcuts">
+            <a href="/web/20140701233534/http://www.cairn.info/" id="logo_cairn_footer">
+                    <img src="/web/20140701233534im_/http://www.cairn.info/static/images/logo-cairn-footer.png" alt="CAIRN.INFO : Chercher, rep&#233;rer, avancer.">
+            </a>
+            <ul>
+                <li><a href="/web/20140701233534/http://www.cairn.info/a-propos.php">&#192; propos de Cairn.info</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/services-aux-editeurs.php">Services aux &#233;diteurs</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/services-aux-institutions.php">Services aux institutions</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/services-aux-particuliers.php">Services aux particuliers</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/conditions.php">Conditions d&#8217;utilisation</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/conditions-generales-de-vente.php">Conditions de vente</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/conditions-generales-de-vente.php#retractation">Droit de r&#233;tractation</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/vie-privee.php">Vie priv&#233;e</a></li>
+            </ul>
+        </div>
+        <div id="footer_disciplines">
+            <h1>Disciplines</h1>
+            <ul>
+                <li><a href="/web/20140701233534/http://www.cairn.info/disc-droit.htm">Droit</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/disc-economie-gestion.htm">&#201;conomie, gestion</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/disc-geographie.htm">G&#233;ographie</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/disc-histoire.htm">Histoire</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/disc-lettres-linguistique.htm">Lettres et linguistique</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/disc-philosophie.htm">Philosophie</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/disc-psychologie.htm">Psychologie</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/disc-sciences-de-l-education.htm">Sciences de l'&#233;ducation</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/disc-sciences-de-l-information.htm">Sciences de l'information</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/disc-sciences-politiques.htm">Sciences politiques</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/disc-sociologie-et-societe.htm">Sociologie et soci&#233;t&#233;</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/disc-sport-et-societe.htm">Sport et soci&#233;t&#233;</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/disc-interet-general.htm">Revues d'int&#233;r&#234;t g&#233;n&#233;ral</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/listerev.php" accesskey="2">Toutes les revues</a></li>
+            </ul>
+        </div>
+        <div id="footer_tools">
+            <h1>Outils</h1>
+            <ul>
+                <li><a href="/web/20140701233534/http://aide.cairn.info/" accesskey="6">Aide</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/aide-plan-du-site.htm" accesskey="7">Plan du site</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/aide-raccourcis-clavier.htm">Raccourcis clavier</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/abonnement_flux.php">Flux RSS</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/acces_hors.php">Acc&#232;s hors campus</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/contact.php" accesskey="5">Contacts</a></li>
+            </ul>
+        </div>
+        <div id="footer_menu_user">
+            <h1>Mon Cairn.info</h1>
+            <ul>
+                <li>
+
+                    <a href="/web/20140701233534/http://www.cairn.info/mon_compte.php">Cr&#233;er un compte</a>
+                </li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/mon_panier.php" accesskey="4">Mon panier</a></li>
+                <li>Mes achats</li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/biblio.php" accesskey="3">Ma bibliographie</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/mes_alertes.php">Mes alertes e-mail</a></li>
+                <li><a href="/web/20140701233534/http://www.cairn.info/credit.php">Mon cr&#233;dit d'article</a></li>
+            </ul>
+            <a href="/web/20140701233534/http://www.centrenationaldulivre.fr/" id="logo_cnl">
+                <img src="/web/20140701233534im_/http://www.cairn.info/static/images/logo-cnl.png" alt="logo CNL" id="footer_logo_cnl">
+             </a>
+        </div>
+        <a href="/web/20140701233534/http://cairn-int.info/" id="footer_link_cairnint">English</a>
+    </div>
+</div>
+
+<div id="post_footer">
+    <span>&#169; 2010-2014 Cairn.info</span>
+<!--    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of use</a> -->
+</div>
+
+
+
+<!-- <div id="wrapper_feedback_link"><a href="#" id="feedback_link">Feedback</a></div> -->
+<div id="blackground" onclick="cairn.close_modal()"></div>
+<a href="#top" id="jump-top"><img src="/web/20140701233534im_/http://www.cairn.info/static/images/jump-top.png" alt="back to top" /></a>
+
+<div id="feedback">
+    <a class="feedback-trigger" onclick="cairn.show_modal('#modal_feedback');" href="#">Feedback</a>
+</div>
+
+<div id="modal_feedback" class="window_modal" style="display: none;">
+
+    <form id="send_feedback" action="/web/20140701233534/http://www.cairn.info/static/feedback_form.php" method="POST">
+    <h1>Votre Feedback à propos de Cairn.info</h1>
+    <span class="close_modal" onclick="cairn.close_modal();"></span>
+    <div id="feedback_radios">
+        <input id="radio_idea" type="radio" value="1" name="f_category">
+        <label class="active" for="radio_idea">Suggestion</label>
+        <input id="radio_question" type="radio" checked="" value="2" name="f_category">
+        <label for="radio_question">Question</label>
+        <input id="radio_bug" type="radio" value="3" name="f_category">
+        <label for="radio_bug">Anomalie</label>
+        <input id="radio_praise" type="radio" value="4" name="f_category">
+        <label for="radio_praise" style="display: none;">Encouragement</label>
+    </div>
+    <div id="feedback_fields">
+        <div class="feedback_field">
+            <label for="f_email">
+                <strong>Adresse email</strong>
+            </label>
+            <input id="f_email" type="email" required="" value="" name="f_email">
+        </div>
+        <div class="feedback_field">
+            <label for="f_message">
+                <strong>Message</strong>
+            </label>
+            <textarea id="f_message" required="" name="f_message"></textarea>
+        </div>
+        <button type="submit">Envoyer</button>
+    </div>
+    </form>
+</div>
+
+
+
+        <div class="invisible">
+    <script src="/web/20140701233534js_/http://www.cairn.info/js/webtrends.js" type="text/javascript"></script>
+    <script src="/web/20140701233534js_/http://www.cairn.info/js/cairnInit.js" type="text/javascript"></script>
+    <!-- *********************************************************************************** -->
+    <!-- Warning: The two script blocks below must remain inline. Moving them to an external -->
+    <!-- JavaScript include file can cause serious problems with cross-domain tracking.      -->
+    <!-- *********************************************************************************** -->
+    <script type="text/javascript">
+        //
+            var _tag=new WebTrends();
+            _tag.dcsGetId();
+        //
+    </script>
+    <script type="text/javascript">
+        //
+        _tag.dcsCustom=function(){
+            // Add custom parameters here.
+            //_tag.DCSext.param_name=param_value;
+            init(this.src);
+        }
+        _tag.dcsCollect();
+        //
+    </script>
+
+    <noscript>
+        <div>
+            <img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="/web/20140701233534im_/http://localhost/dcsd0l4jxvz5bdkwbvqtz4fp2_8g9c/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=9.4.0&amp;dcssip=www.cairn.info">
+        </div>
+    </noscript>
+</div>
+    </body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 23:35:34 Jul 1, 2014 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 13:27:52 Mar 14, 2015.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

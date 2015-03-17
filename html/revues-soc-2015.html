@@ -1,0 +1,2390 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Accueil - Cairn.info</title>
+
+    <meta name="WT.cg_n" content="Navigation">
+
+            
+
+        <meta name="WT.cg_s" content="Navigation Accueil">
+
+            
+
+
+            
+
+    <meta name="DCSext.pg_type" content="Catalogue">
+    <meta name="DCSext.pn_type" content="Revues">
+
+
+            
+
+
+
+            <link type="text/css" rel="stylesheet" href="../static/css/cairn.css">
+            <link type="text/css" rel="stylesheet" href="../static/css/icons.css">
+
+
+            <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+            <script type="text/javascript" src="../static/js/cairn.js"></script>
+
+    </head>
+
+    <body onload="load_img();">
+
+
+        <div id="header">
+						 
+    <ul id="nav1">
+        <li>
+
+            
+
+
+            
+
+                <a href="#" onclick="cairn.show_menu(this, '#menu_login');" id="user_islogout">
+                    <span class="icon icon-login"></span>Connexion
+                </a>
+
+            
+
+
+            
+
+        </li>
+        <li><a href="#" onclick="cairn.show_menu(this, '#menu_mycairn');" id="user_mycairn_menu">Mon Cairn.info</a></li>
+	<li><a href="./acces_hors.php"><span class="icon-remote-access icon" id="icon_remote-acess"></span>Hors campus</a></li>
+
+        <li><a href="./a-propos.php" class="grey">&#192; propos</a></li>
+        <!-- <li><a href="./contact.php" class="grey">Contacts</a></li> -->
+        <li><a href="http://aide.cairn.info" class="grey" target="blank">Aide</a></li>
+        <li><a href="http://www.cairn-int.info" class="grey">English</a></li>
+    </ul>
+
+
+            
+
+        <div id="menu_login" class="menu" style="display:none;">
+            <form action="#" method="POST">
+                <input type="hidden" value="CONNECT" name="OPERATE">
+                <div id="login_links" class="inbl right">
+                    <b>Pas encore enregistr&#233; ?</b>
+                    <a href="./creer_compte.php">Inscrivez-vous !</a><br>
+                    <a href="./mdp_oublie.php">Mot de passe oubli&#233; ?</a>
+                </div>
+                <div id="login_inputs" class="inbl right">
+                    <label for="email_input">Email</label>
+                    <input id="email_input" type="text" name="LOG" required="required">
+                    <label for="password_input">Mot de passe</label>
+                    <input type="password" id="password_input" name="PWD" required="required">
+                    <input type="submit" value="" class="inbl icon-submit-arrow">
+                </div>
+            </form>
+        </div>
+
+            
+
+    <style>
+        #wrapper_menu_mycairn { position : relative; }
+        #wrapper_menu_mycairn .close_menu {
+            height : 26px;
+            width : 26px;
+            position :absolute;
+            right : -52px;
+            cursor : pointer;
+        }
+    </style>
+    <div id="menu_mycairn" class="menu" style="display : none;">
+        <div id="wrapper_menu_mycairn" class="grid-g">
+            <span class="close_menu" onclick="cairn.close_menu();"></span>
+            <div id="recently_searched" class="grid-u-1-3">
+                <div class="mycairn_title_wrapper">
+                    <h2>Recherches r&#233;centes</h2>
+                    <a href="./mes_recherches.php">Mes recherches</a>
+                </div>
+                <ul>
+                    
+                    
+                    
+                </ul>
+            </div>
+
+            <div id="recently_viewed" class="grid-u-1-2">
+                <div class="mycairn_title_wrapper">
+                    <h2>R&#233;cemment consult&#233;s</h2>
+                    <a href="./mon_historique.php">Mon historique</a>
+                </div>
+                <ul>
+                    
+                    
+                    
+                </ul>
+            </div>
+
+            <div id="mycairn_pannel" class="grid-u-1-6">
+                <div class="mycairn_title_wrapper">
+
+            
+
+                        <h2><i>Cr&#233;er un compte :</i></h2>
+
+            
+
+
+            
+
+                </div>
+                <ul>
+                
+            
+
+
+            
+
+                            <li><a href="./mon_panier.php">Mon panier</a></li>
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+                    <li><a href="./biblio.php">Ma bibliographie</a></li>
+                    <li><a href="./mes_alertes.php">Mes alertes</a></li>
+                    <li><a href="./credit.php">Mon cr&#233;dit d'articles</a></li>
+                </ul>
+
+            
+
+                    <a href="./creer_compte.php" id="button_SignIn">M&rsquo;inscrire</a>
+
+            
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="wrapper_search">
+        <a href="./" class="inbl" style="margin-right:136px;">
+            <img src="./static/images/logo-cairn.png" alt="CAIRN.INFO : Chercher, rep&#233;rer, avancer.">
+        </a>
+        <div class="inbl" style="width:464px;">
+            <form class="border_grey w100" id="main_search_form" action="./resultats_recherche.php" method="GET">
+                <button type="submit" class="right black_button" id="send_search_field" style="padding-bottom:0.1em;">
+                    <span class="icon-magnifing-glass left mr6"></span>Chercher
+                </button>
+                <div id="wrapper_search_input">
+                    <input type="text" id="compute_search_field" placeholder="Vos mots cl&#233;s" class="w98 no_border" name="searchTerm" style="width:325px">
+                </div>
+            </form>
+            <span id="link_search_advanced">
+                <a href="./recherche_avancee.php"><span class="icon">&#10140;</span>Recherche avancée</a>
+            </span>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .ui-autocomplete.ui-menu.ui-widget.ui-widget-content.ui-corner-all {
+        font-size:11px;
+    }
+    .ui-autocomplete-category {
+        background-color:#4BB2AC;
+        font-weight:bold;
+        color:white;
+
+font: bold 20px/100% "Alegreya SC";
+
+        padding:3px 0 3px 2px ;
+    }
+    .ui-menu-item a {
+        padding: 0px;
+        min-height: 0;
+        font-weight: normal;
+	font: 16px "Alegreya";
+       line-height: 1;
+
+
+    }
+</style>
+<!-- <script src="./js/jquery-ui.js" charset="utf-8"></script> -->
+<script src="./static/js/jquery-ui-1.9.2.custom.min.js" charset="utf-8"></script>
+<!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"> -->
+<link rel="stylesheet" href="./static/css/jquery-ui-1.9.2.custom.min.css">
+ <script src="./static/js/autocomplete_research.js"></script>
+
+
+<script>
+    
+</script>
+
+
+
+
+        <div id="wrapper_category_tabs">
+<div class="mainTabs" id="main_tabs">
+    <ul id="category_tabs">
+        
+            
+                <li class="selected">
+                    <a href="./Accueil_Revues.php" class="black_button">Revues</a>
+                </li>
+            
+            
+            
+        
+        
+            
+            
+                <li>
+                    <a href="./ouvrages.php" class="blue_button">Ouvrages</a>
+                </li>
+            
+            
+        
+        
+            
+            
+                <li>
+                    <a href="./encyclopedies-de-poche.php" class="blue_button">Encyclopédies de poche</a>
+                </li>
+            
+            
+        
+        
+            
+            
+                <li>
+                    <a href="./magazines.php" class="blue_button">Magazines</a>
+                </li>
+            
+            
+        
+        
+            
+            
+                <li>
+                    <a href="./l-etat-du-monde.php" class="blue_button">L'état du monde</a>
+                </li>
+            
+            
+        
+    </ul>
+</div>
+<script>
+    var userAgent = navigator.userAgent;
+    if (userAgent.indexOf('MSIE') >= 1 || userAgent.indexOf('Trident') >= 1) {
+        // Seulement pour IE, réduit l'affichage d'un onglet précis.
+        $('#category_tabs li').find('a, span').filter(function() { return $(this).text().indexOf("cyclopédies de poche") > 1; }).text('Encyclo. de poche');
+    }
+</script>
+</div>
+
+
+
+
+
+
+
+
+
+
+        <div id="body-content">
+
+
+
+
+
+    <h1 class="main-title">Acc&#232;s par discipline &#8212; Sociologie et société (95 revues)</h1>
+    <div class="table-button-grey">
+        <div class="grid-g grid-4 row">
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="./disc-arts.htm" class="">
+                            Arts
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="./disc-histoire.htm" class="">
+                            Histoire
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="./disc-philosophie.htm" class="">
+                            Philosophie
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+					
+					  <a
+						href="./disc-sociologie-et-societe.htm"
+						class="active">Sociologie et société</a>
+					
+                    
+
+                    
+                </div>
+                
+                    </div><div class="grid-g grid-4 row">
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="./disc-droit.htm" class="">
+                            Droit
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="./disc-sciences-de-l-information.htm" class="">
+                            Info. - Com.
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="./disc-psychologie.htm" class="">
+                            Psychologie
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="./disc-sport-et-societe.htm" class="">
+                            Sport&nbsp;et&nbsp;société
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+                    </div><div class="grid-g grid-4 row">
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="./disc-economie-gestion.htm" class="">
+                            Economie, Gestion
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="./disc-interet-general.htm" class="">
+                            Intérêt général
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="./disc-sciences-de-l-education.htm" class="">
+                            Sciences&nbsp;de&nbsp;l&rsquo;éducation
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+
+                    
+                        <span class="empty">&#160;</span>
+                    
+                </div>
+                
+                    </div><div class="grid-g grid-4 row">
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="./disc-geographie.htm" class="">
+                            Géographie
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="./disc-lettres-linguistique.htm" class="">
+                            Lettres et linguistique
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+                    
+                        <a href="./disc-sciences-politiques.htm" class="">
+                            Sciences&nbsp;politiques
+                        </a>
+                        	
+					
+					 
+                    
+
+                    
+                </div>
+                
+            
+                <div class="cell grid-u-1-4">
+                    
+
+                    
+                        <span class="empty">&#160;</span>
+                    
+                </div>
+                
+                    </div><div class="grid-g grid-4 row">
+                
+            
+            <div class="cell grid-u-1-4"></div>
+            <div class="cell grid-u-1-4"></div>
+            <div class="cell grid-u-1-4"></div>
+            <div class="cell grid-u-1-4">
+                <a href="./listerev.php" class="blue" id="__all_collection">Toutes disciplines</a>
+            </div>
+        </div>
+        <script>
+            $(function() {
+                // Permet de remonter l'accès à toutes les revues dans la grille, sur le dernier item vide.
+                var $empty = $("#body-content .empty:last");
+                var $all_collec = $("#__all_collection");
+                if (!$empty.length || !$all_collec.length)
+                    return false;
+                $empty[0].outerHTML = $all_collec[0].outerHTML;
+                $all_collec.parent().parent().hide();
+            });
+        </script>
+    </div>
+
+
+
+
+
+
+
+
+    <hr class="grey">
+
+    <h1 class="main-title">Acc&#232;s par titre</h1>
+    <ul class="pagination letters">
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=A">A</a>
+                </li>
+            
+            
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">B</span>
+                </li>
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=C">C</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=D">D</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=E">E</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=F">F</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=G">G</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=H">H</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=I">I</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=J">J</a>
+                </li>
+            
+            
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">K</span>
+                </li>
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=L">L</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=M">M</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=N">N</a>
+                </li>
+            
+            
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">O</span>
+                </li>
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=P">P</a>
+                </li>
+            
+            
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">Q</span>
+                </li>
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=R">R</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=S">S</a>
+                </li>
+            
+            
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=T">T</a>
+                </li>
+            
+            
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">U</span>
+                </li>
+            
+        
+            
+                <li>
+                    <a href="discipline.php?POS=11&amp;TITRE=V">V</a>
+                </li>
+            
+            
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">W</span>
+                </li>
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">X</span>
+                </li>
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">Y</span>
+                </li>
+            
+        
+            
+            
+            
+                <li>
+                    <span class="desactivate">Z</span>
+                </li>
+            
+        
+        <li>
+            <a href="discipline.php?POS=11&amp;TITRE=ALL" class="all">tous</a>
+        </li>
+    </ul>
+
+
+
+
+            
+
+
+
+
+
+
+        <h1 class="main-title">    </h1>
+
+    <div id="list_revue_suscriber">&nbsp;<br />        <div class="grid-g grid-2-list">
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-a-contrario.htm">
+                        <img src="./vign_rev/ACO/ACO_141_L61.jpg" alt="couverture de Le détail et l’indice : entre littérature, histoire de l’art et épistémologie" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-a-contrario.htm">A contrario</a></h2>
+                        <div class="editeur">BSN Press</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-actes-de-la-recherche-en-sciences-sociales.htm">
+                        <img src="./vign_rev/ARSS/ARSS_205_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-actes-de-la-recherche-en-sciences-sociales.htm">Actes de la recherche en sciences sociales</a></h2>
+                        <div class="editeur">Le Seuil</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-africultures.htm">
+                        <img src="./vign_rev/AFCUL/AFCUL_098_L61.jpg" alt="couverture de Les armes miraculeuses" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-africultures.htm">Africultures</a></h2>
+                        <div class="editeur">Africultures</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-agora-debats-jeunesses.htm">
+                        <img src="./vign_rev/AGORA/AGORA_069_L61.jpg" alt="couverture de Expérimentations sociales : des jeunes et des politiques publiques" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-agora-debats-jeunesses.htm">Agora débats/jeunesses</a></h2>
+                        <div class="editeur">Presses de Sciences Po (P.F.N.S.P.)</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-annales.htm">
+                        <img src="./vign_rev/ANNA/ANNA_694_L61.jpg" alt="couverture de Antisémitisme et histoire - Monarchies ibériques - Le pastoralisme en Asie centrale " class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-annales.htm">Annales. Histoire, Sciences Sociales</a></h2>
+                        <div class="editeur">Éditions de l'EHESS</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-l-annee-sociologique.htm">
+                        <img src="./vign_rev/ANSO/ANSO_142_L61.jpg" alt="couverture de Sociologie du bien-être" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-l-annee-sociologique.htm">L'Année sociologique</a></h2>
+                        <div class="editeur">Presses Universitaires de France</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-archives-de-sciences-sociales-des-religions.htm">
+                        <img src="./vign_rev/ASSR/ASSR_166_L61.jpg" alt="couverture de Leszek Kołakowski" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-archives-de-sciences-sociales-des-religions.htm">Archives de sciences sociales des religions</a></h2>
+                        <div class="editeur">Éditions de l'EHESS</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-autrepart.htm">
+                        <img src="./vign_rev/AUTR/AUTR_070_L61.jpg" alt="couverture de Les droits reproductifs 20 ans après le Caire" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-autrepart.htm">Autrepart</a></h2>
+                        <div class="editeur">Presses de Sciences Po (P.F.N.S.P.)</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-cahiers-d-etudes-africaines.htm">
+                        <img src="./vign_rev/CEA/CEA_216_L61.jpg" alt="couverture de Musiques dans l’« Atlantique noir »" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-cahiers-d-etudes-africaines.htm">Cahiers d'études africaines</a></h2>
+                        <div class="editeur">Éditions de l'EHESS</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-cahiers-du-genre.htm">
+                        <img src="./vign_rev/CDGE/CDGE_057_L61.jpg" alt="couverture de L’engendrement du droit" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-cahiers-du-genre.htm">Cahiers du Genre</a></h2>
+                        <div class="editeur">L'Harmattan</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-les-cahiers-dynamiques.htm">
+                        <img src="./vign_rev/LCD/LCD_060_L61.jpg" alt="couverture de Prévention et gestion de la violence" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-les-cahiers-dynamiques.htm">Les Cahiers Dynamiques</a></h2>
+                        <div class="editeur">ERES</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-cahiers-internationaux-de-sociologie.htm">
+                        <img src="./vign_rev/CIS/CIS_128_L61.jpg" alt="couverture de Ce qu’évaluer voudrait dire" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-cahiers-internationaux-de-sociologie.htm">Cahiers internationaux de sociologie</a></h2>
+                        <div class="editeur">Presses Universitaires de France</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-carnet-de-notes-sur-les-maltraitances-infantiles.htm">
+                        <img src="./vign_rev/CNMI/CNMI_151_L61.jpg" alt="couverture de La transmission intergénérationnelle" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-carnet-de-notes-sur-les-maltraitances-infantiles.htm">Carnet de notes sur les maltraitances infantiles</a></h2>
+                        <div class="editeur">Office de la naissance et de l'enfance (O.N.E.)</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-civilisations.htm">
+                        <img src="./vign_rev/CIVI/CIVI_621_L61.jpg" alt="couverture de Identité, culture et intimité" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-civilisations.htm">Civilisations</a></h2>
+                        <div class="editeur">Université libre de Bruxelles (U.L.B.)</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-clio-femmes-genre-histoire.htm">
+                        <img src="./vign_rev/CLIO1/CLIO1_040_L61.jpg" alt="couverture de Objets et fabrication du genre" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-clio-femmes-genre-histoire.htm">Clio</a></h2>
+                        <div class="editeur">Belin</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-communications.htm">
+                        <img src="./vign_rev/COMMU/COMMU_095_L61.jpg" alt="couverture de Les incertitudes" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-communications.htm">Communications</a></h2>
+                        <div class="editeur">Le Seuil</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-culture-chiffres.htm">
+                        <img src="./vign_rev/CULC/CULC_147_L61.jpg" alt="couverture de Les industries culturelles en France et en Europe" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-culture-chiffres.htm">Culture chiffres</a></h2>
+                        <div class="editeur">Ministère de la Culture - DEPS</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-culture-etudes.htm">
+                        <img src="./vign_rev/CULE/CULE_141_L61.jpg" alt="couverture de Pratiques culturelles en France et aux États-Unis Éléments" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-culture-etudes.htm">Culture études</a></h2>
+                        <div class="editeur">Ministère de la Culture - DEPS</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-culture-methodes.htm">
+                        <img src="./vign_rev/CULM/CULM_131_L61.jpg" alt="couverture de Évaluation des politiques" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-culture-methodes.htm">Culture méthodes</a></h2>
+                        <div class="editeur">Ministère de la Culture - DEPS</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-culture-prospective.htm">
+                        <img src="./vign_rev/CULP/CULP_111_L61.jpg" alt="couverture de Prospective du commerce physique " class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-culture-prospective.htm">Culture prospective</a></h2>
+                        <div class="editeur">Ministère de la Culture - DEPS</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-cultures-et-conflits.htm">
+                        <img src="./vign_rev/CC/CC_094_L61.jpg" alt="couverture de Critique de la raison criminologique" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-cultures-et-conflits.htm">Cultures & Conflits</a></h2>
+                        <div class="editeur">L'Harmattan</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-deviance-et-societe.htm">
+                        <img src="./vign_rev/DS/DS_384_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-deviance-et-societe.htm">Déviance et Société</a></h2>
+                        <div class="editeur">Médecine & Hygiène</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-diogene.htm">
+                        <img src="./vign_rev/DIO/DIO_243_L61.jpg" alt="couverture de Théories et pratiques de la non-violence" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-diogene.htm">Diogène</a></h2>
+                        <div class="editeur">Presses Universitaires de France</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-droit-et-societe.htm">
+                        <img src="./vign_rev/DRS/DRS_088_L61.jpg" alt="couverture de Les recompositions de la justice pénale délictuelle en France" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-droit-et-societe.htm">Droit et société</a></h2>
+                        <div class="editeur">Ed. juridiques associées</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-ecologie-et-politique.htm">
+                        <img src="./vign_rev/ECOPO/ECOPO_050_L61.jpg" alt="couverture de Syndicats et transition écologique" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-ecologie-et-politique.htm">Ecologie & politique</a></h2>
+                        <div class="editeur">Presses de Sciences Po (P.F.N.S.P.)</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-education-et-societes.htm">
+                        <img src="./vign_rev/ES/ES_034_L61.jpg" alt="couverture de Les relations école-familles à l’heure de la proximité" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-education-et-societes.htm">Education et sociétés</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-espaces-et-societes.htm">
+                        <img src="./vign_rev/ESP/ESP_160_L61.jpg" alt="couverture de Les échelles de la gestion territoriale" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-espaces-et-societes.htm">Espaces et sociétés</a></h2>
+                        <div class="editeur">ERES</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-ethnologie-francaise.htm">
+                        <img src="./vign_rev/ETHN/ETHN_151_L61.jpg" alt="couverture de La mesure du danger" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-ethnologie-francaise.htm">Ethnologie française</a></h2>
+                        <div class="editeur">Presses Universitaires de France</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-etudes-rurales.htm">
+                        <img src="./vign_rev/ETRU/ETRU_193_L61.jpg" alt="couverture de Souffrances paysannes" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-etudes-rurales.htm">Etudes rurales</a></h2>
+                        <div class="editeur">Éditions de l'EHESS</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-etudes-tsiganes.htm">
+                        <img src="./vign_rev/TSIG/TSIG_052_L61.jpg" alt="couverture de Citoyenneté, mobilité et territoires" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-etudes-tsiganes.htm">Etudes Tsiganes</a></h2>
+                        <div class="editeur">FNASAT</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-flux.htm">
+                        <img src="./vign_rev/FLUX/FLUX_097_L61.jpg" alt="couverture de L’eau urbaine en Europe et en Amérique du Nord : origines et développements" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-flux.htm">Flux</a></h2>
+                        <div class="editeur">Métropolis</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-formation-emploi.htm">
+                        <img src="./vign_rev/FORM/FORM_128_L61.jpg" alt="couverture de Pêle-Mêle" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-formation-emploi.htm">Formation emploi</a></h2>
+                        <div class="editeur">Céreq</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-geneses.htm">
+                        <img src="./vign_rev/GEN/GEN_098_L61.jpg" alt="couverture de Observer en réunion" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-geneses.htm">Genèses</a></h2>
+                        <div class="editeur">Belin</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-gerontologie-et-societe.htm">
+                        <img src="./vign_rev/GS/GS_147_L61.jpg" alt="couverture de Vieillissements et formations" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-gerontologie-et-societe.htm">Gérontologie et société</a></h2>
+                        <div class="editeur">Fond. Nationale de Gérontologie</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-gradhiva.htm">
+                        <img src="./vign_rev/GRADH/GRADH_021_L61.jpg" alt="couverture de Création plastique d’Haïti" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-gradhiva.htm">Gradhiva</a></h2>
+                        <div class="editeur">Musée du quai Branly</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-l-homme-et-la-societe.htm">
+                        <img src="./vign_rev/LHS/LHS_192_L61.jpg" alt="couverture de Le patrimoine industriel" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-l-homme-et-la-societe.htm">L'Homme et la société</a></h2>
+                        <div class="editeur">L'Harmattan</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-l-homme.htm">
+                        <img src="./vign_rev/LHOM/LHOM_213_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-l-homme.htm">L'Homme</a></h2>
+                        <div class="editeur">Éditions de l'EHESS</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-hommes-et-migrations.htm">
+                        <img src="./vign_rev/HOMI/HOMI_1307_L61.jpg" alt="couverture de L'Afrique qualifiée" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-hommes-et-migrations.htm">Hommes & Migrations</a></h2>
+                        <div class="editeur">Musée de l’histoire de l’immigration</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-idees-economiques-et-sociales.htm">
+                        <img src="./vign_rev/IDEE/IDEE_178_L61.jpg" alt="couverture de Relations sociales du travail" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-idees-economiques-et-sociales.htm">Idées économiques et sociales</a></h2>
+                        <div class="editeur">Réseau Canopé</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-informations-sociales.htm">
+                        <img src="./vign_rev/INSO/INSO_185_L61.jpg" alt="couverture de La Chine des questions sociales" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-informations-sociales.htm">Informations sociales</a></h2>
+                        <div class="editeur">Caisse nationale d'allocations familiales (CNAF)</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-journal-de-la-societe-des-oceanistes.htm">
+                        <img src="./vign_rev/JSO/JSO_138_L61.jpg" alt="couverture de Mises en récit de la mine" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-journal-de-la-societe-des-oceanistes.htm">Journal de la Société des Océanistes</a></h2>
+                        <div class="editeur">Société des océanistes</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-journal-du-droit-des-jeunes.htm">
+                        <img src="./vign_rev/JDJ/JDJ_342_L61.jpg" alt="couverture de 15<sup>èmes</sup> Assises nationales des avocats d'enfants" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-journal-du-droit-des-jeunes.htm">Journal du droit des jeunes</a></h2>
+                        <div class="editeur">Association jeunesse et droit</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-langage-et-societe.htm">
+                        <img src="./vign_rev/LS/LS_151_L61.jpg" alt="couverture de Sociophonétique du français" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-langage-et-societe.htm">Langage et société</a></h2>
+                        <div class="editeur">Éditions de la Maison des sciences de l'homme</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-melanges-de-la-casa-de-velazquez.htm">
+                        <img src="./vign_rev/MCV/MCV_442_L61.jpg" alt="couverture de Histoire des listes" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-melanges-de-la-casa-de-velazquez.htm">Mélanges de la Casa de Velázquez</a></h2>
+                        <div class="editeur">Casa de Velázquez</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-le-mouvement-social.htm">
+                        <img src="./vign_rev/LMS/LMS_250_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-le-mouvement-social.htm">Le Mouvement Social</a></h2>
+                        <div class="editeur">La Découverte</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-mouvements.htm">
+                        <img src="./vign_rev/MOUV/MOUV_081_L61.jpg" alt="couverture de Qui est le patron des associations ? " class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-mouvements.htm">Mouvements</a></h2>
+                        <div class="editeur">La Découverte</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-naqd.htm">
+                        <img src="./vign_rev/NAQD/NAQD_031_L61.jpg" alt="couverture de La nouvelle donne géostratégique" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-naqd.htm">NAQD</a></h2>
+                        <div class="editeur">SARL NAQD</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-natures-sciences-societes.htm">
+                        <img src="./vign_rev/NSS/NSS_224_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-natures-sciences-societes.htm">Natures Sciences Sociétés</a></h2>
+                        <div class="editeur">EDP Sciences</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-negociations.htm">
+                        <img src="./vign_rev/NEG/NEG_022_L61.jpg" alt="couverture de Simulations de négociation : quels apports pour la recherche et la pratique ?" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-negociations.htm">Négociations</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-nouvelles-questions-feministes.htm">
+                        <img src="./vign_rev/NQF/NQF_332_L61.jpg" alt="couverture de Féminismes au Maghreb" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-nouvelles-questions-feministes.htm">Nouvelles Questions Féministes</a></h2>
+                        <div class="editeur">Editions Antipodes</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-pensee-plurielle.htm">
+                        <img src="./vign_rev/PP/PP_036_L61.jpg" alt="couverture de Quelques approches de la nouvelle gouvernance" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-pensee-plurielle.htm">Pensée plurielle</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-plein-droit.htm">
+                        <img src="./vign_rev/PLD/PLD_103_L61.jpg" alt="couverture de Discriminations" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-plein-droit.htm">Plein droit</a></h2>
+                        <div class="editeur">GISTI</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-politix.htm">
+                        <img src="./vign_rev/POX/POX_107_L61.jpg" alt="couverture de Politiques sexuelles" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-politix.htm">Politix</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-population.htm">
+                        <img src="./vign_rev/POPU/POPU_1403_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-population.htm">Population</a></h2>
+                        <div class="editeur">Institut national d'études démographiques (INED)</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-population-et-avenir.htm">
+                        <img src="./vign_rev/POPAV/POPAV_721_L61.jpg" alt="couverture de Nouvelles régions françaises" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-population-et-avenir.htm">Population & Avenir</a></h2>
+                        <div class="editeur">Association Population et Avenir</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-pour.htm">
+                        <img src="./vign_rev/POUR/POUR_223_L61.jpg" alt="couverture de Initiatives associatives pour une écologie rurale" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-pour.htm">Pour</a></h2>
+                        <div class="editeur">GREP</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-psychotropes.htm">
+                        <img src="./vign_rev/PSYT/PSYT_203_L61.jpg" alt="couverture de Drogues et images" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-psychotropes.htm">Psychotropes</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-recherche-en-soins-infirmiers.htm">
+                        <img src="./vign_rev/RSI/RSI_119_L61.jpg" alt="couverture de L'enseignement des sciences infirmières" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-recherche-en-soins-infirmiers.htm">Recherche en soins infirmiers</a></h2>
+                        <div class="editeur">Association de recherche en soins infirmiers (ARSI)</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-recherches-familiales.htm">
+                        <img src="./vign_rev/RF/RF_011_L61.jpg" alt="couverture de « Famille et corps : identité et transmission »" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-recherches-familiales.htm">Recherches familiales</a></h2>
+                        <div class="editeur">Union nationale des associations familiales (UNAF)</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-reliance.htm">
+                        <img src="./vign_rev/RELI/RELI_029_L61.jpg" alt="couverture de Au risque du désir" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-reliance.htm">Reliance</a></h2>
+                        <div class="editeur">ERES</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-reseaux.htm">
+                        <img src="./vign_rev/RES/RES_188_L61.jpg" alt="couverture de Méthodes digitales" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-reseaux.htm">Réseaux</a></h2>
+                        <div class="editeur">La Découverte</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-responsabilite-et-environnement1.htm">
+                        <img src="./vign_rev/RE/RE_076_L61.jpg" alt="couverture de L’économie circulaire : les enjeux économiques d’une transition écologique" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-responsabilite-et-environnement1.htm">Annales des Mines - Responsabilité et environnement</a></h2>
+                        <div class="editeur">ESKA</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-retraite-et-societe.htm">
+                        <img src="./vign_rev/RS/RS_068_L61.jpg" alt="couverture de Vieillissement, âge et capacité : réflexions sur une notion et bilan d’une réforme" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-retraite-et-societe.htm">Retraite et société</a></h2>
+                        <div class="editeur">La Doc. française</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-anthropologie-des-connaissances.htm">
+                        <img src="./vign_rev/RAC/RAC_026_L61.jpg" alt="couverture de Connaissances et marchés" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-anthropologie-des-connaissances.htm">Revue d'anthropologie des connaissances</a></h2>
+                        <div class="editeur">S.A.C.</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-de-l-ires.htm">
+                        <img src="./vign_rev/RDLI/RDLI_081_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-de-l-ires.htm">La Revue de l'Ires</a></h2>
+                        <div class="editeur">I.R.E.S.</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-du-mauss.htm">
+                        <img src="./vign_rev/RDM/RDM_044_L61.jpg" alt="couverture de Consommer, donner, s’adonner" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-du-mauss.htm">Revue du MAUSS</a></h2>
+                        <div class="editeur">La Découverte</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-europeenne-des-migrations-internationales.htm">
+                        <img src="./vign_rev/REMI/REMI_302_L61.jpg" alt="couverture de Composer (avec) la frontière" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-europeenne-des-migrations-internationales.htm">Revue européenne des migrations internationales</a></h2>
+                        <div class="editeur">Université de Poitiers</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-europeenne-des-sciences-sociales.htm">
+                        <img src="./vign_rev/RESS/RESS_522_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-europeenne-des-sciences-sociales.htm">Revue européenne des sciences sociales</a></h2>
+                        <div class="editeur">Librairie Droz</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-francaise-de-socio-economie.htm">
+                        <img src="./vign_rev/RFSE/RFSE_014_L61.jpg" alt="couverture de Recruter : les enjeux de la sélection" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-francaise-de-socio-economie.htm">Revue Française de Socio-Économie</a></h2>
+                        <div class="editeur">La Découverte</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-francaise-de-sociologie.htm">
+                        <img src="./vign_rev/RFS/RFS_554_L61.jpg" alt="couverture de La simulation multi-agents : principes et applications aux phénomènes sociaux" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-francaise-de-sociologie.htm">Revue française de sociologie</a></h2>
+                        <div class="editeur">Presses de Sciences Po (P.F.N.S.P.)</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-francaise-des-affaires-sociales.htm">
+                        <img src="./vign_rev/RFAS/RFAS_144_L61.jpg" alt="couverture de Les outre-mer français" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-francaise-des-affaires-sociales.htm">Revue française des affaires sociales</a></h2>
+                        <div class="editeur">La Doc. française</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-internationale-des-sciences-sociales.htm">
+                        <img src="./vign_rev/RISS/RISS_196_L61.jpg" alt="couverture de Légitimation et délégitimation" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-internationale-des-sciences-sociales.htm">Revue internationale des sciences sociales </a></h2>
+                        <div class="editeur">ERES</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-sante-publique.htm">
+                        <img src="./vign_rev/SPUB/SPUB_146_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-sante-publique.htm">Santé Publique</a></h2>
+                        <div class="editeur">S.F.S.P.</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-savoir-agir.htm">
+                        <img src="./vign_rev/SAVA/SAVA_030_L61.jpg" alt="couverture de Prendre le foot au sérieux" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-savoir-agir.htm">Savoir/Agir</a></h2>
+                        <div class="editeur">Editions du Croquant</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-sciences-eaux-et-territoires.htm">
+                        <img src="./vign_rev/SET/SET_014_L61.jpg" alt="couverture de La Trame verte et bleue" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-sciences-eaux-et-territoires.htm">Sciences Eaux & Territoires</a></h2>
+                        <div class="editeur">Irstea</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-sciences-sociales-et-sante.htm">
+                        <img src="./vign_rev/SSS/SSS_324_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-sciences-sociales-et-sante.htm">Sciences sociales et santé</a></h2>
+                        <div class="editeur">John Libbey Eurotext</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-societe-droit-et-religion.htm">
+                        <img src="./vign_rev/SDR/SDR_004_L61.jpg" alt="couverture de La femme dans les religions monothéistes" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-societe-droit-et-religion.htm">Société, droit et religion</a></h2>
+                        <div class="editeur">C.N.R.S. Editions</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-societes.htm">
+                        <img src="./vign_rev/SOC/SOC_126_L61.jpg" alt="couverture de Re-penser l’ordinaire" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-societes.htm">Sociétés</a></h2>
+                        <div class="editeur">De Boeck Supérieur</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-societes-contemporaines.htm">
+                        <img src="./vign_rev/SOCO/SOCO_096_L61.jpg" alt="couverture de Les agriculteurs dans la France contemporaine" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-societes-contemporaines.htm">Sociétés contemporaines</a></h2>
+                        <div class="editeur">Presses de Sciences Po (P.F.N.S.P.)</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-le-sociographe.htm">
+                        <img src="./vign_rev/GRAPH/GRAPH_048_L61.jpg" alt="couverture de Nouvelle gestion sociale des SDF" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-le-sociographe.htm">Le sociographe</a></h2>
+                        <div class="editeur">Champ social</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-sociologie.htm">
+                        <img src="./vign_rev/SOCIO/SOCIO_054_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-sociologie.htm">Sociologie</a></h2>
+                        <div class="editeur">Presses Universitaires de France</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-sociologie-de-l-art.htm">
+                        <img src="./vign_rev/SOART/SOART_022_L61.jpg" alt="couverture de La sociologie des arts visuels au Brésil" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-sociologie-de-l-art.htm">Sociologie de l'Art</a></h2>
+                        <div class="editeur">L'Harmattan</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-sociologies-pratiques.htm">
+                        <img src="./vign_rev/SOPR/SOPR_029_L61.jpg" alt="couverture de Histoire, mémoire et passé au cœur des organisations" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-sociologies-pratiques.htm">Sociologies pratiques</a></h2>
+                        <div class="editeur">Presses de Sciences Po (P.F.N.S.P.)</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-sud-nord.htm">
+                        <img src="./vign_rev/SN/SN_025_L61.jpg" alt="couverture de Le militantisme en psychiatrie" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-sud-nord.htm">Sud/Nord</a></h2>
+                        <div class="editeur">ERES</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-le-sujet-dans-la-cite.htm">
+                        <img src="./vign_rev/LSDLC/LSDLC_005_L61.jpg" alt="couverture de Vivre avec la maladie" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-le-sujet-dans-la-cite.htm">Le sujet dans la cité</a></h2>
+                        <div class="editeur">L'Harmattan</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-techniques-et-culture.htm">
+                        <img src="./vign_rev/TC/TC_059_L61.jpg" alt="couverture de Itinéraires de coquillages" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-techniques-et-culture.htm">Techniques & Culture</a></h2>
+                        <div class="editeur">Éditions de la Maison des sciences de l'homme</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-television.htm">
+                        <img src="./vign_rev/TELEV/TELEV_005_L61.jpg" alt="couverture de La télévision et après : vers le transmedia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-television.htm">Télévision</a></h2>
+                        <div class="editeur">C.N.R.S. Editions</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-terrains-et-travaux.htm">
+                        <img src="./vign_rev/TT/TT_025_L61.jpg" alt="couverture de Régulations professionnelles et organisations catégorielles" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-terrains-et-travaux.htm">Terrains & travaux</a></h2>
+                        <div class="editeur">ENS Cachan</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-traces.htm">
+                        <img src="./vign_rev/TRAC/TRAC_027_L61.jpg" alt="couverture de Penser avec le droit" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-traces.htm">Tracés</a></h2>
+                        <div class="editeur">E.N.S. Editions</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-travail-et-emploi.htm">
+                        <img src="./vign_rev/TE/TE_138_L61.jpg" alt="couverture de Une crise sans précédent ?" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-travail-et-emploi.htm">Travail et emploi</a></h2>
+                        <div class="editeur">DARES</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-le-travail-humain.htm">
+                        <img src="./vign_rev/TH/TH_774_L61.jpg" alt="couverture de Varia" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-le-travail-humain.htm">Le travail humain</a></h2>
+                        <div class="editeur">Presses Universitaires de France</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-travail-genre-et-societes.htm">
+                        <img src="./vign_rev/TGS/TGS_032_L61.jpg" alt="couverture de Vues d’ailleurs" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-travail-genre-et-societes.htm">Travail, genre et sociétés</a></h2>
+                        <div class="editeur">La Découverte</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-tumultes.htm">
+                        <img src="./vign_rev/TUMU/TUMU_043_L61.jpg" alt="couverture de Le moment de la subjectivation" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-tumultes.htm">Tumultes</a></h2>
+                        <div class="editeur">Editions Kimé</div>
+                    </div>
+                </div>
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-vie-sociale.htm">
+                        <img src="./vign_rev/VSOC/VSOC_151_L61.jpg" alt="couverture de Enjeux contemporains d’écriture" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-vie-sociale.htm">Vie sociale</a></h2>
+                        <div class="editeur">ERES</div>
+                    </div>
+                </div>
+            
+                </div><div class="grid-g grid-2-list">
+            
+            
+                <div class="grid-u-1-2 greybox_hover revue">
+                    <a href="revue-volume.htm">
+                        <img src="./vign_rev/VOLU/VOLU_111_L61.jpg" alt="couverture de Souvenirs, souvenirs" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a href="revue-volume.htm">Volume !</a></h2>
+                        <div class="editeur">Editions Mélanie Seteun</div>
+                    </div>
+                </div>
+            
+            
+        </div>
+    </div>
+
+
+           
+
+    <hr class="grey">
+<div id="articles_more_view" class="list_articles">
+    <h1 class="main-title">
+       Articles les plus consult&eacute;s</h1>
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-politix-2014-2-page-7.htm" style="display: inline-block; vertical-align: top;"><img src="./vign_rev/POX/POX_106_L61.jpg" alt="POX_106_0007" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-politix-2014-2-page-7.htm">
+        Mobilisations conservatrices : comment les dominants contestent ?
+    </a></div>
+
+            
+
+                    <div class="authors">
+
+        Éric Agrikoliansky, Annie Collovald
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-geneses-2014-4-page-109.htm" style="display: inline-block; vertical-align: top;"><img src="./vign_rev/GEN/GEN_097_L61.jpg" alt="GEN_097_0109" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-geneses-2014-4-page-109.htm">
+        L'analyse des correspondances multiples au service de l'enquête de terrain
+    </a></div>
+
+            
+
+                        <h3 class="subtitle">
+        Pour en finir avec le dualisme « quantitatif »/« qualitatif »
+    </h3>
+
+            
+
+                    <div class="authors">
+
+        Yann Renisio, Rémi Sinthon
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-sante-publique-2014-6-page-795.htm" style="display: inline-block; vertical-align: top;"><img src="./vign_rev/SPUB/SPUB_146_L61.jpg" alt="SPUB_146_0795" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-sante-publique-2014-6-page-795.htm">
+        Les hôpitaux de jour gériatriques français prenant en charge les chutes
+    </a></div>
+
+            
+
+                    <div class="authors">
+
+        Pierre Robinet, François Puisieux
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-traces-2014-2-page-23.htm" style="display: inline-block; vertical-align: top;"><img src="./vign_rev/TRAC/TRAC_027_L61.jpg" alt="TRAC_027_0023" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-traces-2014-2-page-23.htm">
+        Comment la sociologie peut déplier le droit
+    </a></div>
+
+            
+
+                    <div class="authors">
+
+        Arnaud Esquerre
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-actes-de-la-recherche-en-sciences-sociales-2014-5-page-4.htm" style="display: inline-block; vertical-align: top;"><img src="./vign_rev/ARSS/ARSS_205_L61.jpg" alt="ARSS_205_0004" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-actes-de-la-recherche-en-sciences-sociales-2014-5-page-4.htm">
+        « La sociologie… quand elle est bien faite ». Entretien, 1984-1985
+    </a></div>
+
+            
+
+                    <div class="authors">
+
+        Norbert Elias, Johan Heilbron, Julien Duval, Sophie Noël
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-sante-publique-2014-6-page-803.htm" style="display: inline-block; vertical-align: top;"><img src="./vign_rev/SPUB/SPUB_146_L61.jpg" alt="SPUB_146_0803" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-sante-publique-2014-6-page-803.htm">
+        Analyse lexicale de la qualité de vie au travail des psychiatres à l'hôpital
+    </a></div>
+
+            
+
+                    <div class="authors">
+
+        Elisanne De Gantes, Gauthier Bellagamba, Marie-Pascale Lehucher-Michel
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-l-homme-2014-4-page-23.htm" style="display: inline-block; vertical-align: top;"><img src="./vign_rev/LHOM/LHOM_212_L61.jpg" alt="LHOM_212_0023" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-l-homme-2014-4-page-23.htm">
+        Pourquoi les femmes ne débouchent-elles pas les bouteilles de vin ?
+    </a></div>
+
+            
+
+                    <div class="authors">
+
+        Alain Testart
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-carnet-de-notes-sur-les-maltraitances-infantiles-2015-1-page-6.htm" style="display: inline-block; vertical-align: top;"><img src="./vign_rev/CNMI/CNMI_151_L61.jpg" alt="CNMI_151_0006" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-carnet-de-notes-sur-les-maltraitances-infantiles-2015-1-page-6.htm">
+        Transmission, loyautés et maltraitance à enfants
+    </a></div>
+
+            
+
+                    <div class="authors">
+
+        Emmanuel de Becker
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-carnet-de-notes-sur-les-maltraitances-infantiles-2015-1-page-76.htm" style="display: inline-block; vertical-align: top;"><img src="./vign_rev/CNMI/CNMI_151_L61.jpg" alt="CNMI_151_0076" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-carnet-de-notes-sur-les-maltraitances-infantiles-2015-1-page-76.htm">
+        Post-partum
+    </a></div>
+
+            
+
+                        <h3 class="subtitle">
+        Film de Delphine Noëls (2014)
+    </h3>
+
+            
+
+                    <div class="authors">
+
+        Bernadette Huberlant
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-reseaux-2014-6-page-201.htm" style="display: inline-block; vertical-align: top;"><img src="./vign_rev/RES/RES_188_L61.jpg" alt="RES_188_0201" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-reseaux-2014-6-page-201.htm">
+        Twitter et les relations de séduction entre députés et journalistes
+    </a></div>
+
+            
+
+                        <h3 class="subtitle">
+        La salle des Quatre Colonnes à l'ère des sociabilités numériques
+    </h3>
+
+            
+
+                    <div class="authors">
+
+        Jonathan Chibois
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+<div class="article greybox_hover">
+<a href="revue-mouvements-2015-1-page-71.htm" style="display: inline-block; vertical-align: top;"><img src="./vign_rev/MOUV/MOUV_081_L61.jpg" alt="MOUV_081_0071" class="small_cover"></a>
+<div class="meta">
+                    <div class="title"><a href="revue-mouvements-2015-1-page-71.htm">
+        Les associations, lieu de réinvention du travail ?
+    </a></div>
+
+            
+
+                    <div class="authors">
+
+        Nadia Bellaoui, Marie Lamy
+
+                    </div>
+</div>
+                </div>
+
+
+
+        
+
+
+    </div>
+
+
+
+        </div>
+
+
+
+<script type="text/javascript">
+function load_img() {
+	/*var imgs = document.getElementsByClassName('small_cover');
+
+	var i = imgs.length;
+
+	while( i >= 0)
+	{
+		i--;
+		var flag = imgs.item(i).alt;
+		elements = flag.split('_');
+		var element1 = elements[1];
+		var element2 = elements[2];
+		var element0 = elements[0];
+
+
+		var final_path = "./vign_rev/" + element0 + "/" + element0 + "_" + element1  + "_H138.jpg";
+		imgs.item(i).src = final_path;*/
+	}
+}
+
+</script>
+
+
+        <div id="wrapper_footer">
+    <div id="footer">
+        <div id="footer_shortcuts">
+            <a href="./" id="logo_cairn_footer">
+                    <img src="./static/images/logo-cairn-footer.png" alt="CAIRN.INFO : Chercher, rep&#233;rer, avancer.">
+            </a>
+            <ul>
+                <li><a href="./a-propos.php">&#192; propos de Cairn.info</a></li>
+                <li><a href="./services-aux-editeurs.php">Services aux &#233;diteurs</a></li>
+                <li><a href="./services-aux-institutions.php">Services aux institutions</a></li>
+                <li><a href="./services-aux-particuliers.php">Services aux particuliers</a></li>
+                <li><a href="./conditions.php">Conditions d&#8217;utilisation</a></li>
+                <li><a href="./conditions-generales-de-vente.php">Conditions de vente</a></li>
+                <li><a href="./conditions-generales-de-vente.php#retractation">Droit de r&#233;tractation</a></li>
+                <li><a href="./vie-privee.php">Vie priv&#233;e</a></li>
+            </ul>
+        </div>
+        <div id="footer_disciplines">
+            <h1>Disciplines</h1>
+            <ul>
+                <li><a href="./disc-droit.htm">Droit</a></li>
+                <li><a href="./disc-economie-gestion.htm">&#201;conomie, gestion</a></li>
+                <li><a href="./disc-geographie.htm">G&#233;ographie</a></li>
+                <li><a href="./disc-histoire.htm">Histoire</a></li>
+                <li><a href="./disc-lettres-linguistique.htm">Lettres et linguistique</a></li>
+                <li><a href="./disc-philosophie.htm">Philosophie</a></li>
+                <li><a href="./disc-psychologie.htm">Psychologie</a></li>
+                <li><a href="./disc-sciences-de-l-education.htm">Sciences de l'&#233;ducation</a></li>
+                <li><a href="./disc-sciences-de-l-information.htm">Sciences de l'information</a></li>
+                <li><a href="./disc-sciences-politiques.htm">Sciences politiques</a></li>
+                <li><a href="./disc-sociologie-et-societe.htm">Sociologie et soci&#233;t&#233;</a></li>
+                <li><a href="./disc-sport-et-societe.htm">Sport et soci&#233;t&#233;</a></li>
+                <li><a href="./disc-interet-general.htm">Revues d'int&#233;r&#234;t g&#233;n&#233;ral</a></li>
+                <li><a href="./listerev.php" accesskey="2">Toutes les revues</a></li>
+            </ul>
+        </div>
+        <div id="footer_tools">
+            <h1>Outils</h1>
+            <ul>
+                <li><a href="http://aide.cairn.info" accesskey="6">Aide</a></li>
+                <li><a href="./aide-plan-du-site.htm" accesskey="7">Plan du site</a></li>
+                <li><a href="./aide-raccourcis-clavier.htm">Raccourcis clavier</a></li>
+                <li><a href="./abonnement_flux.php">Flux RSS</a></li>
+                <li><a href="./acces_hors.php">Acc&#232;s hors campus</a></li>
+                <li><a href="./contact.php" accesskey="5">Contacts</a></li>
+            </ul>
+        </div>
+        <div id="footer_menu_user">
+            <h1>Mon Cairn.info</h1>
+            <ul>
+                <li>
+
+                    <a href="./mon_compte.php">Cr&#233;er un compte</a>
+                </li>
+                <li><a href="./mon_panier.php" accesskey="4">Mon panier</a></li>
+                <li>Mes achats</li>
+                <li><a href="./biblio.php" accesskey="3">Ma bibliographie</a></li>
+                <li><a href="./mes_alertes.php">Mes alertes e-mail</a></li>
+                <li><a href="./credit.php">Mon cr&#233;dit d'article</a></li>
+            </ul>
+            <a href="http://www.centrenationaldulivre.fr/" id="logo_cnl">
+                <img src="./static/images/logo-cnl.png" alt="logo CNL" id="footer_logo_cnl">
+             </a>
+        </div>
+        <a href="http://cairn-int.info" id="footer_link_cairnint">English</a>
+    </div>
+</div>
+
+<div id="post_footer">
+    <span>&#169; 2010-2014 Cairn.info</span>
+<!--    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of use</a> -->
+</div>
+
+
+
+<!-- <div id="wrapper_feedback_link"><a href="#" id="feedback_link">Feedback</a></div> -->
+<div id="blackground" onclick="cairn.close_modal()"></div>
+<a href="#top" id="jump-top"><img src="./static/images/jump-top.png" alt="back to top" /></a>
+
+<div id="feedback">
+    <a class="feedback-trigger" onclick="cairn.show_modal('#modal_feedback');" href="#">Feedback</a>
+</div>
+
+<div id="modal_feedback" class="window_modal" style="display: none;">
+
+    <form id="send_feedback" action="./static/feedback_form.php" method="POST">
+    <h1>Votre Feedback à propos de Cairn.info</h1>
+    <span class="close_modal" onclick="cairn.close_modal();"></span>
+    <div id="feedback_radios">
+        <input id="radio_idea" type="radio" value="1" name="f_category">
+        <label class="active" for="radio_idea">Suggestion</label>
+        <input id="radio_question" type="radio" checked="" value="2" name="f_category">
+        <label for="radio_question">Question</label>
+        <input id="radio_bug" type="radio" value="3" name="f_category">
+        <label for="radio_bug">Anomalie</label>
+        <input id="radio_praise" type="radio" value="4" name="f_category">
+        <label for="radio_praise" style="display: none;">Encouragement</label>
+    </div>
+    <div id="feedback_fields">
+        <div class="feedback_field">
+            <label for="f_email">
+                <strong>Adresse email</strong>
+            </label>
+            <input id="f_email" type="email" required="" value="" name="f_email">
+        </div>
+        <div class="feedback_field">
+            <label for="f_message">
+                <strong>Message</strong>
+            </label>
+            <textarea id="f_message" required="" name="f_message"></textarea>
+        </div>
+        <button type="submit">Envoyer</button>
+    </div>
+    </form>
+</div>
+
+
+
+        <div class="invisible">
+    <script src="./js/webtrends.js" type="text/javascript"></script>
+    <script src="./js/cairnInit.js" type="text/javascript"></script>
+    <!-- *********************************************************************************** -->
+    <!-- Warning: The two script blocks below must remain inline. Moving them to an external -->
+    <!-- JavaScript include file can cause serious problems with cross-domain tracking.      -->
+    <!-- *********************************************************************************** -->
+    <script type="text/javascript">
+        //
+            var _tag=new WebTrends();
+            _tag.dcsGetId();
+        //
+    </script>
+    <script type="text/javascript">
+        //
+        _tag.dcsCustom=function(){
+            // Add custom parameters here.
+            //_tag.DCSext.param_name=param_value;
+            init(this.src);
+        }
+        _tag.dcsCollect();
+        //
+    </script>
+
+    <noscript>
+        <div>
+            <img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="//localhost/dcsd0l4jxvz5bdkwbvqtz4fp2_8g9c/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=9.4.0&amp;dcssip=www.cairn.info">
+        </div>
+    </noscript>
+</div>
+    </body>
+</html>
