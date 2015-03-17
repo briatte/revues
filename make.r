@@ -26,10 +26,10 @@ library(tidyr)     # data reshaping
 # network packages
 #
 
+library(tnet)    # weighted degree  (load before network)
 library(network) # network objects
 library(GGally)  # network plots
 library(sna)     # unweighted degree
-library(tnet)    # weighted degree
 
 #
 # folders
@@ -43,7 +43,10 @@ dir.create("plots", showWarnings = FALSE)
 # MAKE
 #
 
+data = "revues-soc.csv"
+html = "html/revues-soc-2015.html"
+
 source("data.r")
-source("plots.r")
 source("clusters.r")
+source("plots.r")
 source("networks.r")

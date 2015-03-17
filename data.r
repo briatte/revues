@@ -1,5 +1,3 @@
-data = "revues-soc.csv"
-
 if(!file.exists(data)) {
 
   dir.create("html/rev", showWarnings = FALSE)
@@ -7,11 +5,11 @@ if(!file.exists(data)) {
 
   r = "http://www.cairn.info/"
 
-  if(!file.exists("html/revues-soc-2015.html"))
+  if(!file.exists(html))
      download.file(paste0(r, "discipline.php?POS=11&TITRE=ALL"),
-                   "html/revues-soc-2015.html", mode = "wb", quiet = TRUE)
+                   html, mode = "wb", quiet = TRUE)
 
-  y = html("html/revues-soc-2015.html")
+  y = html(html)
   y = html_nodes(y, ".revue a") %>% html_attr("href") %>% unique
 
   for(i in y) {
@@ -116,9 +114,9 @@ d = read.csv(data, stringsAsFactors = FALSE)
 
 table(d$annee)
 
-sum = group_by(d, numero) %>% summarise(sum = unique(articles))
+total = group_by(d, numero) %>% summarise(sum = unique(articles))
 
-cat(n_distinct(d$revue), "journals",
-    sum(sum$sum), "articles",
+cat(data, ":", n_distinct(d$revue), "journals",
+    sum(total$sum), "articles",
     n_distinct(d$numero), "issues",
     n_distinct(d$auteur), "authors\n")

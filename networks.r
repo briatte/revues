@@ -80,7 +80,7 @@ for(i in unique(r$revue)) {
 #
 
 n = apply(e[, 1:2 ], 1, function(x) paste0(sort(x), collapse = "///"))
-n = data.frame(n, w = e$w)
+n = data.frame(n, w = e$w, stringsAsFactors = FALSE)
 
 e = aggregate(w ~ n, sum, data = n)
 e = data.frame(i = gsub("(.*)///(.*)", "\\1", e$n),
@@ -124,15 +124,16 @@ plot_ecdf("sociologie")
 # animated networks
 #
 
-plot_network <- function(x) {
+for(x in c("societes", "sociologie")) {
 
   saveGIF({
     for(q in c(0, .1, .2, .3, .4, .5, .6, .7, .8, .9,
                .91, .92, .93, .94, .95, .96, .97, .98, .99)) {
 
       t = quantile(e$w, q)
-      n = network(e[ e$w > t, 1:2 ], directed = FALSE)
-      set.edge.attribute(n, "weight", e[ e$w > t, 3 ])
+      nn = network(e[ e$w > t, 1:2 ], directed = FALSE)
+      print(nn)
+      set.edge.attribute(nn, "weight", e[ e$w > t, 3 ])
 
       n %v% "size" = 1 + as.numeric(cut(degree(n), unique(quantile(degree(n))), include.lowest = TRUE))
       n %v% "id" = ifelse(network.vertex.names(n) == x, "S", "A")
@@ -156,9 +157,6 @@ plot_network <- function(x) {
   }, movie.name = paste0("plots/network_", x, ".gif"))
 
 }
-
-plot_network("societes")
-plot_network("sociologie")
 
 #
 # relative centrality at each threshold level

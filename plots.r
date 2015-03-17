@@ -82,7 +82,7 @@ qplot(data = dd, y = mu, x = sd) +
   geom_smooth(method = "loess", se = FALSE) +
   theme_bw()
 
-ggsave("plots/revues_mu_sd.png", width = 10, height = 9)
+ggsave("plots/mu_sd.png", width = 10, height = 9)
 
 #
 # example: 'Sociétés' journal
@@ -120,7 +120,7 @@ h_a = d[, c("auteur", "revue") ] %>%
 a = full_join(n_a, h_a) %>%
   arrange(hhi)
 
-# HHI will vary between 1/14 and 1
+# HHI will vary between 1 / max(a$n_revues) and 1
 summary(a$n_revues)
 
 # example authors with tons of articles in just one journal
