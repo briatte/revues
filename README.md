@@ -1,5 +1,7 @@
 Scripts to process author information from [Cairn.info](http://www.cairn.info/) journals.
 
+See [this series of blog posts](http://politbistro.hypotheses.org/tag/edition-scientifique) (in French).
+
 # HOWTO
 
 Run `make.r` to replicate in full:
@@ -20,5 +22,5 @@ You will also need to select different example journals at lines 41-45 and 62-64
 
 # TODO
 
-- discipline-specific cluster analysis
-- test-run on all represented disciplines
+- [x] test-run on all represented disciplines
+- [ ] discipline-specific cluster analysis
