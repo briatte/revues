@@ -116,6 +116,10 @@ d = read.csv(data, stringsAsFactors = FALSE)
 
 table(d$annee)
 
+# recodings
+d$revue[ d$revue == "clio" ] = "clio-femmes-genre-histoire"
+d$revue[ d$revue %in% c("culture-chiffres", "culture-etudes", "culture-methodes", "culture-prospective") ] = "culture-chiffres-etudes-methodes-prospective"
+
 total = group_by(d, numero) %>% summarise(sum = unique(articles))
 
 cat(data, ":", n_distinct(d$revue), "journals",

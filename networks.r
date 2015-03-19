@@ -3,11 +3,18 @@
 # (run revues-data.r first)
 #
 
-k = paste0("revue-", unique(d$revue))
+k = sort(unique(d$revue))
 
-for(j in k) {
+for(j in rev(k)) {
 
-  n = dir("html/num", pattern = paste0("^", j, "-\\d{4}"), full.names = TRUE)
+  # include all journal recodings here
+  regex = j
+  if(j == "clio-femmes-genre-histoire")
+    regex = "clio(-femmes-genre-histoire)?"
+  if(j == "culture-chiffres-etudes-methodes-prospective")
+    regex = "culture-(chiffres|etudes|methodes|prospective)"
+
+  n = dir("html/num", pattern = paste0("^revue-", regex, "(\\d)?-\\d{4}"), full.names = TRUE)
   n = n[ file.info(n)$size > 0 ]
 
   f = paste0("csv/", j, ".csv")
@@ -18,7 +25,8 @@ for(j in k) {
     r = data.frame()
     for(i in rev(n)) {
 
-      cat(sprintf("%3.0f", which(n == i)), i)
+      cat(sprintf("%3.0f", which(j == k)),
+          sprintf("%3.0f", which(n == i)), i)
 
       h = html(i)
 
@@ -35,9 +43,8 @@ for(j in k) {
 
       # add to dataset
       if(length(a))
-        r = rbind(r, data.frame(numero = i,
-                                revue = gsub("html/num/revue-|-\\d{4}-(.*)\\.htm", "", i),
-                                annee = str_extract(i, "[0-9]{4}"),
+        r = rbind(r, data.frame(numero = gsub(paste0("html/num/revue-", regex, "-|\\.htm"), "", i),
+                                revue = j,
                                 auteurs = a,
                                 stringsAsFactors = FALSE))
 
