@@ -40,7 +40,7 @@ dd = d %>%
 dd$tagged = NA
 dd$tagged[ dd$revue == "societes" ] = "Sociétés"
 dd$tagged[ dd$revue == "sociologie" ] = "Sociologie"
-dd$tagged[ dd$revue == "droit-et-societe" ] = "Droit et Société"
+dd$tagged[ dd$revue == "carnet-de-notes-sur-les-maltraitances-infantiles" ] = "Carnet de notes sur les maltraitances infantiles"
 dd$tagged[ dd$revue == "reseaux" ] = "Réseaux"
 dd$tagged[ dd$revue == "population" ] = "Population"
 
@@ -53,7 +53,9 @@ qplot(data = dd, y = rankp, x = mu, geom = "step") +
   xlim(1, 4.25) +
   scale_y_continuous(label = percent_format()) +
   labs(x = "\nNombre moyen de revues par auteur", y = "Fréquence cumulée\n") +
-  theme_bw()
+  theme_bw() +
+  theme(panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank())
 
 ggsave("plots/revues_ecdf.png", width = 10, height = 9)
 
@@ -66,13 +68,15 @@ dd$tagged[ dd$revue == "cahiers-d-etudes-africaines" ] = "Cahiers d'études afri
 qplot(data = dd, y = rankp, x = mu, geom = "step") +
   geom_point(data = subset(dd, !is.na(tagged))) +
   geom_segment(data = subset(dd, !is.na(tagged)),
-               aes(xend = mu + .125, yend = rankp), lty = "dotted") +
+               aes(xend = mu + .3, yend = rankp), lty = "dotted") +
   geom_text(data = subset(dd, !is.na(tagged)),
-            aes(x = mu + .15, label = tagged), hjust = 0, fontface = "italic") +
-  xlim(1, 4.25) +
+            aes(x = mu + .3, label = tagged), hjust = 0, fontface = "italic") +
+  xlim(1, 3.75) +
   scale_y_continuous(label = percent_format()) +
   labs(x = "\nNombre moyen de revues par auteur", y = "Fréquence cumulée\n") +
-  theme_bw()
+  theme_bw() +
+  theme(panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank())
 
 ggsave("plots/revues_comparables.png", width = 10, height = 9)
 
@@ -80,7 +84,9 @@ ggsave("plots/revues_comparables.png", width = 10, height = 9)
 qplot(data = dd, y = mu, x = sd) +
   labs(y = "Nombre moyen de revues par auteur\n", x = "\nÉcart-type") +
   geom_smooth(method = "loess", se = FALSE) +
-  theme_bw()
+  theme_bw() +
+  theme(panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank())
 
 ggsave("plots/mu_sd.png", width = 10, height = 9)
 
@@ -124,14 +130,17 @@ a = full_join(n_a, h_a) %>%
 summary(a$n_revues)
 
 # example authors with tons of articles in just one journal
-filter(a, hhi == 1 & n_articles > 50)
+filter(a, hhi == 1 & n_articles > 25)
 
 # concentration decreases with number of journals per author
-qplot(data = a, y = hhi, x = factor(n_revues),
+qplot(data = a, y = hhi, x = factor(ifelse(n_revues < 9, n_revues, "9+")),
       geom = "boxplot") +
   labs(y = "Indice de Herfindahl-Hirschman\n",
        x = "\nNombre de revues par auteur") +
-  theme_bw()
+  theme_bw() +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank())
 
 ggsave("plots/revues_hhi.png", width = 10, height = 9)
 
@@ -174,6 +183,20 @@ qplot(data = h, x = reorder(revue, -mu_hhi),
 ggsave("plots/hhi_rank.png", width = 10, height = 16)
 ggsave("plots/hhi_rank.pdf", width = 10, height = 16)
 
+# black and white
+qplot(data = h, x = reorder(revue, -mu_hhi),
+      y = mu_hhi, ymin = mu_hhi - sd_hhi, ymax = mu_hhi + sd_hhi,
+      geom = "pointrange") +
+  coord_flip() +
+  labs(x = NULL, y = "\nIndice de Herfindahl-Hirschman moyen ± 1 écart-type") +
+  theme_bw() +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank())
+
+ggsave("plots/hhi_rank_BW.png", width = 10, height = 16)
+ggsave("plots/hhi_rank_BW.pdf", width = 10, height = 16)
+
 # correlation between HHI and mono-journal author percentage
 with(h, cor(p_mono, wt_hhi))
 with(h, cor(p_mono, mu_hhi))
@@ -191,6 +214,20 @@ qplot(data = h, x = reorder(revue, -p_mono),
 
 ggsave("plots/mono_rank.png", width = 10, height = 16)
 ggsave("plots/mono_rank.pdf", width = 10, height = 16)
+
+# black and white
+qplot(data = h, x = reorder(revue, -p_mono),
+      y = p_mono) +
+  coord_flip() +
+  scale_y_continuous(label = percent_format()) +
+  labs(x = NULL, y = "\nPourcentage d'auteurs ayant publié dans cette seule revue") +
+  theme_bw() +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank())
+
+ggsave("plots/mono_rank_BW.png", width = 10, height = 16)
+ggsave("plots/mono_rank_BW.pdf", width = 10, height = 16)
 
 # 'blind' percentage of editorial concentration, by journal
 
@@ -222,3 +259,17 @@ qplot(data = e, x = reorder(revue, -t),
 
 ggsave("plots/conc_rank.png", width = 10, height = 16)
 ggsave("plots/conc_rank.pdf", width = 10, height = 16)
+
+# black and white
+qplot(data = e, x = reorder(revue, -t),
+      y = t) +
+  coord_flip() +
+  scale_y_continuous(label = percent_format()) +
+  labs(x = NULL, y = "\nTaux de concentration de la production écrite des auteurs") +
+  theme_bw() +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank())
+
+ggsave("plots/conc_rank_BW.png", width = 10, height = 16)
+ggsave("plots/conc_rank_BW.pdf", width = 10, height = 16)
