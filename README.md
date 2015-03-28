@@ -20,7 +20,10 @@ html = "html/revues-scpo-2014.html"
 
 You will also need to select different example journals at lines 41-45 and 62-64 of `plots.r`.
 
+See `articles.r` for the code to download article abstracts and keywords, which requires approximately 1.7GB of disk space. This script runs slowly on purpose, and is _not_ run by `make.r`.
+
 # TODO
 
 - [x] test-run on all represented disciplines
-- [ ] discipline-specific cluster analysis
+- [x] discipline-level cluster analysis
+

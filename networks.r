@@ -56,9 +56,11 @@ for(j in rev(k)) {
 
 }
 
-r = dir("csv", pattern = "^revue-", full.names = TRUE)
+r = dir("csv", full.names = TRUE)
 r = lapply(r, read.csv, stringsAsFactors = FALSE)
-r = bind_rows(r)
+r = filter(bind_rows(r), revue %in% unique(d$revue))
+
+cat("Edge list:", nrow(r), "rows\n")
 
 #
 # journal-specific edge lists
@@ -214,6 +216,18 @@ qplot(data = wd, y = reldegree, x = q, group = x,
                                        "reseaux",
                                        "geneses")),
             aes(color = x), alpha = 1, size = 1) +
+  geom_line(data = summarise(group_by(wd, q),
+                             mu = mean(reldegree)),
+            aes(x = q, y = mu),
+            color = "black", size = 1) +
+  geom_line(data = summarise(group_by(wd, q),
+                             lo = quantile(reldegree, .25)),
+            aes(x = q, y = lo),
+            color = "black", size = 1, lty = "dashed") +
+  geom_line(data = summarise(group_by(wd, q),
+                             hi = quantile(reldegree, .75)),
+            aes(x = q, y = hi),
+            color = "black", size = 1) +
   scale_color_brewer("", palette = "Set1") +
   labs(y = "Degré de centralité relatif\n", x = "\nSeuil d'intensité des liens entre les revues") +
   theme_bw() +
