@@ -91,6 +91,11 @@ if(!file.exists(data)) {
         l = length(l[ l!= "" ])
 
         cat(":", l, "articles(s)", length(a), "author(s)\n")
+				
+				# add article UID (not tested)
+				uid = h %>%
+          html_nodes(".list_articles .article") %>%
+          html_attr("id")
 
         # add to dataset
         if(length(a))
@@ -99,6 +104,7 @@ if(!file.exists(data)) {
                                   annee = str_extract(f, "[0-9]{4}"),
                                   auteur = a,
                                   articles = l,
+																	uid,
                                   stringsAsFactors = FALSE))
 
       }

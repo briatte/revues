@@ -1,4 +1,4 @@
-# run other douwnload routines first
+# run other download routines first
 library(rvest)
 
 dir.create("html/art", showWarnings = F)
