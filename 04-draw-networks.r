@@ -1,6 +1,5 @@
 #
 # shared authors between journals, weighted by articles
-# (run revues-data.r first)
 #
 
 k = sort(unique(d$revue))
@@ -50,14 +49,14 @@ for(j in rev(k)) {
 
     }
 
-    write.csv(r, f, row.names = FALSE)
+    write_csv(r, f)
 
   }
 
 }
 
 r = dir("csv", full.names = TRUE)
-r = lapply(r, read.csv, stringsAsFactors = FALSE)
+r = lapply(r, read_csv, col_types = "ccc")
 r = filter(bind_rows(r), revue %in% unique(d$revue))
 
 cat("Edge list:", nrow(r), "rows\n")
@@ -67,7 +66,7 @@ cat("Edge list:", nrow(r), "rows\n")
 #
 
 a = strsplit(r$auteurs, ";")
-e = data.frame()
+e = data_frame()
 for(i in unique(r$revue)) {
 
   y = unique(unlist(strsplit(r$auteurs[ r$revue == i ], ";")))
@@ -80,7 +79,7 @@ for(i in unique(r$revue)) {
   y$Freq = y$Freq / y$Freq[ y$Var1 == i ]
   y = y[ y$Var1 != i, ]
 
-  e = rbind(e, data.frame(i, j = y$Var1, w = y$Freq, stringsAsFactors = FALSE))
+  e = rbind(e, data_frame(i, j = y$Var1, w = y$Freq))
 
 }
 
@@ -89,10 +88,10 @@ for(i in unique(r$revue)) {
 #
 
 n = apply(e[, 1:2 ], 1, function(x) paste0(sort(x), collapse = "///"))
-n = data.frame(n, w = e$w, stringsAsFactors = FALSE)
+n = data_frame(n, w = e$w)
 
 e = aggregate(w ~ n, sum, data = n)
-e = data.frame(i = gsub("(.*)///(.*)", "\\1", e$n),
+e = data_frame(i = gsub("(.*)///(.*)", "\\1", e$n),
                j = gsub("(.*)///(.*)", "\\2", e$n),
                w = e$w)
 
@@ -109,10 +108,10 @@ e = filter(e, w < 1) %>% mutate(ecdf = cume_dist(w))
 
 plot_ecdf = function(x) {
 
-  g = qplot(data = subset(e, i != x & j != x),
+  g = qplot(data = filter(e, i != x, j != x),
             x = w, y = ecdf, color = I("grey")) +
-    geom_point(data = subset(e, (i == x | j == x)), color = "black") +
-    geom_rug(data = subset(e, (i == x | j == x)), sides = "b") +
+    geom_point(data = filter(e, (i == x | j == x)), color = "black") +
+    geom_rug(data = filter(e, (i == x | j == x)), sides = "b") +
     scale_color_manual(values = c("TRUE" = "black", "FALSE" = "grey")) +
     scale_x_log10() +
     labs(y = "Fréquence cumulée\n", x = "\nIntensité des liens (logarithme base 10)") +
@@ -153,7 +152,7 @@ for(x in c("societes", "sociologie")) {
       n %e% "alpha" = as.numeric(cut(n %e% "weight", unique(quantile(n %e% "weight")), include.lowest = TRUE))
       n %e% "alpha" = n %e% "alpha" / max(n %e% "alpha")
 
-      g = ggnet(n, size = 3,
+      g = ggnet(n, size = 3, layout.par = ,
                 node.group = n %v% "id", node.color = colors,
                 segment.alpha = n %e% "alpha", segment.color = "grey33",
                 label.size = 6) + # label.size = n %v% "size",

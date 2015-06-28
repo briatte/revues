@@ -234,7 +234,7 @@ ggsave("plots/mono_rank_BW.pdf", width = 10, height = 16)
 e = data.frame()
 for(i in unique(d$revue)) {
 
-  t = unique(d[ d$revue == i, "auteur" ])
+  t = unique(filter(d, revue == i)$auteur)
   t = as.data.frame(table(d[ d$auteur %in% t, "revue" ]))
   t = 1 - (sum(t$Freq) - t$Freq[ t$Var1 == i ]) / sum(t$Freq)
   e = rbind(e, data.frame(revue = i, t, stringsAsFactors = FALSE))

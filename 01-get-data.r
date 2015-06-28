@@ -91,7 +91,7 @@ if(!file.exists(data)) {
         l = length(l[ l!= "" ])
 
         cat(":", l, "articles(s)", length(a), "author(s)\n")
-				
+
 				# add article UID (not tested)
 				uid = h %>%
           html_nodes(".list_articles .article") %>%
@@ -99,13 +99,12 @@ if(!file.exists(data)) {
 
         # add to dataset
         if(length(a))
-          d = rbind(d, data.frame(numero = gsub("html/num/(\\./)?revue-|\\.htm", "", f),
+          d = rbind(d, data_frame(numero = gsub("html/num/(\\./)?revue-|\\.htm", "", f),
                                   revue = gsub("html/num/(\\./)?revue-|(\\d)?-\\d{4}-(.*)\\.htm", "", f),
                                   annee = str_extract(f, "[0-9]{4}"),
                                   auteur = a,
                                   articles = l,
-																	uid,
-                                  stringsAsFactors = FALSE))
+																	uid))
 
       }
 
@@ -114,17 +113,18 @@ if(!file.exists(data)) {
 
   }
 
-  write.csv(d, data, row.names = FALSE)
+  write_csv(d, data)
 
 }
 
-d = read.csv(data, stringsAsFactors = FALSE)
+d = read_csv(data)
 
 table(d$annee)
 
 # recodings
 d$revue[ d$revue == "clio" ] = "clio-femmes-genre-histoire"
-d$revue[ d$revue %in% c("culture-chiffres", "culture-etudes", "culture-methodes", "culture-prospective") ] = "culture-chiffres-etudes-methodes-prospective"
+d$revue[ d$revue %in% c("culture-chiffres", "culture-etudes", "culture-methodes",
+                        "culture-prospective") ] = "culture-chiffres-etudes-methodes-prospective"
 
 total = group_by(d, numero) %>% summarise(sum = unique(articles))
 

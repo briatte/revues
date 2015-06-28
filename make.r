@@ -2,6 +2,7 @@
 # scraper packages
 #
 
+library(readr)
 library(rvest)
 library(stringr)
 
@@ -36,18 +37,19 @@ library(sna)     # unweighted degree
 # folders
 #
 
-dir.create("csv", showWarnings = FALSE)
-dir.create("html", showWarnings = FALSE)
-dir.create("plots", showWarnings = FALSE)
+dir.create("data"  , showWarnings = FALSE)
+dir.create("csv"   , showWarnings = FALSE)
+dir.create("html"  , showWarnings = FALSE)
+dir.create("plots" , showWarnings = FALSE)
 
 #
 # MAKE
 #
 
-data = "revues-soc.csv"
+data = "data/revues-soc.csv"
 html = "html/revues-soc-2015.html"
 
-source("data.r")
-source("clusters.r")
-source("plots.r")
-source("networks.r")
+source("01-get-data.r")
+source("02-find-clusters.r")
+source("03-draw-plots.r")
+source("04-draw-networks.r")

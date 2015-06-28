@@ -51,6 +51,8 @@ qplot(data = full_join(t1, t2, "Var1"), x = Freq.x, y = Freq.y,
   theme_bw() +
   theme(panel.grid = element_blank())
 
+ggsave("plots/disciplines_trans.pdf", height = 10, width = 8)
+
 R = r[, -c(1, 16:18) ]
 
 # -arts and -lettres
