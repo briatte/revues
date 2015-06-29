@@ -1,5 +1,5 @@
 #
-# summary stats
+# 03 -- concentration indices
 #
 
 # by journal:

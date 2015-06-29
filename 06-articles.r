@@ -1,12 +1,13 @@
-# run other download routines first
-library(rvest)
+#
+# 06 -- download all articles (not run by make.r)
+#
 
-dir.create("html/art", showWarnings = F)
-p = dir('html/num', pattern = "htm$", full.names = T)
+dir.create("html/art", showWarnings = FALSE)
+p = list.files('html/num', pattern = "htm$", full.names = TRUE)
 p = sample(p, length(p))
 
 # include some sleep time every 100 queries or so to avoid choking
-s = length(dir("html/art", pattern = "html$")) %/% 100
+s = length(list.files("html/art", pattern = "html$")) %/% 100
 
 for(i in rev(p)) {
 
@@ -28,19 +29,19 @@ for(i in rev(p)) {
   for(j in h) {
 
     f = paste0("html/art/", gsub("(.*)ID_ARTICLE=(.*)", "\\2", j), ".html")
-    if(!file.exists(f))      
+    if(!file.exists(f))
       try(download.file(paste0("http://www.cairn.info/", j), f,
                         mode = "wb", quiet = TRUE), silent = TRUE)
 
     if(!file.info(f)$size)
       cat("\n[!] ERROR downloading", j)
-    
+
     # avoid writing too quickly to disk
     Sys.sleep(1)
 
   }
 
-  a = dir("html/art", pattern = "html$")
+  a = list.files("html/art", pattern = "html$")
   if(length(a) %/% 100 > s) {
 
     cat("\nFetched", length(a), "articles, sleeping a bit...")

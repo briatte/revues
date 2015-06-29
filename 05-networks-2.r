@@ -1,5 +1,5 @@
 #
-# (re) load edge list
+# 05 -- networks of shared authors between journals, with proportional weights
 #
 
 r = list.files("csv", full.names = TRUE)

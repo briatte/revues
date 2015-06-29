@@ -1,5 +1,5 @@
 #
-# shared authors between journals, weighted by articles
+# 04 -- networks of shared authors between journals, with article weights
 #
 
 k = sort(unique(d$revue))
@@ -13,7 +13,7 @@ for(j in rev(k)) {
   if(j == "culture-chiffres-etudes-methodes-prospective")
     regex = "culture-(chiffres|etudes|methodes|prospective)"
 
-  n = dir("html/num", pattern = paste0("^revue-", regex, "(\\d)?-\\d{4}"), full.names = TRUE)
+  n = list.files("html/num", pattern = paste0("^revue-", regex, "(\\d)?-\\d{4}"), full.names = TRUE)
   n = n[ file.info(n)$size > 0 ]
 
   f = paste0("csv/", j, ".csv")
@@ -55,7 +55,7 @@ for(j in rev(k)) {
 
 }
 
-r = dir("csv", full.names = TRUE)
+r = list.files("csv", full.names = TRUE)
 r = lapply(r, read_csv, col_types = "ccc")
 r = filter(bind_rows(r), revue %in% unique(d$revue))
 
@@ -99,7 +99,8 @@ e = mutate(e, ecdf = cume_dist(w))
 
 qplot(data = e, x = w, y = ecdf, color = I("grey")) +
   scale_x_log10() +
-  labs(y = "Fréquence cumulée\n", x = "\nIntensité des liens (logarithme base 10)") +
+  labs(y = "Fréquence cumulée\n",
+       x = "\nIntensité des liens (logarithme base 10)") +
   theme_bw()
 
 ggsave("plots/ecdf.png", width = 9, height = 9)
@@ -114,7 +115,8 @@ plot_ecdf = function(x) {
     geom_rug(data = filter(e, (i == x | j == x)), sides = "b") +
     scale_color_manual(values = c("TRUE" = "black", "FALSE" = "grey")) +
     scale_x_log10() +
-    labs(y = "Fréquence cumulée\n", x = "\nIntensité des liens (logarithme base 10)") +
+    labs(y = "Fréquence cumulée\n",
+         x = "\nIntensité des liens (logarithme base 10)") +
     guides(color = FALSE) +
     theme_bw()
 
@@ -228,7 +230,8 @@ qplot(data = wd, y = reldegree, x = q, group = x,
             aes(x = q, y = hi),
             color = "black", size = 1) +
   scale_color_brewer("", palette = "Set1") +
-  labs(y = "Degré de centralité relatif\n", x = "\nSeuil d'intensité des liens entre les revues") +
+  labs(y = "Degré de centralité relatif\n",
+       x = "\nSeuil d'intensité des liens entre les revues") +
   theme_bw() +
   theme(panel.grid = element_blank())
 

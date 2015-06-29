@@ -1,3 +1,7 @@
+#
+# 02 -- cluster analysis of disciplinary affiliations
+#
+
 r = html("html/revues-2015.html")
 r = html_nodes(r, ".revue a") %>%
   html_attr("href") %>%
@@ -5,7 +9,7 @@ r = html_nodes(r, ".revue a") %>%
   gsub("^\\./", "", .) %>%
   data.frame(revue = ., stringsAsFactors = FALSE)
 
-for(i in dir("html", pattern = "revues-\\w+-\\d+", full.names = TRUE)) {
+for(i in list.files("html", pattern = "revues-\\w+-\\d+", full.names = TRUE)) {
 
   y = html(i)
   y = html_nodes(y, ".revue a") %>%
