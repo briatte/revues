@@ -28,9 +28,10 @@ library(tidyr)     # data reshaping
 # network packages
 #
 
-library(tnet)    # weighted degree  (load before network)
-library(network) # network objects
-library(GGally)  # network plots
+library(GGally)  # quick network plots
+library(tnet)    # weighted degree (load before network)
+library(igraph)  # community detection
+library(network) # network objects and plots
 library(sna)     # unweighted degree
 
 #
