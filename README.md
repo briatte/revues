@@ -15,4 +15,4 @@ You will also need to select different example journals at lines 41-45 and 64-66
 
 The `html` folder contains an index for every discipline on which the analysis might be run, as well as a general index to run the analysis on all disciplines combined. Most of the indexes are from July 2014, except the ones for sociology and for all journals, which are from early 2015.
 
-The script `06-get-articles.r` downloads article abstracts and keywords, and does so pretty slowly on purpose. This script is _not_ run by `make.r`,a s its results are not used in any part of the analysis.
+The script `06-articles.r` downloads article abstracts and keywords, and does so pretty slowly on purpose. This script is _not_ run by `make.r`, as its results are not used in any part of the analysis.
