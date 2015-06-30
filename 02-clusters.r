@@ -7,7 +7,7 @@ r = html_nodes(r, ".revue a") %>%
   html_attr("href") %>%
   unique %>%
   gsub("^\\./", "", .) %>%
-  data.frame(revue = ., stringsAsFactors = FALSE)
+  data_frame(revue = .)
 
 for(i in list.files("html", pattern = "revues-\\w+-\\d+", full.names = TRUE)) {
 
@@ -26,7 +26,7 @@ r = filter(r, n > 0)
 
 r$discipline = apply(r[, -c(1, 16) ], 1, function(x) which(x == 1))
 r$discipline = sapply(r$discipline, names)
-r$discipline = sapply(r$discipline, function(x) ifelse(length(x) > 1, "Mixte", x))
+r$discipline = sapply(r$discipline, function(x) ifelse(length(x) > 1, "mixte", x))
 
 r$combined = apply(r[, -c(1, 16:17) ], 1, function(x) which(x == 1))
 r$combined = sapply(r$combined, names)
@@ -52,10 +52,10 @@ qplot(data = full_join(t1, t2, "Var1"), x = Freq.x, y = Freq.y,
   geom_hline(y = mean(t2$Freq), lty = "dashed") +
   labs(y = "% de revues trans-disciplinaires\n",
        x = "\nNombre de revues trans-disciplinaires") +
-  theme_bw() +
+  theme_bw(14) +
   theme(panel.grid = element_blank())
 
-ggsave("plots/disciplines_trans.pdf", height = 10, width = 8)
+ggsave("plots/disciplines_trans.pdf", height = 7, width = 7)
 
 R = r[, -c(1, 16:18) ]
 
@@ -67,43 +67,50 @@ R = R[, !colnames(R) %in% c("arts", "lettres") ]
 #
 
 p = prcomp(R)
+
 autoplot(p, loadings = TRUE, data = r, colour = "discipline", loadings.label = TRUE) +
   geom_vline(x = 0, lty = "dashed") +
   geom_hline(x = 0, lty = "dashed") +
   scale_color_discrete("") +
-  theme_bw() +
-  theme(panel.grid = element_blank(), legend.key = element_blank())
+  labs(y = "PC2\n", x  = "\nPC1") +
+  theme_bw(14) +
+  theme(panel.grid = element_blank(),
+        legend.key = element_blank())
 
-ggsave("plots/clusters_pca.pdf", width = 9, height = 9)
+ggsave("plots/disciplines_pca.pdf", width = 9, height = 9)
 
 autoplot(p, data = r) +
   geom_hline(y = 0, lty = "dotted") +
   geom_vline(x = 0, lty = "dotted") +
   facet_wrap(~ discipline) +
-  theme_bw()
+  labs(y = "PC2\n", x  = "\nPC1") +
+  theme_bw(14) +
+  theme(panel.grid = element_blank(),
+        strip.text = element_text(size = rel(1)),
+        strip.background = element_rect(fill = "grey90"))
+
+ggsave("plots/disciplines_pca_facets.pdf", width = 9, height = 9)
 
 autoplot(clara(R, 4), frame = TRUE, frame.type = "norm") +
   geom_vline(x = 0, lty = "dashed") +
   geom_hline(x = 0, lty = "dashed") +
-  theme_bw() +
-  theme(panel.grid = element_blank(), legend.key = element_blank())
+  labs(y = "PC2\n", x  = "\nPC1") +
+  theme_bw(14) +
+  theme(panel.grid = element_blank(),
+        legend.key = element_blank())
 
-ggsave("plots/clusters_clara.pdf", width = 9, height = 9)
+ggsave("plots/disciplines_clara.pdf", width = 9, height = 9)
 
 #
-# dendrogram
+# disciplines matrix
 #
-
-rownames(R) = r[, 1]
-p = hclust(dist(R), method = "average")
-p = as.dendrogram(p)
-ggdendrogram(p, rotate = TRUE)
 
 r$n = apply(r[, -c(1, 16:18), ], 1, sum)
 
 r = gather(r, key, dummy, -revue, -n, -discipline, -combined)
 
-qplot(data = filter(r, n > 0), y = reorder(revue, n), x = key, fill = factor(dummy), geom = "tile") +
+qplot(data = filter(r, n > 0), y = reorder(revue, n), x = key,
+      fill = factor(dummy), geom = "tile") +
   scale_fill_manual(values = c("0" = "grey90", "1" = "grey10")) +
   guides(fill = FALSE) +
   labs(y = NULL, x = NULL) +
@@ -112,4 +119,4 @@ qplot(data = filter(r, n > 0), y = reorder(revue, n), x = key, fill = factor(dum
         axis.text.y = element_blank(),
         axis.ticks.y = element_blank())
 
-ggsave("plots/disciplines.pdf", height = 10, width = 8)
+ggsave("plots/disciplines_matrix.pdf", height = 10, width = 8)

@@ -1,27 +1,12 @@
 #
-# 05 -- networks of shared authors between journals, with proportional weights
+# 04 -- networks of shared authors between journals
 #
-
-r = list.files("csv", full.names = TRUE)
-r = lapply(r, read_csv, col_types = "ccc")
-r = filter(bind_rows(r), revue %in% unique(d$revue))
-
-cat("Edge list:", nrow(r), "rows\n")
 
 #
 # journal-specific edge lists
 #
 
 a = strsplit(r$auteurs, ";")
-
-b = group_by(r, revue) %>%
-  summarise(articles_j = n(),
-            auteurs_j = paste0(auteurs, collapse = ";")) %>%
-  rename(j = revue)
-
-b$auteurs_j = sapply(b$auteurs_j, function(x) {
-  n_distinct(unlist(strsplit(x, ";")))
-})
 
 M = list()
 for(i in unique(r$revue)) {
@@ -115,8 +100,8 @@ qplot(data = w, x = reorder(revue, -distance), y = distance) +
         panel.grid.minor.x = element_blank(),
         panel.grid.minor.y = element_blank())
 
-ggsave("plots/network_distance_BW.png", width = 10, height = 16)
-ggsave("plots/network_distance_BW.pdf", width = 10, height = 16)
+ggsave("plots/network_distance.png", width = 10, height = 16)
+ggsave("plots/network_distance.pdf", width = 10, height = 16)
 
 # strongest network ties, with journal labels
 
