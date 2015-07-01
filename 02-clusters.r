@@ -2,8 +2,8 @@
 # 02 -- cluster analysis of disciplinary affiliations
 #
 
-r = html("html/revues-2015.html")
-r = html_nodes(r, ".revue a") %>%
+a = html("html/revues-2015.html")
+a = html_nodes(a, ".revue a") %>%
   html_attr("href") %>%
   unique %>%
   gsub("^\\./", "", .) %>%
@@ -16,33 +16,33 @@ for(i in list.files("html", pattern = "revues-\\w+-\\d+", full.names = TRUE)) {
     html_attr("href") %>%
     unique
 
-  r[, gsub("html/revues-|-\\d+\\.html", "", i) ] = as.numeric(r$revue %in% y)
+  a[, gsub("html/revues-|-\\d+\\.html", "", i) ] = as.numeric(a$revue %in% y)
 
 }
 
-r$revue = gsub("revue-|\\.htm", "", r$revue)
-r$n = apply(r[, -1], 1, sum)
-r = filter(r, n > 0)
+a$revue = gsub("revue-|\\.htm", "", a$revue)
+a$n = apply(a[, -1], 1, sum)
+a = filter(a, n > 0)
 
-r$discipline = apply(r[, -c(1, 16) ], 1, function(x) which(x == 1))
-r$discipline = sapply(r$discipline, names)
-r$discipline = sapply(r$discipline, function(x) ifelse(length(x) > 1, "mixte", x))
+a$discipline = apply(a[, -c(1, 16) ], 1, function(x) which(x == 1))
+a$discipline = sapply(a$discipline, names)
+a$discipline = sapply(a$discipline, function(x) ifelse(length(x) > 1, "mixte", x))
 
-r$combined = apply(r[, -c(1, 16:17) ], 1, function(x) which(x == 1))
-r$combined = sapply(r$combined, names)
-r$combined = sapply(r$combined, paste0, collapse = ",")
+a$combined = apply(a[, -c(1, 16:17) ], 1, function(x) which(x == 1))
+a$combined = sapply(a$combined, names)
+a$combined = sapply(a$combined, paste0, collapse = ",")
 
 # most frequent cross-disciplinary ties
-table(r$combined[ r$n > 1 ])[ table(r$combined[ r$n > 1 ]) > 5 ]
+table(a$combined[ a$n > 1 ])[ table(a$combined[ a$n > 1 ]) > 5 ]
 
 # most active disciplines in cross-disciplinary ties
-t1 = table(unlist(str_split(names(table(r$combined[ r$n > 1 ])), ",")))
+t1 = table(unlist(str_split(names(table(a$combined[ a$n > 1 ])), ",")))
 t1 = as.data.frame(t1) %>% arrange(-Freq)
 head(t1)
 
 # percentage of cross-disciplinary journals
-t2 = round(100 * table(unlist(str_split(names(table(r$combined[ r$n > 1 ])), ","))) /
-             colSums(r[, -c(1, 16:18) ]))
+t2 = round(100 * table(unlist(str_split(names(table(a$combined[ a$n > 1 ])), ","))) /
+             colSums(a[, -c(1, 16:18) ]))
 t2 = as.data.frame(t2) %>% arrange(-Freq)
 head(t2)
 
@@ -57,7 +57,7 @@ qplot(data = full_join(t1, t2, "Var1"), x = Freq.x, y = Freq.y,
 
 ggsave("plots/disciplines_trans.pdf", height = 7, width = 7)
 
-R = r[, -c(1, 16:18) ]
+R = a[, -c(1, 16:18) ]
 
 # -arts and -lettres
 R = R[, !colnames(R) %in% c("arts", "lettres") ]
@@ -68,7 +68,7 @@ R = R[, !colnames(R) %in% c("arts", "lettres") ]
 
 p = prcomp(R)
 
-autoplot(p, loadings = TRUE, data = r, colour = "discipline", loadings.label = TRUE) +
+autoplot(p, loadings = TRUE, data = a, colour = "discipline", loadings.label = TRUE) +
   geom_vline(x = 0, lty = "dashed") +
   geom_hline(x = 0, lty = "dashed") +
   scale_color_discrete("") +
@@ -79,7 +79,7 @@ autoplot(p, loadings = TRUE, data = r, colour = "discipline", loadings.label = T
 
 ggsave("plots/disciplines_pca.pdf", width = 9, height = 9)
 
-autoplot(p, data = r) +
+autoplot(p, data = a) +
   geom_hline(y = 0, lty = "dotted") +
   geom_vline(x = 0, lty = "dotted") +
   facet_wrap(~ discipline) +
@@ -105,11 +105,11 @@ ggsave("plots/disciplines_clara.pdf", width = 9, height = 9)
 # disciplines matrix
 #
 
-r$n = apply(r[, -c(1, 16:18), ], 1, sum)
+a$n = apply(a[, -c(1, 16:18), ], 1, sum)
 
-r = gather(r, key, dummy, -revue, -n, -discipline, -combined)
+a = gather(a, key, dummy, -revue, -n, -discipline, -combined)
 
-qplot(data = filter(r, n > 0), y = reorder(revue, n), x = key,
+qplot(data = filter(a, n > 0), y = reorder(revue, n), x = key,
       fill = factor(dummy), geom = "tile") +
   scale_fill_manual(values = c("0" = "grey90", "1" = "grey10")) +
   guides(fill = FALSE) +

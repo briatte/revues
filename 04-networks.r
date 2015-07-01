@@ -27,6 +27,15 @@ for(k in 1:nrow(df)) {
 }
 
 df$w = df$n / df$p # fraction of shared authors
+
+summary(df$n)
+summary(df$n[ df$w > 0 ])
+
+summary(df$w)
+summary(df$w[ df$w > 0 ])
+
+summary(df$p)
+
 df = filter(df, w > 0) %>%
   arrange(-w)
 
