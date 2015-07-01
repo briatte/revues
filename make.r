@@ -4,6 +4,7 @@ library(dplyr)
 library(readr)
 library(rvest)
 library(stringr)
+library(texreg)
 library(tidyr)
 
 # plots
