@@ -40,6 +40,6 @@ data = "data/revues-soc.csv"
 html = "html/revues-soc-2015.html"
 
 source("01-data.r")
-# source("02-clusters.r")
-# source("03-indices.r")
+source("02-clusters.r")
+source("03-indices.r")
 source("04-networks.r")

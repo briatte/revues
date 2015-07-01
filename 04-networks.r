@@ -2,10 +2,6 @@
 # 04 -- networks of shared authors between journals
 #
 
-#
-# journal-specific edge lists
-#
-
 a = strsplit(r$auteurs, ";")
 
 M = list()
@@ -119,6 +115,7 @@ plot(n, layout = l,
      vertex.label = V(n)$vertex.names,
      vertex.label.family = "Helvetica", vertex.label.color = "black")
 dev.off()
+
 pdf("plots/network_005_labels.pdf")
 plot(n, layout = l,
      mark.groups = o, mark.col = "grey90", mark.border = "grey80",

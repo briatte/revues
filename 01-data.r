@@ -211,7 +211,9 @@ table(d$annee)
 
 mutate(d, y5 = cut(annee, c(1990, 1995, 2000, 2005, 2010, 2016))) %>%
   group_by(y5) %>%
-  summarise(n_revues = n_distinct(revue), n_numeros = n_distinct(numero))
+  summarise(n_revues = n_distinct(revue),
+            n_numeros = n_distinct(numero)) %>%
+  mutate(cumsum = cumsum(n_numeros))
 
 uniq = select(d, numero, annee, articles) %>%
   unique
