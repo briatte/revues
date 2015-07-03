@@ -1,0 +1,1032 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <!--base href="/cairn/cairn" -->
+        <title>Revues - Cairn.info</title>
+        <link rel="icon" type="image/png" href="favicon.ico" />
+        <!-- cairn-build :: [test] -->
+
+        <meta name="DCSext.pg_type" content="Catalogue">
+<meta name="DCSext.pn_type" content="Revues">
+<meta name="WT.cg_n" content="Navigation">
+<meta name="WT.cg_s" content="Navigation Accueil">
+<meta name="DCSext.inst_ID" content="iep_paris">
+<meta name="DCSext.inst_nom" content="Institut d'Etudes Politiques de Paris">
+<meta name="DCSext.ct_disc1" content="philosophie">
+        <script type="text/javascript" src="static/js/jquery.min.js"></script>
+        <script type="text/javascript" src="static/js/modernizr.js"></script>
+        <script type="text/javascript" src="static/js/jquery.tipTip.minified.js"></script>
+        <script type="text/javascript" src="static/js/cairn.js"></script>
+        <script type="text/javascript" src="static/js/ajax.js"></script>
+        <script type="text/javascript" src="static/js/verif.js"></script>
+        <script type="text/javascript" src="static/js/require.js"></script>
+        <script type="text/javascript" src="./static/js/jquery-ui-1.9.2.custom.min.js"></script>
+        <script type="text/javascript" src="./static/js/autocomplete_research.js"></script>
+
+        <link type="text/css" rel="stylesheet" href="static/css/cairn.css">
+        <link type="text/css" rel="stylesheet" href="static/css/icons.css">
+        <link type="text/css" rel="stylesheet" href="static/css/article.css">
+        <link type="text/css" rel="stylesheet" href="static/css/tipTip.css">
+        <link type="text/css" rel="stylesheet" href="static/css/icon-usermenu-tools.css">
+        <link rel="stylesheet" href="./static/css/jquery-ui-1.9.2.custom.min.css">
+
+        <style>
+            .ui-autocomplete.ui-menu.ui-widget.ui-widget-content.ui-corner-all {
+                font-size:11px;
+            }
+            .ui-autocomplete-category {
+                background-color:#4BB2AC;
+                font-weight:bold;
+                color:white;
+                font: bold 20px/100% "Alegreya SC";
+                padding:3px 0 3px 2px ;
+            }
+            .ui-menu-item a {
+                padding: 0px;
+                min-height: 0;
+                font-weight: normal;
+                font: 16px "Alegreya";
+                line-height: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+
+            <ul id="nav1">
+                <li>
+                        <a id="user_islogout" onclick="cairn.show_menu(this, '#menu_login');" href="javascript:void(0)">
+        <span class="icon icon-login"></span>Connexion
+    </a>
+    <span id="inst_islogin">Institut d'Etudes Politiques de Paris</span>
+<script type="text/javascript">ajax.loadAccessIntoCache('iep_paris')</script>
+                </li>
+                <li><a href="#" onclick="cairn.show_menu(this, '#menu_mycairn');" id="user_mycairn_menu">Mon Cairn.info</a></li>
+                <li><a href="./acces_hors.php"><span class="icon-remote-access icon" id="icon_remote-acess"></span>Hors campus</a></li>
+
+                <li><a href="./a-propos.php" class="grey">À propos</a></li>
+                <!-- <li><a href="./contact.php" class="grey">Contacts</a></li> -->
+                <li><a href="http://aide.cairn.info" class="grey" target="blank">Aide</a></li>
+                <li><a href="http://www.cairn-int.info" class="grey">English</a></li>
+                            </ul>
+            <input type="hidden" id="corsURL" value="www.cairn-int.info"/>
+            <div id="menu_login" class="menu menu_login" style="display: none; height: 34px; margin-bottom: 0px;">
+                <div id="login_links" class="inbl right">
+                    <b>Pas encore enregistré ?</b>
+                    <a href="./creer_compte.php">Inscrivez-vous !</a><br>
+                    <a href="./mdp_oublie.php">Mot de passe oublié ?</a>
+                </div>
+                <div id="login_inputs" class="inbl right">
+                    <form id="login_form" name="login_form" action="javascript:ajax.login()" method="GET">
+                    <label for="email_input">E-mail</label>
+                    <input id="email_input" name="LOG" required="required" type="text">
+                    <label for="password_input">Mot de passe</label>
+                    <input id="password_input" name="PWD" required="required" type="password">
+                    <input id="login_button" value="" class="inbl icon-submit-arrow" type="submit">
+                    </form>
+                </div>
+            </div>
+            <!--div id="menu_login_dev" class="menu menu_login" style="display:none;">
+                <input value="CONNECT" name="OPERATE" type="hidden">
+                <div id="login_inputs" class="inbl right">
+                    <label for="email_input">Veuillez choisir un compte de test:</label>
+                    <input value="Anonyme" class="inbl" type="button" onclick="ajax.logintest('1');">
+                    <input value="Paris VII (vue grisée)" class="inbl" type="button" onclick="ajax.logintest('2');">
+                    <input value="Paris VII (vue filtrée)" class="inbl" type="button" onclick="ajax.logintest('3');">
+                </div>
+            </div-->
+            <style>
+                #wrapper_menu_mycairn { position : relative; }
+                #wrapper_menu_mycairn .close_menu {
+                    height : 26px;
+                    width : 26px;
+                    position :absolute;
+                    right : -52px;
+                    cursor : pointer;
+                }
+            </style>
+
+            
+<div id="menu_mycairn" class="menu" style="display : none;">
+    <div id="wrapper_menu_mycairn" class="grid-g">
+        <span class="close_menu" onclick="cairn.close_menu();"></span>
+        <div id="recently_searched" class="grid-u-1-3">
+            <div class="mycairn_title_wrapper">
+                <h2>Recherches récentes</h2>
+                <a href="./mes_recherches.php">Mes recherches</a>
+            </div>
+            <ul>
+                            </ul>
+        </div>
+
+        <div id="recently_viewed" class="grid-u-1-2">
+            <div class="mycairn_title_wrapper">
+                <h2>Récemment consultés</h2>
+                <a href="./mon_historique.php">Mon historique</a>
+            </div>
+            <ul>
+                <li><a href="article.php?ID_ARTICLE=POX_100_0009">Retour sur un quart de siècle d'une revue « militante »</a></li><li><a href="article.php?ID_ARTICLE=POX_100_0003">Éditorial</a></li><li><a href="article.php?ID_ARTICLE=POX_100_0063">En r'venant d'la r'vue</a></li>                
+            </ul>
+        </div>
+
+        <div id="mycairn_pannel" class="grid-u-1-6">
+            <div class="mycairn_title_wrapper">
+                <h2><i>Créer un compte :</i></h2>
+            </div>
+            <ul>
+                                                                <li><a href="./biblio.php">Ma bibliographie</a></li>
+                <li><a href="./mes_alertes.php">Mes alertes</a></li>
+                <li><a href="./credit.php">Mon crédit d'articles</a></li>
+            </ul>
+            <a href="./creer_compte.php" id="button_SignIn">M’inscrire</a>            
+        </div>
+    </div>
+</div>
+
+
+            <div id="wrapper_search">
+                <a href="./" class="inbl" style="margin-right:136px;">
+                    <img src="./static/images/logo-cairn.png" alt="CAIRN.INFO : Chercher, repérer, avancer.">
+                </a>
+                <div class="inbl" style="width:464px;">
+                    <form class="border_grey w100" id="main_search_form" action="./resultats_recherche.php" method="GET">
+                        <button type="submit" class="right black_button" id="send_search_field" style="padding-bottom:0.1em;">
+                            <span class="icon-magnifing-glass left mr6"></span>Chercher
+                        </button>
+                        <div id="wrapper_search_input">
+                            <input autocomplete="off" id="compute_search_field" placeholder="Vos mots clés" class="w98 no_border ui-autocomplete-input" name="searchTerm" style="width:325px" type="text"><span class="ui-helper-hidden-accessible" aria-live="polite" role="status"></span>
+                        </div>
+                    </form>
+                    <span id="link_search_advanced">
+                        <a href="./recherche_avancee.php"><span class="icon">➜</span>Recherche avancée</a>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="contenu">
+            <!--
+    Il faut fournir à cette vue:
+        - $typePub = libellé de l'onglet courant, en minuscule et au singulier
+-->
+
+    <div id="wrapper_category_tabs">
+        <div class="mainTabs" id="main_tabs">
+            <ul id="category_tabs">
+                <li><a href="./Accueil_Revues.php" class="black_button" >Revues</a></li><li><a href="./ouvrages.php" class="blue_button">Ouvrages</a></li><li><a href="./encyclopedies-de-poche.php" class="blue_button" >Encyclopédies de poche</a></li><li><a href="./magazines.php" class="blue_button" >Magazines</a></li>                <!--li>
+                    <a href="./Accueil_Revues.php" class='black_button' >Revues</a>
+                </li>
+                <li>
+                    <a href="./ouvrages.php" class='blue_button'>Ouvrages</a>
+                </li>
+                <li>
+                    <a href="./encyclopedies-de-poche.php" class='blue_button' >Encyclopédies de poche</a>
+                </li>
+                <li>
+                    <a href="./magazines.php" class='blue_button' >Magazines</a>
+                </li-->
+            </ul>
+        </div>
+    </div>
+
+    
+<div id="body-content">
+    <h1 class="main-title">Accès par discipline (40 revues)</h1>
+    <div class="table-button-grey">
+                    <div class="grid-g grid-4 row">
+                                    <div class="cell grid-u-1-4">
+                                                        <a  href="./disc-arts.htm" class="">Arts</a>
+                                                </div>
+                                    <div class="cell grid-u-1-4">
+                                                        <a  href="./disc-histoire.htm" class="">Histoire</a>
+                                                </div>
+                                    <div class="cell grid-u-1-4">
+                                                        <a class='active' href="./disc-philosophie.htm" class="">Philosophie</a>
+                                                </div>
+                                    <div class="cell grid-u-1-4">
+                                                        <a  href="./disc-sciences-politiques.htm" class="">Sciences politiques</a>
+                                                </div>
+                            </div>
+                    <div class="grid-g grid-4 row">
+                                    <div class="cell grid-u-1-4">
+                                                        <a  href="./disc-droit.htm" class="">Droit</a>
+                                                </div>
+                                    <div class="cell grid-u-1-4">
+                                                        <a  href="./disc-sciences-de-l-information.htm" class="">Info. - Com.</a>
+                                                </div>
+                                    <div class="cell grid-u-1-4">
+                                                        <a  href="./disc-psychologie.htm" class="">Psychologie</a>
+                                                </div>
+                                    <div class="cell grid-u-1-4">
+                                                        <a  href="./disc-sociologie-et-societe.htm" class="">Sociologie et société</a>
+                                                </div>
+                            </div>
+                    <div class="grid-g grid-4 row">
+                                    <div class="cell grid-u-1-4">
+                                                        <a  href="./disc-economie-gestion.htm" class="">Economie, Gestion</a>
+                                                </div>
+                                    <div class="cell grid-u-1-4">
+                                                        <a  href="./disc-interet-general.htm" class="">Intérêt général</a>
+                                                </div>
+                                    <div class="cell grid-u-1-4">
+                                                        <a  href="./disc-sante-publique.htm" class="">Santé publique</a>
+                                                </div>
+                                    <div class="cell grid-u-1-4">
+                                                        <a  href="./disc-sport-et-societe.htm" class="">Sport et société</a>
+                                                </div>
+                            </div>
+                    <div class="grid-g grid-4 row">
+                                    <div class="cell grid-u-1-4">
+                                                        <a  href="./disc-geographie.htm" class="">Géographie</a>
+                                                </div>
+                                    <div class="cell grid-u-1-4">
+                                                        <a  href="./disc-lettres-linguistique.htm" class="">Lettres et linguistique</a>
+                                                </div>
+                                    <div class="cell grid-u-1-4">
+                                                        <a  href="./disc-sciences-de-l-education.htm" class="">Sciences de l’éducation</a>
+                                                </div>
+                                    <div class="cell grid-u-1-4">
+                                                    <span class="empty">&nbsp;</span>
+                                            </div>
+                            </div>
+                <div  class="grid-g grid-4 row">
+            <div class="cell grid-u-1-4"></div>
+            <div class="cell grid-u-1-4"></div>
+            <div class="cell grid-u-1-4"></div>
+            <div class="cell grid-u-1-4">
+                <a href="./listerev.php" class="blue" id="__all_collection">Toutes disciplines</a>
+            </div>
+        </div>
+
+        <script>
+            $(function() {
+                // Permet de remonter l'accès à toutes les revues dans la grille, sur le dernier item vide.
+                var $empty = $("#body-content .empty:last");
+                var $all_collec = $("#__all_collection");
+                if (!$empty.length || !$all_collec.length)
+                    return false;
+                $empty[0].outerHTML = $all_collec[0].outerHTML;
+                $all_collec.parent().parent().hide();
+            });
+        </script>
+    </div>
+
+    <hr class="grey"/>
+    <h1 class="main-title">Accès par titre</h1>
+    <ul class="pagination letters">
+                                                        <li><a href="discipline.php?POS=6&TITRE=A">
+                            A                        </a></li>
+                                                                <li>
+                    <span class="desactivate">B</span>
+                </li>
+                                                                    <li><a href="discipline.php?POS=6&TITRE=C">
+                            C                        </a></li>
+                                                                                    <li><a href="discipline.php?POS=6&TITRE=D">
+                            D                        </a></li>
+                                                                                    <li><a href="discipline.php?POS=6&TITRE=E">
+                            E                        </a></li>
+                                                                <li>
+                    <span class="desactivate">F</span>
+                </li>
+                                                <li>
+                    <span class="desactivate">G</span>
+                </li>
+                                                <li>
+                    <span class="desactivate">H</span>
+                </li>
+                                                <li>
+                    <span class="desactivate">I</span>
+                </li>
+                                                                    <li><a href="discipline.php?POS=6&TITRE=J">
+                            J                        </a></li>
+                                                                <li>
+                    <span class="desactivate">K</span>
+                </li>
+                                                                    <li><a href="discipline.php?POS=6&TITRE=L">
+                            L                        </a></li>
+                                                                                    <li><a href="discipline.php?POS=6&TITRE=M">
+                            M                        </a></li>
+                                                                                    <li><a href="discipline.php?POS=6&TITRE=N">
+                            N                        </a></li>
+                                                                <li>
+                    <span class="desactivate">O</span>
+                </li>
+                                                                    <li><a href="discipline.php?POS=6&TITRE=P">
+                            P                        </a></li>
+                                                                <li>
+                    <span class="desactivate">Q</span>
+                </li>
+                                                                    <li><a href="discipline.php?POS=6&TITRE=R">
+                            R                        </a></li>
+                                                                                    <li><a href="discipline.php?POS=6&TITRE=S">
+                            S                        </a></li>
+                                                                                    <li><a href="discipline.php?POS=6&TITRE=T">
+                            T                        </a></li>
+                                                                <li>
+                    <span class="desactivate">U</span>
+                </li>
+                                                                    <li><a href="discipline.php?POS=6&TITRE=V">
+                            V                        </a></li>
+                                                                <li>
+                    <span class="desactivate">W</span>
+                </li>
+                                                <li>
+                    <span class="desactivate">X</span>
+                </li>
+                                                <li>
+                    <span class="desactivate">Y</span>
+                </li>
+                                                <li>
+                    <span class="desactivate">Z</span>
+                </li>
+                            <li>
+                            <a href="discipline.php?POS=6&TITRE=ALL" class="all">Tous</a>
+            
+
+        </li>
+    </ul>
+                        <br/><br/>
+            <h1 class="main-title">Accès abonné</h1>
+            <!--
+Ce template sert à l'affichage d'une liste à 2 colonnes.
+Il s'attend à recevoir:
+    - $arrayForList = l'array qui contient les données, comprenant le champ TYPEPUB
+    - $arrayFieldsToDisplay = un array qui contient les champs à afficher. Par défaut, seul le titre et l'image s'affichent
+    - $prefix = un prefix pour le nom des champs de l'array (par ex: 'NUMERO_')
+-->
+    <div id="list_revue_suscriber"">
+        <div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-actuel-marx.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/AMX/AMX_057_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-actuel-marx.htm">Actuel Marx</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Presses Universitaires de France</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-archives-de-philosophie.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/APHI/APHI_782_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-archives-de-philosophie.htm">Archives de Philosophie</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Centre Sèvres</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-archives-de-sciences-sociales-des-religions.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/ASSR/ASSR_167_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-archives-de-sciences-sociales-des-religions.htm">Archives de sciences sociales des religions</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Éditions de l'EHESS</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-cites.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/CITE/CITE_061_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-cites.htm">Cités</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Presses Universitaires de France</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-diogene.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/DIO/DIO_245_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-diogene.htm">Diogène</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Presses Universitaires de France</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-esprit.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/ESPRI/ESPRI_1507_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-esprit.htm">Esprit</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Editions Esprit</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-les-etudes-philosophiques.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/LEPH/LEPH_152_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-les-etudes-philosophiques.htm">Les Études philosophiques</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Presses Universitaires de France</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-journal-international-de-bioethique.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/JIB/JIB_261_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-journal-international-de-bioethique.htm">Journal International de Bioéthique</a></h2>
+                                                                                                                                                                                                    <div class="editeur">ESKA</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-labyrinthe.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/LABY/LABY_040_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-labyrinthe.htm">Labyrinthe</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Hermann</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-lignes.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/LIGNES/LIGNES_045_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-lignes.htm">Lignes</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Editions Lignes</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-multitudes.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/MULT/MULT_059_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-multitudes.htm">Multitudes</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Assoc. Multitudes</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-nouvelles-fondations.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/NF/NF_007_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-nouvelles-fondations.htm">Nouvelles FondationS</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Fond. G. Péri</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-philosophia-scientiae.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/SCIE/SCIE_192_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-philosophia-scientiae.htm">Philosophia Scientiæ</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Editions Kimé</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-philosophie.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/PHILO/PHILO_126_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-philosophie.htm">Philosophie</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Editions de Minuit</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-le-philosophoire.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/PHOIR/PHOIR_043_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-le-philosophoire.htm">Le Philosophoire</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Vrin</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-recherches-de-science-religieuse.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/RSR/RSR_152_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-recherches-de-science-religieuse.htm">Recherches de Science Religieuse</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Centre Sèvres</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-d-ethique-et-de-theologie-morale.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/RETM/RETM_284_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-d-ethique-et-de-theologie-morale.htm">Revue d'éthique et de théologie morale</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Editions du Cerf</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-de-l-histoire-des-religions.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/RHR/RHR_2322_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-de-l-histoire-des-religions.htm">Revue de l'histoire des religions</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Armand Colin / Dunod</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-de-metaphysique-et-de-morale.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/RMM/RMM_152_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-de-metaphysique-et-de-morale.htm">Revue de métaphysique et de morale</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Presses Universitaires de France</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-de-philosophie-economique.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/RPEC/RPEC_152_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-de-philosophie-economique.htm">Revue de philosophie économique</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Vrin</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-des-sciences-philosophiques-et-theologiques.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/RSPT/RSPT_984_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-des-sciences-philosophiques-et-theologiques.htm">Revue des sciences philosophiques et théologiques</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Vrin</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-internationale-de-philosophie.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/RIP/RIP_272_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-internationale-de-philosophie.htm">Revue internationale de philosophie</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Association Revue internationale de philosophie</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-philosophique.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/RPHI/RPHI_152_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-philosophique.htm">Revue philosophique de la France et de l'étranger</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Presses Universitaires de France</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-rue-descartes.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/RDES/RDES_084_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-rue-descartes.htm">Rue Descartes</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Collège international de Philosophie</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-savoir-agir.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/SAVA/SAVA_031_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-savoir-agir.htm">Savoir/Agir</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Editions du Croquant</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-le-telemaque.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/TELE/TELE_047_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-le-telemaque.htm">Le Télémaque</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Presses universitaires de Caen</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-traces.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/TRAC/TRAC_028_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-traces.htm">Tracés</a></h2>
+                                                                                                                                                                                                    <div class="editeur">E.N.S. Editions</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-tumultes.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/TUMU/TUMU_044_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-tumultes.htm">Tumultes</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Editions Kimé</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-vacarme.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/VACA/VACA_072_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-vacarme.htm">Vacarme</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Association Vacarme</div>
+                                            </div>
+                </div> 
+                </div>    </div>
+                                <hr class="grey">
+                <h1 class="main-title">Autres revues</h1>
+                            <h1 class="main-title"></h1><br/><br/>
+
+            <!--
+Ce template sert à l'affichage d'une liste à 2 colonnes.
+Il s'attend à recevoir:
+    - $arrayForList = l'array qui contient les données, comprenant le champ TYPEPUB
+    - $arrayFieldsToDisplay = un array qui contient les champs à afficher. Par défaut, seul le titre et l'image s'affichent
+    - $prefix = un prefix pour le nom des champs de l'array (par ex: 'NUMERO_')
+-->
+    <div id="list_revue_suscriber"">
+        <div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-les-cahiers-du-centre-georges-canguilhem.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/CCGC/CCGC_006_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-les-cahiers-du-centre-georges-canguilhem.htm">Les Cahiers du Centre Georges Canguilhem</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Presses Universitaires de France</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-cahiers-philosophiques.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/CAPH/CAPH_141_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-cahiers-philosophiques.htm">Cahiers philosophiques</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Réseau Canopé</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-chimeres.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/CHIME/CHIME_085_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-chimeres.htm">Chimères</a></h2>
+                                                                                                                                                                                                    <div class="editeur">ERES</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-etudes-germaniques.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/EGER/EGER_276_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-etudes-germaniques.htm">Études Germaniques</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Klincksieck</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-etudes-theologiques-et-religieuses.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/ETR/ETR_0902_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-etudes-theologiques-et-religieuses.htm">Études théologiques et religieuses</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Institut protestant de théologie</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-laennec.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/LAE/LAE_153_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-laennec.htm">Laennec</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Centre Laennec</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-nouvelle-revue-d-esthetique.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/NRE/NRE_014_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-nouvelle-revue-d-esthetique.htm">Nouvelle revue d’esthétique</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Presses Universitaires de France</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-nouvelle-revue-theologique.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/NRT/NRT_373_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-nouvelle-revue-theologique.htm">Nouvelle revue théologique</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Association Nouvelle revue théologique</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-pardes.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/PARDE/PARDE_055_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-pardes.htm">Pardès</a></h2>
+                                                                                                                                                                                                    <div class="editeur">In Press</div>
+                                            </div>
+                </div> 
+                                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-sens-dessous.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/SDES/SDES_014_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-sens-dessous.htm">Sens-Dessous</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Edition de l'Association Paroles</div>
+                                            </div>
+                </div> 
+                </div><div class="grid-g grid-2-list">                <div class="grid-u-1-2 greybox_hover revue">
+                    <a  href="./revue-transversalites.htm">
+                        <img src="http://www.cairn.info/static/includes/vign_rev/TRANS/TRANS_133_L61.jpg" alt="couverture de [NUMERO_TITRE_ABREGE]" class="small_cover">
+                    </a>
+                    <div class="meta">
+                        <h2 class="title_little_blue numero_title"><a  href="./revue-transversalites.htm">Transversalités</a></h2>
+                                                                                                                                                                                                    <div class="editeur">Institut Catholique de Paris</div>
+                                            </div>
+                </div> 
+                </div>    </div>
+                    <hr class="grey"/>
+    <div id="articles_more_view" class="list_articles">
+        <h1 class="main-title">Articles les plus consultés</h1>
+
+                    <div class="article greybox_hover">
+                <a href="./resume.php?ID_ARTICLE=ESPRI_1505_0083" style="display: inline-block; vertical-align: top;">
+                    <img src="http://www.cairn.info/static/includes/vign_rev/ESPRI/ESPRI_1505_L61.jpg" alt="SR_037_0143" class="small_cover"></a>
+                <div class="meta">
+                    <div class="title"><a href="./resume.php?ID_ARTICLE=ESPRI_1505_0083">
+                            L’islam politique, toujours en échec                        </a></div>
+                    <h3 class="subtitle">
+                                            </h3>
+                    <div class="authors">
+                        Olivier Roy                    </div>
+                </div>
+            </div>
+                    <div class="article greybox_hover">
+                <a href="./resume.php?ID_ARTICLE=MULT_059_0104" style="display: inline-block; vertical-align: top;">
+                    <img src="http://www.cairn.info/static/includes/vign_rev/MULT/MULT_059_L61.jpg" alt="SR_037_0143" class="small_cover"></a>
+                <div class="meta">
+                    <div class="title"><a href="./resume.php?ID_ARTICLE=MULT_059_0104">
+                            La laïcité répressive                        </a></div>
+                    <h3 class="subtitle">
+                        Anthropologie et géopolitique de l’<i>homo laïcus</i>                    </h3>
+                    <div class="authors">
+                        Guillaume Sibertin-Blanc, Laëtitia Boqui-Queni                    </div>
+                </div>
+            </div>
+                    <div class="article greybox_hover">
+                <a href="./resume.php?ID_ARTICLE=ESPRI_1506_0069" style="display: inline-block; vertical-align: top;">
+                    <img src="http://www.cairn.info/static/includes/vign_rev/ESPRI/ESPRI_1506_L61.jpg" alt="SR_037_0143" class="small_cover"></a>
+                <div class="meta">
+                    <div class="title"><a href="./resume.php?ID_ARTICLE=ESPRI_1506_0069">
+                            Le corps contemporain, une recherche d’identité                        </a></div>
+                    <h3 class="subtitle">
+                                            </h3>
+                    <div class="authors">
+                        Georges Vigarello                    </div>
+                </div>
+            </div>
+                    <div class="article greybox_hover">
+                <a href="./resume.php?ID_ARTICLE=MULT_059_0083" style="display: inline-block; vertical-align: top;">
+                    <img src="http://www.cairn.info/static/includes/vign_rev/MULT/MULT_059_L61.jpg" alt="SR_037_0143" class="small_cover"></a>
+                <div class="meta">
+                    <div class="title"><a href="./resume.php?ID_ARTICLE=MULT_059_0083">
+                            Après le 7 janvier 2015, quelle place pour le citoyen musulman en contexte libéral sécularisé ?                        </a></div>
+                    <h3 class="subtitle">
+                                            </h3>
+                    <div class="authors">
+                        Valérie Amiraux                    </div>
+                </div>
+            </div>
+                    <div class="article greybox_hover">
+                <a href="./resume.php?ID_ARTICLE=CITE_061_0027" style="display: inline-block; vertical-align: top;">
+                    <img src="http://www.cairn.info/static/includes/vign_rev/CITE/CITE_061_L61.jpg" alt="SR_037_0143" class="small_cover"></a>
+                <div class="meta">
+                    <div class="title"><a href="./resume.php?ID_ARTICLE=CITE_061_0027">
+                            Barbarie jihadiste et terreur médiatique                        </a></div>
+                    <h3 class="subtitle">
+                                            </h3>
+                    <div class="authors">
+                        Jean-Pierre Filiu                    </div>
+                </div>
+            </div>
+                    <div class="article greybox_hover">
+                <a href="./resume.php?ID_ARTICLE=MULT_059_0045" style="display: inline-block; vertical-align: top;">
+                    <img src="http://www.cairn.info/static/includes/vign_rev/MULT/MULT_059_L61.jpg" alt="SR_037_0143" class="small_cover"></a>
+                <div class="meta">
+                    <div class="title"><a href="./resume.php?ID_ARTICLE=MULT_059_0045">
+                            1905 : Quand l’islam était (déjà) la seconde religion de France                        </a></div>
+                    <h3 class="subtitle">
+                                            </h3>
+                    <div class="authors">
+                        Raberh Achi                    </div>
+                </div>
+            </div>
+                    <div class="article greybox_hover">
+                <a href="./resume.php?ID_ARTICLE=RPHI_152_0205" style="display: inline-block; vertical-align: top;">
+                    <img src="http://www.cairn.info/static/includes/vign_rev/RPHI/RPHI_152_L61.jpg" alt="SR_037_0143" class="small_cover"></a>
+                <div class="meta">
+                    <div class="title"><a href="./resume.php?ID_ARTICLE=RPHI_152_0205">
+                            Vygotski avec Spinoza, au-delà de Freud                        </a></div>
+                    <h3 class="subtitle">
+                                            </h3>
+                    <div class="authors">
+                        Yves Clot                    </div>
+                </div>
+            </div>
+                    <div class="article greybox_hover">
+                <a href="./resume.php?ID_ARTICLE=MULT_059_0069" style="display: inline-block; vertical-align: top;">
+                    <img src="http://www.cairn.info/static/includes/vign_rev/MULT/MULT_059_L61.jpg" alt="SR_037_0143" class="small_cover"></a>
+                <div class="meta">
+                    <div class="title"><a href="./resume.php?ID_ARTICLE=MULT_059_0069">
+                            Penser le sécularisme                        </a></div>
+                    <h3 class="subtitle">
+                                            </h3>
+                    <div class="authors">
+                        Talal Asad, Mohamed Amer Meziane                    </div>
+                </div>
+            </div>
+                    <div class="article greybox_hover">
+                <a href="./resume.php?ID_ARTICLE=MULT_059_0094" style="display: inline-block; vertical-align: top;">
+                    <img src="http://www.cairn.info/static/includes/vign_rev/MULT/MULT_059_L61.jpg" alt="SR_037_0143" class="small_cover"></a>
+                <div class="meta">
+                    <div class="title"><a href="./resume.php?ID_ARTICLE=MULT_059_0094">
+                            Une République du XXI<sup>e</sup> siècle                        </a></div>
+                    <h3 class="subtitle">
+                                            </h3>
+                    <div class="authors">
+                        Albert Ogien, Sandra Laugier                    </div>
+                </div>
+            </div>
+                    <div class="article greybox_hover">
+                <a href="./resume.php?ID_ARTICLE=RPHI_152_0187" style="display: inline-block; vertical-align: top;">
+                    <img src="http://www.cairn.info/static/includes/vign_rev/RPHI/RPHI_152_L61.jpg" alt="SR_037_0143" class="small_cover"></a>
+                <div class="meta">
+                    <div class="title"><a href="./resume.php?ID_ARTICLE=RPHI_152_0187">
+                            Du comportement à l’action. Faire de la psychologie après Wittgenstein ?                        </a></div>
+                    <h3 class="subtitle">
+                                            </h3>
+                    <div class="authors">
+                        Valérie Aucouturier                    </div>
+                </div>
+            </div>
+                    <div class="article greybox_hover">
+                <a href="./resume.php?ID_ARTICLE=MULT_059_0169" style="display: inline-block; vertical-align: top;">
+                    <img src="http://www.cairn.info/static/includes/vign_rev/MULT/MULT_059_L61.jpg" alt="SR_037_0143" class="small_cover"></a>
+                <div class="meta">
+                    <div class="title"><a href="./resume.php?ID_ARTICLE=MULT_059_0169">
+                            Humanités numériques                        </a></div>
+                    <h3 class="subtitle">
+                        Une médiapolitique des savoirs encore à inventer                    </h3>
+                    <div class="authors">
+                        Yves Citton                    </div>
+                </div>
+            </div>
+            </div>
+
+</div>
+        </div> <!-- #contenu -->
+        <!-- #global -->
+
+        <div id="wrapper_footer">
+            <div id="footer">
+                <div id="footer_shortcuts">
+                    <a href="./" id="logo_cairn_footer">
+                        <img src="./static/images/logo-cairn-footer.png" alt="CAIRN.INFO : Chercher, repérer, avancer.">
+                    </a>
+                    <ul>
+                        <li><a href="./a-propos.php">À propos de Cairn.info</a></li>
+                        <li><a href="./services-aux-editeurs.php">Services aux éditeurs</a></li>
+                        <li><a href="./services-aux-institutions.php">Services aux institutions</a></li>
+                        <li><a href="./services-aux-particuliers.php">Services aux particuliers</a></li>
+                        <li><a href="./conditions.php">Conditions d’utilisation</a></li>
+                        <li><a href="./conditions-generales-de-vente.php">Conditions de vente</a></li>
+                        <li><a href="./conditions-generales-de-vente.php#retractation">Droit de rétractation</a></li>
+                        <li><a href="./vie-privee.php">Vie privée</a></li>
+                    </ul>
+                </div>
+                <div id="footer_disciplines">
+                    <h1>Disciplines</h1>
+                    <ul>
+                        <li><a href="./disc-droit.htm">Droit</a></li>
+                        <li><a href="./disc-economie-gestion.htm">Économie, gestion</a></li>
+                        <li><a href="./disc-geographie.htm">Géographie</a></li>
+                        <li><a href="./disc-histoire.htm">Histoire</a></li>
+                        <li><a href="./disc-lettres-linguistique.htm">Lettres et linguistique</a></li>
+                        <li><a href="./disc-philosophie.htm">Philosophie</a></li>
+                        <li><a href="./disc-psychologie.htm">Psychologie</a></li>
+                        <li><a href="./disc-sciences-de-l-education.htm">Sciences de l'éducation</a></li>
+                        <li><a href="./disc-sciences-de-l-information.htm">Sciences de l'information</a></li>
+                        <li><a href="./disc-sciences-politiques.htm">Sciences politiques</a></li>
+                        <li><a href="./disc-sociologie-et-societe.htm">Sociologie et société</a></li>
+                        <li><a href="./disc-sport-et-societe.htm">Sport et société</a></li>
+                        <li><a href="./disc-interet-general.htm">Revues d'intérêt général</a></li>
+                        <li><a href="./listerev.php" accesskey="2">Toutes les revues</a></li>
+                    </ul>
+                </div>
+                <div id="footer_tools">
+                    <h1>Outils</h1>
+                    <ul>
+                        <li><a href="http://aide.cairn.info" accesskey="6">Aide</a></li>
+                        <li><a href="./aide-plan-du-site.htm" accesskey="7">Plan du site</a></li>
+                        <li><a href="./abonnement_flux.php">Flux RSS</a></li>
+                        <li><a href="./acces_hors.php">Accès hors campus</a></li>
+                        <li><a href="./contact.php" accesskey="5">Contacts</a></li>
+                    </ul>
+                </div>
+                <div id="footer_menu_user">
+                    <h1>Mon Cairn.info</h1>
+                    <ul>
+                        <li>
+
+                            <a href="./mon_compte.php">Créer un compte</a>
+                        </li>
+                        <li><a href="./mon_panier.php" accesskey="4">Mon panier</a></li>
+                        <li>Mes achats</li>
+                        <li><a href="./biblio.php" accesskey="3">Ma bibliographie</a></li>
+                        <li><a href="./mes_alertes.php">Mes alertes e-mail</a></li>
+                        <li><a href="./credit.php">Mon crédit d'articles</a></li>
+                    </ul>
+                    <a href="http://www.centrenationaldulivre.fr/" id="logo_cnl">
+                        <img src="./static/images/logo-cnl.png" alt="logo CNL" id="footer_logo_cnl">
+                    </a>
+                </div>
+                <a href="http://cairn-int.info" id="footer_link_cairnint">English</a>
+            </div>
+        </div>
+        <div id="post_footer">
+            <span>&copy; 2010-2014 Cairn.info</span>
+            <!--    <a href="#">Privacy Policy</a>
+            <a href="#">Terms of use</a> -->
+        </div>
+        <div onclick="cairn.close_modal()" id="blackground"></div>
+        <div id="error_div">
+                    </div>
+        <a id="jump-top" href="#top" style="display: block;"><img alt="back to top" src="./static/images/jump-top.png"></a>
+        <div id="feedback">
+            <a href="#" onclick="cairn.show_modal('#modal_feedback');" class="feedback-trigger">Feedback</a>
+        </div>
+        <div style="display: none;" class="window_modal" id="modal_feedback">
+            <form method="POST" action="index.php?controleur=Outils&amp;action=sendFeedbackMail" id="send_feedback">
+                <input type="hidden" name="f_from" value="cairn">
+                <h1>Votre Feedback à propos de Cairn.info</h1>
+                <span onclick="cairn.close_modal();" class="close_modal"></span>
+                <div id="feedback_radios">
+                    <input type="radio" name="f_category" value="suggestion" id="radio_idea">
+                    <label for="radio_idea" class="active">Suggestion</label>
+                    <input type="radio" name="f_category" value="question" checked="" id="radio_question">
+                    <label for="radio_question">Question</label>
+                    <input type="radio" name="f_category" value="anomalie" id="radio_bug">
+                    <label for="radio_bug">Anomalie</label>
+                    <input type="radio" name="f_category" value="encouragement" id="radio_praise">
+                    <label style="display: none;" for="radio_praise">Encouragement</label>
+                </div>
+                <div id="feedback_fields">
+                    <div class="feedback_field">
+                        <label for="f_email">
+                            <strong>Adresse e-mail</strong>
+                        </label>
+                        <input type="email" name="f_email" value="" required="" id="f_email">
+                    </div>
+                    <div class="feedback_field">
+                        <label for="f_message">
+                            <strong>Message</strong>
+                        </label>
+                        <textarea name="f_message" required="" id="f_message"></textarea>
+                    </div>
+                    <button type="submit">Envoyer</button>
+                </div>
+            </form>
+        </div>
+        <script type="text/javascript">
+        function showEjectModal(){
+            cairn.show_modal('#modal_logouteject');
+        }
+        </script>
+        <div id="modal_logouteject" class="window_modal" style="display:none;">
+            <div class="info_modal">
+                <h2>Connexion fermée</h2>
+                <p>Vous avez été déconnecté car votre compte est utilisé à partir d'un autre appareil.</p>
+                <div class="buttons">
+                    <span class="blue_button ok" onclick="cairn.close_modal()">Fermer</span>
+                </div>
+            </div>
+        </div>
+        <div id="modal_empty_input" class="window_modal" style="display:none;">
+            <div class="info_modal">
+                <h2>Alert</h2>
+                <p>Il faut remplir les champs obligatoire.</p>
+                <div class="buttons">
+                    <span class="blue_button ok" onclick="cairn.close_modal()">Fermer</span>
+                </div>
+            </div>
+        </div>
+    <!-- START OF SmartSource Data Collector TAG v10.4.1 -->
+<!-- Copyright (c) 2014 Webtrends Inc.  All rights reserved. -->
+<script>
+window.webtrendsAsyncInit=function(){
+    var dcs=new Webtrends.dcs().init({
+        dcsid:"dcsbyjtggvz5bd3lick2mr6w2_6r3h",
+        domain:"statse.webtrendslive.com",
+        timezone:1,
+        i18n:true,
+        fpcdom:".cairn.info",
+        plugins:{
+            //hm:{src:"//s.webtrends.com/js/webtrends.hm.js"}
+        }
+        }).track();
+};
+(function(){
+    var s=document.createElement("script"); s.async=true; s.src="static/js/webtrends.min.js";
+    var s2=document.getElementsByTagName("script")[0]; s2.parentNode.insertBefore(s,s2);
+}());
+</script>
+<noscript><img alt="dcsimg" id="dcsimg" width="1" height="1" src="//statse.webtrendslive.com/dcsbyjtggvz5bd3lick2mr6w2_6r3h/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=10.4.1&amp;dcssip=www.cairn.info"/></noscript>
+<!-- END OF SmartSource Data Collector TAG v10.4.1 -->
+    </body>
+</html>
