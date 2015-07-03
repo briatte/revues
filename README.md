@@ -2,23 +2,18 @@ R code to process author information from [Cairn.info](http://www.cairn.info/) j
 
 # HOWTO
 
-Open `make.r` to check the package dependencies and run it to replicate the analysis in full. The code currently runs on sociology journals. To run on e.g. political science journals, edit `make.r` as follows:
+Open `make.r` to check the package dependencies and run it to replicate the analysis in full.
 
-```{r}
-data = "revues-scpo.csv"
-html = "html/revues-scpo-2014.html"
-```
+The code currently runs on sociology journals but can easily be edited to run on any discipline, or on all of them: just change the `disc` variable in `make.r` and select different example journals in `03-indices.r`.
 
-You will also need to edit `03-indices.r` to select different example journals.
+The `html` folder contains an index for every discipline on which the analysis might be run, as well as the general index to run the analysis on all disciplines combined. All indexes were downloaded in July 2015.
 
-The `html` folder contains an index for every discipline on which the analysis might be run, as well as a general index to run the analysis on all disciplines combined. Due to a recently introduced limitation in the HTML code of the platform, most of the indexes are from July 2014, except the ones for sociology and for all journals, which are from March 2015.
-
-If you need to download more detailed article data, try the following script:
+If you need to download more detailed article data, try the following:
 
 ```{r}
 dir.create("html/art", showWarnings = FALSE)
 p = list.files("html/num", pattern = "htm$", full.names = TRUE)
-p = sample(p, length(p))
+p = sample(p)
 
 # include some sleep time every 100 queries or so to avoid choking
 s = length(list.files("html/art", pattern = "html$")) %/% 100
