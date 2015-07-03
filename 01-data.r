@@ -7,12 +7,6 @@ if(!file.exists(data)) {
   dir.create("html/rev", showWarnings = FALSE)
   dir.create("html/num", showWarnings = FALSE)
 
-  r = "http://www.cairn.info/"
-
-  if(!file.exists(html))
-    download.file(paste0(r, "discipline.php?POS=11&TITRE=ALL"),
-                  html, mode = "wb", quiet = TRUE)
-
   y = html(html)
   y = html_nodes(y, ".revue a") %>%
     html_attr("href") %>%
@@ -20,7 +14,7 @@ if(!file.exists(data)) {
 
   for(i in y) {
 
-    u = paste0(r, i)
+    u = paste0(base, i)
     f = paste0("html/rev/", i)
 
     # first page
@@ -37,7 +31,7 @@ if(!file.exists(data)) {
 
     for(j in p) {
 
-      u = paste0(r, j)
+      u = paste0(base, j)
       f = gsub("\\.htm$", paste0("-", which(p == j) + 1, ".htm"), i)
       f = paste0("html/rev/", f)
 
@@ -67,10 +61,10 @@ if(!file.exists(data)) {
 
     for(j in rev(gsub("\\s", "%20", n))) {
 
-      cat(sprintf("%3.0f", which(y == i)),
+      cat(sprintf("%3.0f", which(rev(y) == i)),
           sprintf("%3.0f", which(n == j)), j)
 
-      u = paste0(r, j)
+      u = paste0(base, j)
       f = paste0("html/num/", gsub("^\\./", "", j))
 
       # some issues are missing
@@ -92,7 +86,7 @@ if(!file.exists(data)) {
           unique
 
         # simplify URLs
-        a = gsub("publications-de-|\\.htm$", "", a[ a != "" ])
+        a = gsub("^\\./|publications-de-|\\.htm$", "", a[ a != "" ])
 
         # unique articles
         l = html_nodes(h, ".list_articles .authors") %>%
@@ -111,7 +105,7 @@ if(!file.exists(data)) {
         # add to dataset
         if(length(a))
           d = rbind(d, data_frame(numero = gsub("html/num/(\\./)?revue-|\\.htm", "", f),
-                                  revue = gsub("html/num/(\\./)?revue-|(\\d)?-\\d{4}-(.*)\\.htm", "", f),
+                                  revue = gsub("html/num/(\\./)?revue-|\\d?-\\d{4}-(.*)\\.htm", "", f),
                                   annee = str_extract(f, "[0-9]{4}"),
                                   auteur = gsub("\\n|\\t|\\s|,", "", a),
                                   articles = l))
@@ -136,6 +130,20 @@ if(!file.exists(data)) {
 
         # unique authors per article
         a = html_nodes(h, ".list_articles .authors")
+
+        # full names
+        w = sapply(a, function(x) {
+          html_nodes(x, "a") %>%
+            html_text() %>%
+            str_trim %>%
+            unique %>%
+            paste0(., collapse = ";")
+        })
+
+        # remove empty names
+        w = w[ w != "" ]
+
+        # unique identifiers
         a = sapply(a, function(x) {
           html_nodes(x, "a") %>%
             html_attr("href") %>%
@@ -144,24 +152,32 @@ if(!file.exists(data)) {
         })
 
         # simplify URLs
-        a = gsub("publications-de-|\\.htm", "", a[ a != "" ])
+        a = gsub("\\./|publications-de-|\\.htm", "", a[ a != "" ])
+
+        # bugfix (in Commentaire)
+        a = a[ !grepl("^--", a) ]
 
         # add to dataset
         if(length(a))
           r = rbind(r, data_frame(numero = gsub("html/num/(\\./)?revue-|\\.htm", "", k),
-                                  revue = gsub("html/num/(\\./)?revue-|(\\d)?-\\d{4}-(.*)\\.htm", "", k),
-                                  auteurs = gsub("\\n|\\t|\\s|,", "", a)))
+                                  revue = gsub("html/num/(\\./)?revue-|\\d?-\\d{4}-(.*)\\.htm", "", k),
+                                  auteurs = gsub("\\n|\\t|\\s|,", "", a),
+                                  noms = w))
 
       }
 
-      regex = ifelse(n_distinct(r$revue) > 1,
-                     paste0("(", paste0(unique(r$revue), collapse = "|"), ")"),
-                     unique(r$revue))
+      if(nrow(r) > 0) {
 
-      r$numero = gsub(paste0("^", regex, "(\\d)?-"), "", r$numero)
+        regex = ifelse(n_distinct(r$revue) > 1,
+                       paste0("(", paste0(unique(r$revue), collapse = "|"), ")"),
+                       unique(r$revue))
 
-      # save edge list
-      write_csv(r, f)
+        r$numero = gsub(paste0("^", regex, "(\\d)?-"), "", r$numero)
+
+        # save edge list
+        write_csv(r, f)
+
+      }
 
     }
 
@@ -182,13 +198,8 @@ d$revue[ d$revue %in% c("culture-chiffres", "culture-etudes", "culture-methodes"
 total = group_by(d, numero) %>%
   summarise(sum = unique(articles))
 
-cat(data, "\nauthors:", n_distinct(d$revue), "journals",
-    sum(total$sum), "articles",
-    n_distinct(d$numero), "issues",
-    n_distinct(d$auteur), "authors\n")
-
 r = list.files("csv", full.names = TRUE) %>%
-  lapply(., read_csv, col_types = "ccc") %>%
+  lapply(., read_csv, col_types = "cccc") %>%
   bind_rows
 
 # recodings
@@ -196,40 +207,54 @@ r$revue[ r$revue == "clio" ] = "clio-femmes-genre-histoire"
 r$revue[ r$revue %in% c("culture-chiffres", "culture-etudes", "culture-methodes",
                         "culture-prospective") ] = "culture-chiffres-etudes-methodes-prospective"
 
+r = filter(r, revue %in% unique(d$revue))
 stopifnot(unique(d$revue) %in% unique(r$revue))
+
+table(cut(d$annee, seq(1980, 2015, 5)), exclude = NULL)
+
+# save articles file
+write_csv(r, arts)
+
+# subset to 25 most recent years
+d = filter(d, annee > 1990)
+r = filter(r, substr(numero, 1, 4) > 1990)
+
+cat(data, "\nauthors:", n_distinct(d$revue), "journals",
+    sum(total$sum), "articles",
+    n_distinct(d$numero), "issues",
+    n_distinct(d$auteur), "authors\n")
 
 cat("network:", n_distinct(r$revue),
     "journals", nrow(r), "articles",
-    n_distinct(paste(r$numero, r$revue)), "issues",
+    n_distinct(paste(d$numero, r$revue)), "issues",
     n_distinct(unlist(strsplit(r$auteurs, ";"))), "authors\n")
 
 #
 # breakdown by year of publication
 #
 
-table(d$annee)
-
-mutate(d, y5 = cut(annee, c(1990, 1995, 2000, 2005, 2010, 2016))) %>%
+mutate(d, y5 = cut(annee, seq(1990, 2015, 5))) %>%
   group_by(y5) %>%
   summarise(n_revues = n_distinct(revue),
             n_numeros = n_distinct(numero)) %>%
-  mutate(cumsum = cumsum(n_numeros))
+  mutate(cumsum = cumsum(n_numeros),
+         percen = n_numeros / sum(n_numeros))
 
 uniq = select(d, numero, annee, articles) %>%
   unique
 
-table(uniq$annee >= 2005)
-table(uniq$annee >= 2005) / nrow(uniq)
+table(uniq$annee >= 2006)
+table(uniq$annee >= 2006) / nrow(uniq)
 
 sum(uniq$articles)
-sum(uniq$articles[ uniq$annee >= 2005]) / sum(uniq$articles)
+sum(uniq$articles[ uniq$annee >= 2006 ]) / sum(uniq$articles)
 
 #
 # number of articles per author
 #
 
 auts = data.frame(table(d$auteur))
-summary(auts$Freq) # range 1-52
+summary(auts$Freq) # range 1-89
 
 sum(auts$Freq == 1) # with only one article
 sum(auts$Freq == 1) / nrow(auts)
@@ -248,7 +273,7 @@ filter(auts, Freq > 30) %>%
 auts = group_by(d, revue) %>%
   summarise(mu = n_distinct(auteur))
 
-summary(auts$mu)
+summary(auts$mu) # median 356.5
 
 # journals with smallest pools of authors (38)
 filter(auts, mu == min(mu))
@@ -258,16 +283,17 @@ group_by(d, revue) %>%
   filter(revue %in% c("carnet-de-notes-sur-les-maltraitances-infantiles",
                       "societe-droit-et-religion"))
 
-# journal with largest pool of authors (1696)
+# journal with largest pool of authors (972)
 filter(auts, mu == max(mu))
 
 group_by(d, revue) %>%
   summarise(numeros = n_distinct(numero)) %>%
-  filter(revue == "sante-publique")
+  filter(revue == "gerontologie-et-societe")
 
 # journal close to sample average
-filter(auts, mu > 330, mu < 340)
+filter(auts, mu > 340, mu < 370) %>%
+  arrange(-mu)
 
 group_by(d, revue) %>%
   summarise(numeros = n_distinct(numero)) %>%
-  filter(revue == "politix")
+  filter(revue == "cahiers-du-genre")

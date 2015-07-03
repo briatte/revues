@@ -95,9 +95,17 @@ w = data_frame(
 round( range(w$distance), 1)
 round(  mean(w$distance), 1)
 
+# comparison of two journals with same disciplinary position
+
+mutate(w, rank = rank(distance)) %>%
+  filter(revue %in% c("societes", "traces"))
+
+filter(by_j, revue %in% c("societes", "traces"))
+
 # ranking by smallest average distance
 
 qplot(data = w, x = reorder(revue, -distance), y = distance) +
+  geom_hline(yintercept = median(w$distance), lty = "dashed") +
   coord_flip() +
   labs(x = NULL, y = "\nDistance moyenne aux autres revues de l'échantillon") +
   theme_bw() +
@@ -115,7 +123,9 @@ set.edge.attribute(n, "w", df$w[ df$w > 0.05 ])
 
 n = graph.adjacency(as.matrix(n), mode = "undirected") # igraph
 l = layout.fruchterman.reingold(n)
-o = sapply(1:5, function(x) which(membership(optimal.community(n)) == x))
+
+o = optimal.community(n)
+o = sapply(1:length(o), function(x) which(membership(o) == x))
 
 png("plots/network_005_labels.png", width = 800, height = 800)
 plot(n, layout = l,

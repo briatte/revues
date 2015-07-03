@@ -33,3 +33,9 @@ J6 = lm(degree ~ numeros + auteurs + articles + annees, data = by_j)
 screenreg(list(J1, J2, J3, J4, J5, J6),
           custom.model.names = rep(c("Distance", "Degree"), 3),
           include.rsquared = FALSE)
+
+qplot(x = resid(J6), geom = "density")
+
+qplot(data = by_j, y = degree, x = annees) +
+  geom_smooth(fill = "steelblue", color = "steelblue") +
+  geom_smooth(method = "lm", fill = "darkred", color = "darkred")

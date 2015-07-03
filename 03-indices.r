@@ -9,7 +9,7 @@ by_j = group_by(d, revue) %>%
             numeros = n_distinct(numero),
             auteurs = n_distinct(auteur)) %>%
   mutate(annees = as.numeric(max) - as.numeric(min) + 1) %>%
-  arrange(-annees) #%>%
+  arrange(-annees) # %>%
   # head(., 5)
   # tail(., 5)
   # comparable to 'Sociétés'
@@ -43,7 +43,8 @@ dd$tagged[ dd$revue == "sociologie" ] = "Sociologie"
 dd$tagged[ dd$revue == "carnet-de-notes-sur-les-maltraitances-infantiles" ] =
   "Carnet de notes sur les maltraitances infantiles"
 dd$tagged[ dd$revue == "reseaux" ] = "Réseaux"
-dd$tagged[ dd$revue == "population" ] = "Population"
+dd$tagged[ dd$revue == "droit-et-societe" ] = "Droit et société"
+dd$tagged[ dd$revue == "population" ] = "Population" # not included any more
 
 qplot(data = dd, y = rankp, x = mu, geom = "step") +
   geom_point(data = subset(dd, !is.na(tagged))) +
@@ -61,10 +62,11 @@ qplot(data = dd, y = rankp, x = mu, geom = "step") +
 ggsave("plots/revues_ecdf.png", width = 10, height = 9)
 ggsave("plots/revues_ecdf.pdf", width = 10, height = 9)
 
-# more comparable journals
+# comparable journals
 dd$tagged = NA
 dd$tagged[ dd$revue == "societes" ] = "Sociétés"
-dd$tagged[ dd$revue == "geneses" ] = "Genèses"
+dd$tagged[ dd$revue == "europeenne-des-migrations-internationales" ] =
+  "Revue europ. des migrations internationales"
 dd$tagged[ dd$revue == "cahiers-d-etudes-africaines" ] = "Cahiers d'études africaines"
 
 qplot(data = dd, y = rankp, x = mu, geom = "step") +
@@ -82,6 +84,9 @@ qplot(data = dd, y = rankp, x = mu, geom = "step") +
 
 ggsave("plots/revues_ecdf_comparables.png", width = 10, height = 9)
 ggsave("plots/revues_ecdf_comparables.pdf", width = 10, height = 9)
+
+# median journals
+filter(dd, rankp > .45, rankp < .55)
 
 # sd increases with mean
 qplot(data = dd, y = mu, x = sd) +
@@ -194,6 +199,7 @@ with(h, cor(p_mono, mu_hhi))
 # ordered mono-journal author percentage
 qplot(data = h, x = reorder(revue, -p_mono),
       y = p_mono) +
+  geom_hline(yintercept = median(h$p_mono), lty = "dashed") +
   coord_flip() +
   scale_y_continuous(label = percent_format()) +
   labs(x = NULL, y = "\nPourcentage d'auteurs ayant publié dans cette seule revue") +

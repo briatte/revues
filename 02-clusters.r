@@ -16,7 +16,8 @@ for(i in list.files("html", pattern = "revues-\\w+-\\d+", full.names = TRUE)) {
     html_attr("href") %>%
     unique
 
-  a[, gsub("html/revues-|-\\d+\\.html", "", i) ] = as.numeric(a$revue %in% y)
+  y = as.numeric(a$revue %in% gsub("\\./", "", y))
+  a[, gsub("html/revues-|-\\d+\\.html", "", i) ] = y
 
 }
 
@@ -24,16 +25,22 @@ a$revue = gsub("revue-|\\.htm", "", a$revue)
 a$n = apply(a[, -1], 1, sum)
 a = filter(a, n > 0)
 
-a$discipline = apply(a[, -c(1, 16) ], 1, function(x) which(x == 1))
+x = which(names(a) %in% c("revue", "n"))
+
+a$discipline = apply(a[, -c(1, ncol(a)) ], 1, function(x) which(x == 1))
 a$discipline = sapply(a$discipline, names)
 a$discipline = sapply(a$discipline, function(x) ifelse(length(x) > 1, "mixte", x))
 
-a$combined = apply(a[, -c(1, 16:17) ], 1, function(x) which(x == 1))
+x = which(names(a) %in% c("revue", "n", "discipline"))
+
+a$combined = apply(a[, -x ], 1, function(x) which(x == 1))
 a$combined = sapply(a$combined, names)
 a$combined = sapply(a$combined, paste0, collapse = ",")
 
 # most frequent cross-disciplinary ties
 table(a$combined[ a$n > 1 ])[ table(a$combined[ a$n > 1 ]) > 5 ]
+
+x = which(names(a) %in% c("revue", "n", "discipline", "combined"))
 
 # most active disciplines in cross-disciplinary ties
 t1 = table(unlist(str_split(names(table(a$combined[ a$n > 1 ])), ",")))
@@ -42,7 +49,7 @@ head(t1)
 
 # percentage of cross-disciplinary journals
 t2 = round(100 * table(unlist(str_split(names(table(a$combined[ a$n > 1 ])), ","))) /
-             colSums(a[, -c(1, 16:18) ]))
+             colSums(a[, -x ]))
 t2 = as.data.frame(t2) %>% arrange(-Freq)
 head(t2)
 
@@ -57,7 +64,7 @@ qplot(data = full_join(t1, t2, "Var1"), x = Freq.x, y = Freq.y,
 
 ggsave("plots/disciplines_trans.pdf", height = 7, width = 7)
 
-R = a[, -c(1, 16:18) ]
+R = a[, -x ]
 
 # -arts and -lettres
 R = R[, !colnames(R) %in% c("arts", "lettres") ]
@@ -105,7 +112,7 @@ ggsave("plots/disciplines_clara.pdf", width = 9, height = 9)
 # disciplines matrix
 #
 
-a$n = apply(a[, -c(1, 16:18), ], 1, sum)
+a$n = apply(a[, -x, ], 1, sum)
 
 a = gather(a, key, dummy, -revue, -n, -discipline, -combined)
 
