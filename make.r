@@ -57,7 +57,7 @@ uids = c(
 
 # set discipline here, or set to 'all' to download all disciplines
 
-# disc = "soc"
+disc = "soc"
 stopifnot(disc %in% names(uids))
 
 data = paste0("data/revues-", disc, ".csv")
